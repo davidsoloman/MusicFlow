@@ -1,7 +1,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.vsco.cam.musicflow.app.MainActivity"
+    tools:context="com.musicflow.app.MainActivity"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
     <GridView
@@ -15,5 +15,10 @@
         android:stretchMode="columnWidth"
         android:verticalSpacing="10dp"
         android:padding="10dp"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"/>
 </RelativeLayout>
 
