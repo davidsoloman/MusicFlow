@@ -29,7 +29,7 @@ public class ImageAdapter extends BaseAdapter {
     // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
-        if (convertView == null) {  // if it's not recycled, initialize some attributes
+        if (convertView == null) { // if it's not recycled, initialize some attributes
             imageView = new ImageView(mContext);
             imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, 300));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -43,12 +43,11 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     // references to our images
-    private Integer[] mThumbIds = {
-            R.drawable.avicii_1, R.drawable.avicii_2,
-            R.drawable.calvin_harris, R.drawable.ellie_goulding1,
-            R.drawable.ellie_goulding2, R.drawable.karmin,
-            R.drawable.skrillex_1, R.drawable.deadmou5,
-            R.drawable.swedish_house_mafia, R.drawable.tim_berg,
-            R.drawable.tommy_trash, R.drawable.zedd
-    };
+    private Integer[] mThumbIds = {R.drawable.avicii_1, R.drawable.avicii_2,
+            R.drawable.calvin_harris, R.drawable.ellie_goulding1, R.drawable.ellie_goulding2,
+            R.drawable.karmin, R.drawable.skrillex_1, R.drawable.deadmou5,
+            R.drawable.swedish_house_mafia, R.drawable.tim_berg, R.drawable.tommy_trash,
+            R.drawable.zedd, R.drawable.kascade, R.drawable.krewella, R.drawable.steve_aoki,
+            R.drawable.tiesto, R.drawable.skrillex_2, R.drawable.britney_spears,
+            R.drawable.britney_spears2};
 }
