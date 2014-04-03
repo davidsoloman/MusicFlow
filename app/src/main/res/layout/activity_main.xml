@@ -1,14 +1,19 @@
-<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/gridview"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:columnWidth="100dp"
-    android:gravity="center"
-    android:horizontalSpacing="10dp"
-    android:numColumns="auto_fit"
-    android:stretchMode="columnWidth"
-    android:verticalSpacing="10dp"
-    android:padding="10dph"
-    tools:context="com.vsco.cam.musicflow.app.MainActivity" />
+    tools:context="com.vsco.cam.musicflow.app.MainActivity"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <GridView
+        android:id="@+id/gridview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:columnWidth="100dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp"
+        android:padding="10dp"/>
+</RelativeLayout>
 
