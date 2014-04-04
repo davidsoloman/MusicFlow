@@ -167,48 +167,5 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-    public static class PlaylistFragment extends Fragment {
-
-        public PlaylistFragment() {}
-
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public static PlaylistFragment newInstance(int sectionNumber) {
-            PlaylistFragment fragment = new PlaylistFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.activity_playlist, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.playlist_textview);
-            return rootView;
-        }
-    }
-
-    public static class AlbumFragment extends Fragment {
-        public AlbumFragment() {}
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public static AlbumFragment newInstance(int sectionNumber) {
-            AlbumFragment fragment = new AlbumFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.activity_albums, container, false);
-            GridView gridView = (GridView) rootView.findViewById(R.id.gridview);
-            gridView.setAdapter(new ImageAdapter(gridView.getContext()));
-            return rootView;
-        }
-
-    }
 
 }
