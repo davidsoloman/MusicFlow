@@ -25,9 +25,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return AlbumFragment.newInstance(position + 1);
             case 1:
-                return PlaylistFragment.newInstance(position + 1);
+                return SearchFragment.newInstance(position + 1);
             case 3:
-                return AlbumFragment.newInstance(position + 1);
+                return PlaylistFragment.newInstance(position + 1);
         }
         return PlaylistFragment.newInstance(position + 1);
     }

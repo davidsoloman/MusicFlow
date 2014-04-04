@@ -9,5 +9,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile">Profile</string>
     <string name="action_home">Home</string>
+    <string name="search_artists">SEARCH_ARTISTS</string>
+    <string name="artist_search_box">ARTIST_SEARCH_BOX</string>
+    <string name="search_music">SEARCH MUSIC</string>
 
 </resources>
