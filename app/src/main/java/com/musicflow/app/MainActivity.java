@@ -2,6 +2,7 @@ package com.musicflow.app;
 
 import java.util.Locale;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -51,14 +52,14 @@ public class MainActivity extends ActionBarActivity {
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        GridView gridview = (GridView) findViewById(R.id.gridview);
-        gridview.setAdapter(new ImageAdapter(this));
-
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
-            }
-        });
+//        GridView gridview = (GridView) findViewById(R.id.gridview);
+//        gridview.setAdapter(new ImageAdapter(this));
+//
+//        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+//                Toast.makeText(MainActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @Override
@@ -75,13 +76,15 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch(id) {
+            case R.id.action_profile:
+                this.startActivity(new Intent(this, ProfileActivity.class));
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
-
-
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -97,7 +100,15 @@ public class MainActivity extends ActionBarActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            switch (position) {
+                case 0:
+                    return AlbumFragment.newInstance(position + 1);
+                case 1:
+                    return PlaceholderFragment.newInstance(position + 1);
+                case 3:
+                    return PlaylistFragment.newInstance(position + 1);
+            }
+            return PlaylistFragment.newInstance(position + 1);
         }
 
         @Override
@@ -154,6 +165,50 @@ public class MainActivity extends ActionBarActivity {
             textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
+    }
+
+    public static class PlaylistFragment extends Fragment {
+
+        public PlaylistFragment() {}
+
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public static PlaylistFragment newInstance(int sectionNumber) {
+            PlaylistFragment fragment = new PlaylistFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.activity_playlist, container, false);
+            TextView textView = (TextView) rootView.findViewById(R.id.playlist_textview);
+            return rootView;
+        }
+    }
+
+    public static class AlbumFragment extends Fragment {
+        public AlbumFragment() {}
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public static AlbumFragment newInstance(int sectionNumber) {
+            AlbumFragment fragment = new AlbumFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.activity_albums, container, false);
+            GridView gridView = (GridView) rootView.findViewById(R.id.gridview);
+            gridView.setAdapter(new ImageAdapter(gridView.getContext()));
+            return rootView;
+        }
+
     }
 
 }
