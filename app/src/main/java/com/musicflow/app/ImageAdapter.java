@@ -3,6 +3,7 @@ package com.musicflow.app;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -11,7 +12,7 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-public class ImageAdapter extends ArrayAdapter<String> {
+public class ImageAdapter extends ArrayAdapter<String> implements View.OnClickListener {
 
     private Context context;
     protected List<String> coverArt;
@@ -34,9 +35,14 @@ public class ImageAdapter extends ArrayAdapter<String> {
         } else {
             imageView = (ImageView) convertView;
         }
-
-        String url = getItem(position);
+        imageView.setOnClickListener(this);
+        String url = "https://partner.api.beatsmusic.com/v1/api/albums/" + getItem(position) + "/images/default?client_id=frksnm8edw2t8ddebhkqkjwk&size=medium";
         Picasso.with(context).load(url).placeholder(R.drawable.placeholder).into(imageView);
         return imageView;
+    }
+
+    @Override
+    public void onClick(View v) {
+        context.startActivity(new Intent(context, AlbumViewActivity.class));
     }
 }
