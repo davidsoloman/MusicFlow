@@ -26,7 +26,7 @@ public class ImageAdapter extends ArrayAdapter<Album> implements View.OnClickLis
         this.resource = resource;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ImageView imageView;
         if (convertView == null) { // if it's not recycled, initialize some attributes
             imageView = new ImageView(context);
@@ -36,7 +36,14 @@ public class ImageAdapter extends ArrayAdapter<Album> implements View.OnClickLis
         } else {
             imageView = (ImageView) convertView;
         }
-        imageView.setOnClickListener(this);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AlbumViewActivity.class);
+                intent.putExtra("ArtistId", getItem(position).getRefs().getArtists().get(0).getId());
+                context.startActivity(intent);
+            }
+        });
         //TODO: put into a function
         String url = "https://partner.api.beatsmusic.com/v1/api/albums/" + getItem(position).getId() + "/images/default?client_id=frksnm8edw2t8ddebhkqkjwk&size=medium";
         Picasso.with(context).load(url).placeholder(R.drawable.placeholder).into(imageView);
@@ -45,7 +52,6 @@ public class ImageAdapter extends ArrayAdapter<Album> implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        //Feed in Artist ID
-        context.startActivity(new Intent(context, AlbumViewActivity.class));
+
     }
 }
