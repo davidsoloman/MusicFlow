@@ -1,20 +1,28 @@
 package com.musicflow.app.data;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Album extends BaseJson {
 
     protected String type;
     protected String id;
     protected String title;
     protected Integer duration;
+    @JsonProperty("parental_advisory")
     protected Boolean parentalAdvisory;
+    @JsonProperty("release_date")
     protected String releaseDate;
+    @JsonProperty("release_format")
     protected String releaseFormat;
     protected Integer rating;
     protected Integer popularity;
     protected Boolean streamable;
+    @JsonProperty("artist_display_name")
     protected String artistDisplayName;
     protected Boolean canonical;
+    @JsonProperty("total_companion_albums")
     protected Integer totalCompanionAlbums;
+    @JsonProperty("total_tracks")
     protected Integer totalTracks;
     protected Boolean essential;
 

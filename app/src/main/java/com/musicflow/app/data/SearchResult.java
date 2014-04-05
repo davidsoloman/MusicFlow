@@ -1,8 +1,11 @@
 package com.musicflow.app.data;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class SearchResult extends BaseJson{
 
     protected String type;
+    @JsonProperty("result_type")
     protected String resultType;
     protected String id;
     protected String display;
