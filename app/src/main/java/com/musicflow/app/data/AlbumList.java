@@ -46,7 +46,7 @@ public class AlbumList extends BaseJson {
         List<String> coverArtUrls = new ArrayList<String>();
 
         for (Album album : data) {
-            coverArtUrls.add("https://partner.api.beatsmusic.com/v1/api/albums/" + album.id + "/images/default?client_id=frksnm8edw2t8ddebhkqkjwk&size=large");
+            coverArtUrls.add("https://partner.api.beatsmusic.com/v1/api/albums/" + album.id + "/images/default?client_id=frksnm8edw2t8ddebhkqkjwk&size=medium");
         }
 
         return coverArtUrls;
