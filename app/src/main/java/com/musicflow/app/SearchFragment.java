@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 
+import com.musicflow.app.data.SearchResults;
 import com.vsco.cam.musicflow.app.R;
 
 /**
@@ -33,6 +34,9 @@ public class SearchFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_search, container, false);
+
+
+
         return rootView;
     }
 

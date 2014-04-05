@@ -13,7 +13,8 @@ import com.vsco.cam.musicflow.app.R;
  * Created by whitney on 4/3/14.
  */
 public class AlbumFragment extends Fragment {
-    public AlbumFragment() {}
+    public AlbumFragment() {
+    }
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
