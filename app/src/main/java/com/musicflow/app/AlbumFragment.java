@@ -45,7 +45,7 @@ public class AlbumFragment extends Fragment {
     }
 
     private void setUpAdapter() {
-        gridView.setAdapter(new ImageAdapter(this.getActivity(), R.id.gridview, albums.getCoverArt()));
+        gridView.setAdapter(new ImageAdapter(this.getActivity(), R.id.gridview, albums.getAlbums()));
     }
 
     private class AlbumListNetworkAdapter extends NetworkAdapter {

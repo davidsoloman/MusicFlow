@@ -10,18 +10,19 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.musicflow.app.data.Album;
 import com.squareup.picasso.Picasso;
 
-public class ImageAdapter extends ArrayAdapter<String> implements View.OnClickListener {
+public class ImageAdapter extends ArrayAdapter<Album> implements View.OnClickListener {
 
     private Context context;
-    protected List<String> coverArt;
+    protected List<Album> albums;
     protected int resource;
 
-    public ImageAdapter(Context context, int resource, List<String> coverArt) {
-        super(context, resource, coverArt);
+    public ImageAdapter(Context context, int resource, List<Album> albums) {
+        super(context, resource, albums);
         this.context = context;
-        this.coverArt = coverArt;
+        this.albums = albums;
         this.resource = resource;
     }
 
@@ -36,13 +37,15 @@ public class ImageAdapter extends ArrayAdapter<String> implements View.OnClickLi
             imageView = (ImageView) convertView;
         }
         imageView.setOnClickListener(this);
-        String url = "https://partner.api.beatsmusic.com/v1/api/albums/" + getItem(position) + "/images/default?client_id=frksnm8edw2t8ddebhkqkjwk&size=medium";
+        //TODO: put into a function
+        String url = "https://partner.api.beatsmusic.com/v1/api/albums/" + getItem(position).getId() + "/images/default?client_id=frksnm8edw2t8ddebhkqkjwk&size=medium";
         Picasso.with(context).load(url).placeholder(R.drawable.placeholder).into(imageView);
         return imageView;
     }
 
     @Override
     public void onClick(View v) {
+        //Feed in Artist ID
         context.startActivity(new Intent(context, AlbumViewActivity.class));
     }
 }
