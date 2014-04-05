@@ -8,6 +8,10 @@ public class AlbumWrapper extends BaseJson {
         data = new Album();
     }
 
+    public Album getAlbum() {
+        return data;
+    }
+
     @Override
     public void fillIn(BaseJson parseJson) throws Exception {
         if (parseJson instanceof AlbumWrapper) {

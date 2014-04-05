@@ -2,19 +2,20 @@ package com.musicflow.app.mappers;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.musicflow.app.data.AlbumList;
 import com.musicflow.app.data.AlbumWrapper;
 import com.musicflow.app.data.BaseJson;
 
 import java.io.IOException;
 
-public class AlbumMapper extends CommonMapper{
+public class AlbumListMapper extends CommonMapper {
     @Override
     public BaseJson parseJson(String json) {
-        AlbumWrapper albumWrapper = new AlbumWrapper();
+        AlbumList albumList = new AlbumList();
 
         try {
             jsonParser = jsonFactory.createParser(json);
-            albumWrapper = objMapper.readValue(jsonParser, AlbumWrapper.class);
+            albumList = objMapper.readValue(jsonParser, AlbumList.class);
         } catch (JsonParseException e) {
             e.printStackTrace();
         } catch (JsonMappingException e) {
@@ -23,6 +24,6 @@ public class AlbumMapper extends CommonMapper{
             e.printStackTrace();
         }
 
-        return albumWrapper.getAlbum();
+        return albumList;
     }
 }
