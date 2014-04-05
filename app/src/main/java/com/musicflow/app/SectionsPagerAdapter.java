@@ -26,16 +26,14 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return AlbumFragment.newInstance(position + 1);
             case 1:
                 return SearchFragment.newInstance(position + 1);
-            case 3:
-                return PlaylistFragment.newInstance(position + 1);
         }
         return PlaylistFragment.newInstance(position + 1);
     }
 
     @Override
     public int getCount() {
-        // Show 3 total pages.
-        return 3;
+        // Show 2 total pages.
+        return 2;
     }
 
     @Override
@@ -46,8 +44,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return "1";
             case 1:
                 return "2";
-            case 2:
-                return "3";
         }
         return null;
     }

@@ -12,5 +12,6 @@
     <string name="search_artists">SEARCH_ARTISTS</string>
     <string name="artist_search_box">ARTIST_SEARCH_BOX</string>
     <string name="search_music">SEARCH MUSIC</string>
+    <string name="playlist_title">PLAYLIST TITLE</string>
 
 </resources>

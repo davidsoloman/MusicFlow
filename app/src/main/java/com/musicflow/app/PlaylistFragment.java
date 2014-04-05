@@ -31,7 +31,7 @@ public class PlaylistFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_playlist, container, false);
-        TextView textView = (TextView) rootView.findViewById(R.id.playlist_textview);
+        TextView textView = (TextView) rootView.findViewById(R.id.editors_pick);
         return rootView;
     }
 
