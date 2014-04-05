@@ -27,4 +27,16 @@ public class SearchResults extends BaseJson {
             throw new Exception();
         }
     }
+
+    public String getCode() {
+        return code;
+    }
+
+    public PagingInfo getInfo() {
+        return info;
+    }
+
+    public List<SearchResult> getData() {
+        return data;
+    }
 }

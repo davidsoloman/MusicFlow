@@ -8,11 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.vsco.cam.musicflow.app.R;
-
-/**
- * Created by whitney on 4/3/14.
- */
 public class PlaylistFragment extends Fragment {
 
     public PlaylistFragment() {}

@@ -32,6 +32,70 @@ public class Album extends BaseJson {
         refs = new AlbumReferenceLinks();
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public Boolean getParentalAdvisory() {
+        return parentalAdvisory;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public String getReleaseFormat() {
+        return releaseFormat;
+    }
+
+    public Integer getRating() {
+        return rating;
+    }
+
+    public Integer getPopularity() {
+        return popularity;
+    }
+
+    public Boolean getStreamable() {
+        return streamable;
+    }
+
+    public String getArtistDisplayName() {
+        return artistDisplayName;
+    }
+
+    public Boolean getCanonical() {
+        return canonical;
+    }
+
+    public Integer getTotalCompanionAlbums() {
+        return totalCompanionAlbums;
+    }
+
+    public Integer getTotalTracks() {
+        return totalTracks;
+    }
+
+    public Boolean getEssential() {
+        return essential;
+    }
+
+    public AlbumReferenceLinks getRefs() {
+        return refs;
+    }
+
     @Override
     public void fillIn(BaseJson parseJson) throws Exception {
         if (parseJson instanceof Album) {

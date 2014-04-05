@@ -5,7 +5,15 @@ public class AlbumWrapper extends BaseJson {
     protected String code;
 
     public AlbumWrapper() {
-        data = new Album();
+        this.data = new Album();
+    }
+
+    public Album getData() {
+        return data;
+    }
+
+    public String getCode() {
+        return code;
     }
 
     public Album getAlbum() {

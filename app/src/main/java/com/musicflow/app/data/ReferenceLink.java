@@ -15,4 +15,16 @@ public class ReferenceLink extends BaseJson{
             throw new Exception();
         }
     }
+
+    public String getRefType() {
+        return refType;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getDisplay() {
+        return display;
+    }
 }

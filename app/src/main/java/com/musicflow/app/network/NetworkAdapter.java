@@ -1,12 +1,9 @@
 package com.musicflow.app.network;
 
-import android.os.AsyncTask;
-import android.util.Log;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.musicflow.app.data.BaseJson;
-import com.musicflow.app.mappers.CommonMapper;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.Map;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -20,10 +17,13 @@ import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.Map;
+import android.os.AsyncTask;
+import android.util.Log;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.musicflow.app.data.BaseJson;
+import com.musicflow.app.mappers.CommonMapper;
 
 public class NetworkAdapter extends AsyncTask<String, Void, String> {
 

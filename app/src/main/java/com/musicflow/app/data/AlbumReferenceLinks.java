@@ -9,9 +9,21 @@ public class AlbumReferenceLinks extends BaseJson{
     protected List<ReferenceLink> tracks;
 
     public AlbumReferenceLinks() {
-        artists = new ArrayList<ReferenceLink>();
-        label = new ReferenceLink();
-        tracks = new ArrayList<ReferenceLink>();
+        this.artists = new ArrayList<ReferenceLink>();
+        this.label = new ReferenceLink();
+        this.tracks = new ArrayList<ReferenceLink>();
+    }
+
+    public List<ReferenceLink> getArtists() {
+        return artists;
+    }
+
+    public ReferenceLink getLabel() {
+        return label;
+    }
+
+    public List<ReferenceLink> getTracks() {
+        return tracks;
     }
 
     public void fillIn(BaseJson parseJson) throws Exception {

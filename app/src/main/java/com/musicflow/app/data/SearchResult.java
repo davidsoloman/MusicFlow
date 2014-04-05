@@ -29,4 +29,28 @@ public class SearchResult extends BaseJson{
             throw new Exception();
         }
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getResultType() {
+        return resultType;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getDisplay() {
+        return display;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public ReferenceLink getRelated() {
+        return related;
+    }
 }

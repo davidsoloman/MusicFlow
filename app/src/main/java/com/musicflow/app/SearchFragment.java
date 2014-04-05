@@ -2,20 +2,12 @@ package com.musicflow.app;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ListView;
 
-import com.musicflow.app.data.SearchResults;
-import com.vsco.cam.musicflow.app.R;
-
-/**
- * Created by whitney on 4/4/14.
- */
 public class SearchFragment extends Fragment{
     private ListView searchResults;
 
