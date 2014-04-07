@@ -7,17 +7,14 @@ import com.musicflow.app.MainActivity;
 import com.musicflow.app.R;
 
 public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActivity> {
+    protected ViewPager viewPager;
 
     public MainActivityTest() {
-        super("com.musicflow.app", MainActivity.class);
+        super(MainActivity.class);
     }
 
     public void testViewPagerNotNull() {
-        MainActivity activity;
-        activity = (MainActivity) getActivity();
-
-        ViewPager viewPager;
-        viewPager = (ViewPager) activity.findViewById(R.id.viewpager);
+        viewPager = (ViewPager) getActivity().findViewById(R.id.viewpager);
         assertNotNull(viewPager);
     }
 }
