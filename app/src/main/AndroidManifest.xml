@@ -28,6 +28,10 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
+
+    <instrumentation
+        android:targetPackage="com.musicflow.app.test"
+        android:name="android.test.InstrumentationTestRunner" />
     </application>
 
 </manifest>
