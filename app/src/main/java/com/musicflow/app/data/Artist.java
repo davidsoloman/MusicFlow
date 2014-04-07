@@ -2,8 +2,6 @@ package com.musicflow.app.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.List;
-
 /**
  * Created by whitney on 4/5/14.
  */

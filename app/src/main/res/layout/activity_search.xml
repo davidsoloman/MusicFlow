@@ -6,9 +6,17 @@
     android:orientation="vertical"
     android:background="#000000">
 
-    <FrameLayout
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:orientation="horizontal"
         android:layout_height="wrap_content">
+
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:id="@+id/search_magnifier"
+            android:src="@drawable/magnifier"/>
 
         <EditText
             android:id="@+id/artist_search_box"
@@ -22,7 +30,7 @@
             android:textAlignment="textStart"
             android:capitalize="characters"
             android:clickable="false" />
-    </FrameLayout>
+    </LinearLayout>
 
     <ListView
         android:id="@+id/results"

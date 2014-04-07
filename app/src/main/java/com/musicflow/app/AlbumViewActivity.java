@@ -1,17 +1,16 @@
 package com.musicflow.app;
 
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.musicflow.app.data.Artist;
 import com.musicflow.app.mappers.ArtistMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.squareup.picasso.Picasso;
-
-import java.util.HashMap;
 
 public class AlbumViewActivity extends Activity {
     protected ImageView artistHeroImage;
@@ -55,4 +54,3 @@ public class AlbumViewActivity extends Activity {
         }
     }
 }
-

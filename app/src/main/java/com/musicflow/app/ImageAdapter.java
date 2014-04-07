@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import com.musicflow.app.data.Album;
 import com.squareup.picasso.Picasso;
 
-public class ImageAdapter extends ArrayAdapter<Album> implements View.OnClickListener {
+public class ImageAdapter extends ArrayAdapter<Album> {
 
     private Context context;
     protected List<Album> albums;
@@ -44,14 +44,12 @@ public class ImageAdapter extends ArrayAdapter<Album> implements View.OnClickLis
                 context.startActivity(intent);
             }
         });
-        //TODO: put into a function
-        String url = "https://partner.api.beatsmusic.com/v1/api/albums/" + getItem(position).getId() + "/images/default?client_id=frksnm8edw2t8ddebhkqkjwk&size=medium";
+        // TODO: put into a function
+        String url =
+                "https://partner.api.beatsmusic.com/v1/api/albums/" + getItem(position).getId()
+                        + "/images/default?client_id=frksnm8edw2t8ddebhkqkjwk&size=medium";
         Picasso.with(context).load(url).placeholder(R.drawable.placeholder).into(imageView);
         return imageView;
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
 }
