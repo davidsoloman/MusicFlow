@@ -3,49 +3,95 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="#0a0a0a"
+    android:orientation="vertical"
+    android:textAlignment="gravity">
+
     <FrameLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/artist_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/cd_artist_name" />
+            android:capitalize="characters"
+            android:contentDescription="@string/cd_artist_name"
+            android:textColor="#fcf9ff"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:typeface="normal" />
     </FrameLayout>
 
     <FrameLayout
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/artist_hero_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/lil_wayne" />
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="left" />
+
     </FrameLayout>
 
     <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/artist_follower_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FOLLOWERS: 200K" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/artist_total_albums"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TOTAL ALBUMS: -1" />
+
+            android:textColor="#fcf9ff" />
     </FrameLayout>
 
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/total_eps"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+
+            android:textColor="#fcf9ff" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/total_tracks"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+
+            android:textColor="#fcf9ff" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/popularity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#0b0b0b"
+            android:textColor="#fcf9ff" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/artist_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#0b0b0b"
+            android:textColor="#fcf9ff" />
+    </FrameLayout>
 </LinearLayout>

@@ -2,9 +2,6 @@ package com.musicflow.app.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Created by whitney on 4/5/14.
- */
 public class Artist extends BaseJson{
     protected String type;
     protected String id;
