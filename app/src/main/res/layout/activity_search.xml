@@ -3,38 +3,57 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#000000">
+    android:background="#000000"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="fill_parent"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:layout_height="wrap_content">
+        android:layout_height="70dp">
 
 
-        <ImageButton
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:id="@+id/search_magnifier"
-            android:src="@drawable/magnifier"/>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/artist_search_box"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:hint="@string/search_music"
-            android:layout_gravity="left"
-            android:inputType="text"
-            android:contentDescription="@string/artist_search_box"
-            android:background="#303030"
-            android:textAlignment="textStart"
-            android:capitalize="characters"
-            android:clickable="false" />
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/artist_search_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left"
+                    android:background="#303030"
+                    android:capitalize="characters"
+                    android:clickable="false"
+                    android:imeOptions="actionDone"
+                    android:contentDescription="@string/artist_search_box"
+                    android:hint="@string/search_music"
+                    android:inputType="text"
+                    android:textAlignment="textStart" />
+            </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ImageButton
+                android:id="@+id/search_magnifier"
+                android:background="#303030"
+                android:paddingLeft="10dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end"
+                android:layout_marginBottom="50dp"
+                android:layout_marginTop="10dp"
+                android:paddingEnd="10dp"
+                android:src="@drawable/magnifier" />
+
+        </FrameLayout>
+
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/results"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 </LinearLayout>

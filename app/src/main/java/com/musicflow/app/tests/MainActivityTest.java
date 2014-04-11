@@ -13,8 +13,12 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
         super(MainActivity.class);
     }
 
-    public void testViewPagerNotNull() {
+
+    public void loadActivityUiElements() {
         viewPager = (ViewPager) getActivity().findViewById(R.id.viewpager);
+    }
+    public void testViewPagerNotNull() {
+        loadActivityUiElements();
         assertNotNull(viewPager);
     }
 }
