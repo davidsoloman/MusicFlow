@@ -36,6 +36,7 @@
 
             <ImageView
                 android:id="@+id/artist_hero_image"
+                android:contentDescription="@string/cd_artist_hero_image"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="left" />
@@ -48,6 +49,7 @@
 
             <TextView
                 android:id="@+id/artist_total_albums"
+                android:contentDescription="@string/cd_artist_total_albums"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
@@ -61,8 +63,8 @@
             <TextView
                 android:id="@+id/total_eps"
                 android:layout_width="wrap_content"
+                android:contentDescription="@string/cd_total_eps"
                 android:layout_height="fill_parent"
-
                 android:textColor="#fcf9ff" />
         </FrameLayout>
 
@@ -72,6 +74,7 @@
 
             <TextView
                 android:id="@+id/total_tracks"
+                android:contentDescription="@string/cd_artist_total_tracks"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
 
@@ -84,6 +87,7 @@
 
             <TextView
                 android:id="@+id/popularity"
+                android:contentDescription="@string/cd_artist_popularity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0b0b0b"
@@ -94,6 +98,7 @@
             android:id="@+id/artist_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_artist_description"
             android:background="#0b0b0b"
             android:textColor="#fcf9ff" />
     </LinearLayout>

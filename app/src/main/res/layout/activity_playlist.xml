@@ -11,7 +11,7 @@
 
         <TextView
             android:id="@+id/editors_pick"
-
+            android:contentDescription="@string/cd_editors_pick_text_view"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#010101"
@@ -25,16 +25,18 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/playlist_title"
+            android:contentDescription="@string/cd_playlist_title"
             android:text="EDITORS PICK: Intro to Nirvana"
             android:id="@+id/playlist_title"/>
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_playlist_cover_image"
             android:id="@+id/playlist_cover_image"/>
 
         <ListView
             android:id="@id/playlist_listview"
+            android:contentDescription="@string/cd_playlist_list_vew"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#0b0b0b">

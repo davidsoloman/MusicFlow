@@ -12,7 +12,7 @@
     <string name="search_artists">SEARCH_ARTISTS</string>
     <string name="artist_search_box">ARTIST SEARCH BOX</string>
     <string name="search_music">SEARCH MUSIC</string>
-    <string name="playlist_title">PLAYLIST TITLE</string>
+    <string name="cd_playlist_title">PLAYLIST TITLE</string>
     <string name="all_albums"><![CDATA[https://partner.api.beatsmusic.com/v1/api/albums?order_by=popularity&limit=25g&offset=0&client_id=frksnm8edw2t8ddebhkqkjwk]]></string>
     <string name="search_button">SEARCH BUTTON</string>
     <string name="album_view">ALBUM VIEW</string>
@@ -23,5 +23,15 @@
     <string name="cd_search_box">SEARCH BOX</string>
     <string name="cd_search_icon">SEARCH ICON</string>
     <string name="cd_search_results">SEARCH RESULTS</string>
+    <string name="cd_artist_hero_image">ARTIST HERO IMAGE</string>
+    <string name="cd_artist_total_albums">ARTIST TOTAL ALBUMS</string>
+    <string name="cd_total_eps">ARTIST TOTAL EPS</string>
+    <string name="cd_artist_total_tracks">ARTIST TOTAL TRACKS</string>
+    <string name="cd_artist_popularity">ARTIST POPULARITY</string>
+    <string name="cd_artist_description">ARTIST DESCRIPTION</string>
+    <string name="cd_album_activity_grid_view">ALBUM ACTIVITY GRID VIEW</string>
+    <string name="cd_editors_pick_text_view">EDITORS PICK TEXT VIEW</string>
+    <string name="cd_playlist_cover_image">PLAYLIST COVER IMAGE</string>
+    <string name="cd_playlist_list_vew">PLAYLIST LIST VIEW</string>
 
 </resources>

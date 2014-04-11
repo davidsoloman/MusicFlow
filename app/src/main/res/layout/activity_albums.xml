@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
     <GridView
         android:id="@+id/gridview"
+        android:contentDescription="@string/cd_album_activity_grid_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:columnWidth="100dp"
