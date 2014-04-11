@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,7 +25,7 @@ public class ArtistViewActivity extends Activity {
     protected TextView artistTotalAlbums;
     protected Artist artist;
     protected BioWrapper bios;
-    protected TextView artistBio;
+    protected WebView artistBio;
     protected ArtistNetworkAdapter networkRequest;
     protected BioNetworkAdapter bioNetworkRequest;
     protected TextView totalEps;
@@ -39,7 +40,7 @@ public class ArtistViewActivity extends Activity {
         artistHeroImage = (ImageView) findViewById(R.id.artist_hero_image);
         artistName = (TextView) findViewById(R.id.artist_name);
         artistTotalAlbums = (TextView) findViewById(R.id.artist_total_albums);
-        artistBio = (TextView) findViewById(R.id.artist_description);
+        artistBio = (WebView) findViewById(R.id.artist_description);
         popularity = (TextView) findViewById(R.id.popularity);
         totalEps = (TextView) findViewById(R.id.total_eps);
         totalTracks = (TextView) findViewById(R.id.total_tracks);
@@ -68,7 +69,8 @@ public class ArtistViewActivity extends Activity {
     }
 
     private void loadBioData() {
-        artistBio.setText("About the artist: " + bios.getData().get(0).getContent());
+        artistBio.loadData("About the artist: " + bios.getData().get(0).getContent(), "text/html",
+                "utf-8");
     }
 
     private class ArtistNetworkAdapter extends NetworkAdapter {
