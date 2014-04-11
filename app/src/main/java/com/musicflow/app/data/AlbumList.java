@@ -41,7 +41,6 @@ public class AlbumList extends BaseJson {
         return data;
     }
 
-    // /api/albums/:album_id/images/default
     public List<String> getCoverArt() {
         List<String> coverArtUrls = new ArrayList<String>();
 

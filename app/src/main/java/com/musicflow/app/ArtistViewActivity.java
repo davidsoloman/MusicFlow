@@ -57,7 +57,6 @@ public class ArtistViewActivity extends Activity {
 
     private void loadViewData() {
         artistName.setText("Introducing: " + artist.getName());
-        // artistFollowerCount.setText(artist.getTotalFollowedBy());
         artistTotalAlbums.setText("Total Albums: " + artist.getTotalAlbums());
         totalTracks.setText("Total Tracks: " + artist.getTotalTracks());
         totalEps.setText("Total EPs: " + artist.getTotalEps());
@@ -69,7 +68,7 @@ public class ArtistViewActivity extends Activity {
     }
 
     private void loadBioData() {
-        artistBio.setText(bios.getData().get(0).getContent());
+        artistBio.setText("About the artist: " + bios.getData().get(0).getContent());
     }
 
     private class ArtistNetworkAdapter extends NetworkAdapter {
