@@ -5,3 +5,4 @@ MusicFlow
 - Uses @sabind API adapter built on Fasterxml/Jackson.
 - Uses Squareup Okhttp for making newtwork requests for photos. 
 
+[![Build Status](http://localhost:8080/buildStatus/icon?job=MusicFlow)](http://localhost:8080/job/MusicFlow/)
