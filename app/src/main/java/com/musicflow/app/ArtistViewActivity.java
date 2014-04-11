@@ -1,6 +1,8 @@
 package com.musicflow.app;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,18 +11,19 @@ import android.widget.TextView;
 
 import com.musicflow.app.data.Artist;
 import com.musicflow.app.data.Bio;
+import com.musicflow.app.data.BioWrapper;
 import com.musicflow.app.mappers.ArtistMapper;
 import com.musicflow.app.mappers.BioMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.squareup.picasso.Picasso;
 
-public class AlbumViewActivity extends Activity {
+public class ArtistViewActivity extends Activity {
     protected ImageView artistHeroImage;
     protected TextView artistName;
     protected TextView artistFollowerCount;
     protected TextView artistTotalAlbums;
     protected Artist artist;
-    protected Bio bio;
+    protected BioWrapper bios;
     protected TextView artistBio;
     protected ArtistNetworkAdapter networkRequest;
     protected BioNetworkAdapter bioNetworkRequest;
@@ -42,10 +45,11 @@ public class AlbumViewActivity extends Activity {
         totalTracks = (TextView) findViewById(R.id.total_tracks);
 
         artist = new Artist();
-        bio = new Bio();
         networkRequest = new ArtistNetworkAdapter();
         networkRequest.execute("https://partner.api.beatsmusic.com/v1/api/artists/" + artistId
                 + "?client_id=frksnm8edw2t8ddebhkqkjwk");
+
+        bios = new BioWrapper();
         bioNetworkRequest = new BioNetworkAdapter();
         bioNetworkRequest.execute("https://partner.api.beatsmusic.com/v1/api/artists/" + artistId
                 + "/bios?client_id=frksnm8edw2t8ddebhkqkjwk");
@@ -58,11 +62,14 @@ public class AlbumViewActivity extends Activity {
         totalTracks.setText("Total Tracks: " + artist.getTotalTracks());
         totalEps.setText("Total EPs: " + artist.getTotalEps());
         popularity.setText("Popularity: " + artist.getPopularity() + " followers");
-        artistBio.setText(bio.getContent());
         String url =
                 "https://partner.api.beatsmusic.com/v1/api/artists/" + artist.getId()
                         + "/images/default?client_id=frksnm8edw2t8ddebhkqkjwk&size=large";
         Picasso.with(this).load(url).placeholder(R.drawable.placeholder).into(artistHeroImage);
+    }
+
+    private void loadBioData() {
+        artistBio.setText(bios.getData().get(0).getContent());
     }
 
     private class ArtistNetworkAdapter extends NetworkAdapter {
@@ -79,13 +86,13 @@ public class AlbumViewActivity extends Activity {
 
     private class BioNetworkAdapter extends NetworkAdapter {
         public BioNetworkAdapter() {
-            super(new BioMapper(), RequestType.GET, new HashMap<String, String>(), bio);
+            super(new BioMapper(), RequestType.GET, new HashMap<String, String>(), bios);
         }
 
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            loadViewData();
+            loadBioData();
         }
 
     }

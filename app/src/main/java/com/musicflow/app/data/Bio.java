@@ -6,12 +6,10 @@ public class Bio extends BaseJson{
     protected String content;
     protected String headline;
     protected String length;
-    protected Subject subject;
-    protected PagingInfo info;
+    protected ReferenceLink subject;
 
     public Bio() {
-        subject = new Subject();
-        info = new PagingInfo();
+        subject = new ReferenceLink();
     }
 
     @Override

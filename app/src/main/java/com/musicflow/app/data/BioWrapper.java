@@ -1,11 +1,16 @@
 package com.musicflow.app.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BioWrapper extends BaseJson {
-    protected Bio data;
+    protected List<Bio> data;
     protected String code;
+    protected PagingInfo info;
 
     public BioWrapper() {
-        this.data = new Bio();
+        this.data = new ArrayList<Bio>();
+        this.info = new PagingInfo();
     }
 
     @Override
@@ -13,11 +18,19 @@ public class BioWrapper extends BaseJson {
         if (parseJson instanceof BioWrapper) {
             data = ((BioWrapper) parseJson).data;
             code = ((BioWrapper) parseJson).code;
-        } throw new Exception();
+            info = ((BioWrapper) parseJson).info;
+
+        } else {
+            throw new Exception();
+        }
     }
 
-    public Bio getData() {
+    public List<Bio> getData() {
         return data;
+    }
+
+    public PagingInfo getInfo() {
+        return info;
     }
 
     public String getCode() {

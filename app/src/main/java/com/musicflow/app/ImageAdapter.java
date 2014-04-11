@@ -39,7 +39,7 @@ public class ImageAdapter extends ArrayAdapter<Album> {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, AlbumViewActivity.class);
+                Intent intent = new Intent(context, ArtistViewActivity.class);
                 intent.putExtra("ArtistId", getItem(position).getRefs().getArtists().get(0).getId());
                 context.startActivity(intent);
             }

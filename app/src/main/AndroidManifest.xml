@@ -23,7 +23,7 @@
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name="com.musicflow.app.AlbumViewActivity"
+            android:name=".ArtistViewActivity"
             android:label="@string/album_view" >
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>

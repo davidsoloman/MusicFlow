@@ -5,16 +5,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.musicflow.app.AlbumViewActivity;
+import com.musicflow.app.ArtistViewActivity;
 import com.musicflow.app.R;
 
-public class AlbumViewActivityTest extends ActivityInstrumentationTestCase2<AlbumViewActivity> {
+public class AlbumViewActivityTest extends ActivityInstrumentationTestCase2<ArtistViewActivity> {
     protected ImageView artistHeroImage;
     protected TextView artistName;
     protected TextView bio;
 
     public AlbumViewActivityTest() {
-        super(AlbumViewActivity.class);
+        super(ArtistViewActivity.class);
     }
 
     public void loadActivityUiElements() {

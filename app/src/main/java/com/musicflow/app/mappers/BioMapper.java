@@ -8,9 +8,6 @@ import com.musicflow.app.data.BioWrapper;
 
 import java.io.IOException;
 
-/**
- * Created by whitney on 4/10/14.
- */
 public class BioMapper extends CommonMapper {
     @Override
     public BaseJson parseJson(String json) {
@@ -27,6 +24,6 @@ public class BioMapper extends CommonMapper {
             e.printStackTrace();
         }
 
-        return bioWrapper.getData();
+        return bioWrapper;
     }
 }
