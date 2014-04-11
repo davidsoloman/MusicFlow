@@ -33,5 +33,6 @@
     <string name="cd_editors_pick_text_view">EDITORS PICK TEXT VIEW</string>
     <string name="cd_playlist_cover_image">PLAYLIST COVER IMAGE</string>
     <string name="cd_playlist_list_vew">PLAYLIST LIST VIEW</string>
+    <string name="artist_view">Artist View</string>
 
 </resources>
