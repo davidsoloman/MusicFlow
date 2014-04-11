@@ -20,7 +20,6 @@ public class AlbumViewActivityTest extends ActivityInstrumentationTestCase2<Arti
     public void loadActivityUiElements() {
         artistHeroImage = (ImageView) getActivity().findViewById(R.id.artist_hero_image);
         artistName = (TextView) getActivity().findViewById(R.id.artist_name);
-        bio = (TextView) getActivity().findViewById(R.id.artist_description);
     }
 
     public void testArtistHeroImageVisible() {
@@ -36,10 +35,5 @@ public class AlbumViewActivityTest extends ActivityInstrumentationTestCase2<Arti
     public void testArtistNameVisible() {
         loadActivityUiElements();
         assertEquals(View.VISIBLE, artistName.getVisibility());
-    }
-
-    public void testArtistBioVisible() {
-        loadActivityUiElements();
-        assertEquals(View.VISIBLE, bio.getVisibility());
     }
 }

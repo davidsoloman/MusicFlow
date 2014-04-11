@@ -19,6 +19,7 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
     }
     public void testViewPagerNotNull() {
         loadActivityUiElements();
-        assertNotNull(viewPager);
+        // fail the test to show jenkins catching the error
+        assertNull(viewPager);
     }
 }

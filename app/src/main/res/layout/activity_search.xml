@@ -25,7 +25,7 @@
                     android:capitalize="characters"
                     android:clickable="false"
                     android:imeOptions="actionDone"
-                    android:contentDescription="@string/artist_search_box"
+                    android:contentDescription="@string/cd_search_box"
                     android:hint="@string/search_music"
                     android:inputType="text"
                     android:textAlignment="textStart" />
@@ -37,6 +37,7 @@
 
             <ImageButton
                 android:id="@+id/search_magnifier"
+                android:contentDescription="@string/cd_search_icon"
                 android:background="#303030"
                 android:paddingLeft="10dp"
                 android:layout_width="40dp"
@@ -53,6 +54,7 @@
 
     <ListView
         android:id="@+id/results"
+        android:contentDescription="@string/cd_search_results"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_weight="1" />
