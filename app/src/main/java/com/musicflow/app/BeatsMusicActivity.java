@@ -13,7 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class BeatsMusicActivity extends ActionBarActivity {
+public abstract class BeatsMusicActivity extends ActionBarActivity {
     protected String[] navTiles;
     protected DrawerLayout drawerLayout;
     protected CharSequence actionBarTitle;
@@ -36,10 +36,6 @@ public class BeatsMusicActivity extends ActionBarActivity {
 
         drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, navTiles));
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
-
-        sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(sectionsPagerAdapter);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
