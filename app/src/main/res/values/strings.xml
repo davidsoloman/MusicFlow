@@ -34,5 +34,13 @@
     <string name="cd_playlist_cover_image">PLAYLIST COVER IMAGE</string>
     <string name="cd_playlist_list_vew">PLAYLIST LIST VIEW</string>
     <string name="artist_view">Artist View</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    
+    <string-array name="nav_tiles">
+        <item>Search</item>
+        <item>Albums</item>
+        <item>Profile</item>
+    </string-array>
 
 </resources>
