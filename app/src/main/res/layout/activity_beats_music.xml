@@ -6,11 +6,16 @@
     tools:context="com.musicflow.app.MainActivity">
 
     <FrameLayout
-        android:id="@+id/main_content_frame"
+        android:id="@+id/beats_music_content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#060606"
+            android:contentDescription="@string/cd_view_pager" />
     </FrameLayout>
 
     <ListView

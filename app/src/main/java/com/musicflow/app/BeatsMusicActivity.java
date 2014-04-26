@@ -3,6 +3,7 @@ package com.musicflow.app;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -12,17 +13,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-/**
- * Created by whitney on 4/25/14.
- */
 public class BeatsMusicActivity extends ActionBarActivity {
-    private String[] navTiles;
-    private DrawerLayout drawerLayout;
-    private CharSequence actionBarTitle;
-    private CharSequence drawerTitle;
-    private ListView drawerList;
-    private ActionBarDrawerToggle drawerToggle;
-    
+    protected String[] navTiles;
+    protected DrawerLayout drawerLayout;
+    protected CharSequence actionBarTitle;
+    protected CharSequence drawerTitle;
+    protected ListView drawerList;
+    protected ActionBarDrawerToggle drawerToggle;
+
+    SectionsPagerAdapter sectionsPagerAdapter;
+    ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +36,11 @@ public class BeatsMusicActivity extends ActionBarActivity {
 
         drawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, navTiles));
         drawerList.setOnItemClickListener(new DrawerItemClickListener());
-        
+
+        sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setAdapter(sectionsPagerAdapter);
+
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
 
@@ -70,7 +75,7 @@ public class BeatsMusicActivity extends ActionBarActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-//        boolean drawerOpen = drawerLayout.isDrawerOpen(drawerList);
+        // boolean drawerOpen = drawerLayout.isDrawerOpen(drawerList);
         return super.onPrepareOptionsMenu(menu);
     }
 
