@@ -19,7 +19,7 @@ import com.musicflow.app.data.SearchResults;
 import com.musicflow.app.mappers.SearchResultsMapper;
 import com.musicflow.app.network.NetworkAdapter;
 
-public class SearchFragment extends Fragment{
+public class SearchFragment extends BeatsMusicFragment{
     protected ListView searchResultsListView;
     protected EditText searchText;
     protected SearchResultNetworkAdapter networkRequest;
@@ -49,20 +49,22 @@ public class SearchFragment extends Fragment{
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (searchText.getText().toString().length()!=0) {
-                    if (!searchResults.getSearchResults().isEmpty()) {
-                        // Throw away the previous search results
-                        searchResults = new SearchResults();
-                    }
-                    if (networkRequest != null) {
-                        networkRequest.cancel(true);
-                    }
-                    networkRequest = new SearchResultNetworkAdapter();
-                    networkRequest.execute("https://partner.api.beatsmusic.com/v1/api/search/predictive?q=" + Uri.encode(searchText.getText().toString()) + "&client_id=frksnm8edw2t8ddebhkqkjwk");
+            if (searchText.getText().toString().length()!=0) {
+                if (!searchResults.getSearchResults().isEmpty()) {
+                    // Throw away the previous search results
+                    searchResults = new SearchResults();
                 }
+                if (networkRequest != null) {
+                    networkRequest.cancel(true);
+                }
+                networkRequest = new SearchResultNetworkAdapter();
+                networkRequest.execute("https://partner.api.beatsmusic.com/v1/api/search/predictive?q=" + Uri.encode(searchText.getText().toString()) + "&client_id=frksnm8edw2t8ddebhkqkjwk");
+            }
             }
         });
-        return rootView;
+
+        innerFrame.addView(rootView);
+        return innerFrame;
     }
 
     private void loadViewData() {
@@ -80,4 +82,9 @@ public class SearchFragment extends Fragment{
             loadViewData();
         }
     }
+
+    public static CharSequence getTitle() {
+        return "Search";
+    }
+
 }

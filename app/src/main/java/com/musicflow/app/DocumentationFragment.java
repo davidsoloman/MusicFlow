@@ -22,4 +22,9 @@ public class DocumentationFragment extends WebViewFragment {
     protected String getHeaderText() {
         return getResources().getString(R.string.getting_started);
     }
+
+    public static CharSequence getTitle() {
+        return "Getting Started";
+    }
+
 }

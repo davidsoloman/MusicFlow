@@ -18,7 +18,7 @@ import uk.co.senab.actionbarpulltorefresh.library.ActionBarPullToRefresh;
 import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
 import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
 
-public class AlbumFragment extends Fragment implements OnRefreshListener{
+public class AlbumFragment extends BeatsMusicFragment implements OnRefreshListener{
 
     protected GridView gridView;
     protected AlbumListNetworkAdapter networkRequest;
@@ -54,7 +54,9 @@ public class AlbumFragment extends Fragment implements OnRefreshListener{
                 .allChildrenArePullable()
                 .setup(pullToRefreshLayout);
 
-        return rootView;
+        innerFrame.addView(rootView);
+
+        return innerFrame;
     }
 
     private void setUpAdapter() {
@@ -89,4 +91,7 @@ public class AlbumFragment extends Fragment implements OnRefreshListener{
         }
     }
 
+    public static CharSequence getTitle() {
+        return "Albums";
+    }
 }
