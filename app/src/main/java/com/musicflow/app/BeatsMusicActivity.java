@@ -89,31 +89,38 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
         return true;
     }
 
+    /** Swaps fragments in the main content view */
+    private void selectItem(int position) {
+        Intent i;
+        switch (position) {
+            case 0: 
+                i = new Intent(this, ArtistsActivity.class);
+                this.startActivity(i);
+                break;
+            case 1:
+                i = new Intent(this, AlbumsActivity.class);
+                this.startActivity(i);
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4: 
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+        }
+
+
+    }
+
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
-            // selectItem(position);
+            selectItem(position);
         }
     }
-
-    // /** Swaps fragments in the main content view */
-    // private void selectItem(int position) {
-    // // Create a new fragment and specify the planet to show based on position
-    // Fragment fragment = new SearchFragment();
-    // Bundle args = new Bundle();
-    // args.putInt(SearchFragment.ARG_PLANET_NUMBER, position);
-    // fragment.setArguments(args);
-    //
-    // // Insert the fragment by replacing any existing fragment
-    // FragmentManager fragmentManager = getFragmentManager();
-    // fragmentManager.beginTransaction()
-    // .replace(R.id.content_frame, fragment)
-    // .commit();
-    //
-    // // Highlight the selected item, update the title, and close the drawer
-    // drawerList.setItemChecked(position, true);
-    // setTitle(navTiles[position]);
-    // drawerLayout.closeDrawer(drawerList);
-    // }
 
 }

@@ -2,9 +2,7 @@ package com.musicflow.app;
 
 import java.util.HashMap;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +16,7 @@ import uk.co.senab.actionbarpulltorefresh.library.ActionBarPullToRefresh;
 import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
 import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
 
-public class AlbumFragment extends BeatsMusicFragment implements OnRefreshListener{
+public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshListener{
 
     protected GridView gridView;
     protected AlbumListNetworkAdapter networkRequest;
@@ -27,8 +25,8 @@ public class AlbumFragment extends BeatsMusicFragment implements OnRefreshListen
     private static final String ARG_SECTION_NUMBER = "section_number";
     private PullToRefreshLayout pullToRefreshLayout;
 
-    public static AlbumFragment newInstance(int sectionNumber) {
-        AlbumFragment fragment = new AlbumFragment();
+    public static TopAlbumsFragment newInstance(int sectionNumber) {
+        TopAlbumsFragment fragment = new TopAlbumsFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
@@ -40,7 +38,7 @@ public class AlbumFragment extends BeatsMusicFragment implements OnRefreshListen
         super.onCreateView(inflater, container, savedInstanceState);
         albums = new AlbumList();
 
-        View rootView = inflater.inflate(R.layout.activity_albums, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_top_albums, container, false);
 
         gridView = (GridView) rootView.findViewById(R.id.gridview);
 
