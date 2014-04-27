@@ -4,8 +4,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import com.musicflow.app.data.AlbumList;
+import com.musicflow.app.mappers.AlbumListMapper;
+import com.musicflow.app.network.NetworkAdapter;
+
+import java.util.HashMap;
 
 public class AlbumsFragment extends BeatsMusicFragment {
+    protected ListView albumsListView; 
+    protected AlbumListNetworkAdapter networkRequest;
+    protected AlbumList albums;
+
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -21,8 +32,36 @@ public class AlbumsFragment extends BeatsMusicFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
+        albums = new AlbumList();
+
         View rootView = inflater.inflate(R.layout.fragment_albums, container, false);
+        albumsListView = (ListView) rootView.findViewById(R.id.albums_fragment_list_view);
+        networkRequest = new AlbumListNetworkAdapter();
+        networkRequest.execute(this.getString(R.string.albums_collection));
+
         innerFrame.addView(rootView);
         return innerFrame;
+        
+    }
+
+    private void setUpAdapter() {
+        albumsListView.setAdapter(new ImageAdapter(this.getActivity(), R.id.albums_fragment_list_view, albums.getAlbums()));
+    }
+
+    private class AlbumListNetworkAdapter extends NetworkAdapter {
+
+        public AlbumListNetworkAdapter() {
+            super(new AlbumListMapper(), RequestType.GET, new HashMap<String, String>(), albums);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            setUpAdapter();
+        }
+    }
+
+    public static CharSequence getTitle() {
+        return "Albums";
     }
 }

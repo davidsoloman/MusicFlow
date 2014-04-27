@@ -10,7 +10,7 @@
     <string name="artist_search_box">ARTIST SEARCH BOX</string>
     <string name="search_music">SEARCH MUSIC</string>
     <string name="cd_playlist_title">PLAYLIST TITLE</string>
-    <string name="all_albums"><![CDATA[https://partner.api.beatsmusic.com/v1/api/albums?order_by=popularity&limit=25g&offset=0&client_id=frksnm8edw2t8ddebhkqkjwk]]></string>
+    <string name="albums_collection"><![CDATA[https://partner.api.beatsmusic.com/v1/api/albums?order_by=popularity&limit=25g&offset=0&client_id=frksnm8edw2t8ddebhkqkjwk]]></string>
     <string name="search_button">SEARCH BUTTON</string>
     <string name="album_view">ALBUM VIEW</string>
     <string name="cd_artist_name">ARTIST NAME</string>

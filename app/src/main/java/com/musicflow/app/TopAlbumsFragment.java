@@ -43,7 +43,7 @@ public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshLi
         gridView = (GridView) rootView.findViewById(R.id.gridview);
 
         networkRequest = new AlbumListNetworkAdapter();
-        networkRequest.execute(this.getString(R.string.all_albums));
+        networkRequest.execute(this.getString(R.string.albums_collection));
 
         pullToRefreshLayout = (PullToRefreshLayout) rootView.findViewById(R.id.ptr_layout);
 
@@ -70,7 +70,7 @@ public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshLi
             networkRequest.cancel(true);
         }
         networkRequest = new AlbumListNetworkAdapter();
-        networkRequest.execute(this.getString(R.string.all_albums));
+        networkRequest.execute(this.getString(R.string.albums_collection));
     }
 
     private class AlbumListNetworkAdapter extends NetworkAdapter {
