@@ -40,6 +40,7 @@
     <string name="documentation_home">https://developer.beatsmusic.com/docs/read/Home</string>
     <string name="artists_activity">Artists Activity</string>
     <string name="albums_activity">Albums Activity</string>
+    <string name="activities_activity">Activities</string>
 
     <string-array name="nav_tiles">
         <item>Artists</item>

@@ -40,6 +40,12 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
+        <activity
+            android:name=".ActivitiesActivity"
+            android:label="@string/activities_activity" >
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
 
     <instrumentation
         android:targetPackage="com.musicflow.app.test"
