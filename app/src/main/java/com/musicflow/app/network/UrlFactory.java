@@ -10,6 +10,15 @@ import java.util.HashMap;
 public class UrlFactory {
     public static final String BASE_URL = "https://partner.api.beatsmusic.com/v1";
 
+    public final int OFFSET_DEFAULT = 0;
+    public final int LIMIT_DEFAULT = 20;
+    public final String[] FIELDS_DEFAULT = new String[0];
+    public final String[] REFS_DEFAULT = new String[0];
+    public final String ORDER_BY_DEFAULT = "popularity desc";
+    public final HashMap<String, Boolean> STREAMABILITY_FILTERS_DEFAULT = new HashMap<String, Boolean>();
+    public final HashMap<String, String> FILTERS_DEFAULT = new HashMap<String, String>();
+    public final String[] IDS_DEFAULT = new String[0];
+
     @SuppressWarnings("SpellCheckingInspection")
     private static String clientID() {
         return "frksnm8edw2t8ddebhkqkjwk";
@@ -132,6 +141,7 @@ public class UrlFactory {
     }
 
     public class CollectionQueryParams {
+
         protected int offset;
         protected int limit;
         protected String[] fields;
@@ -142,7 +152,7 @@ public class UrlFactory {
         protected String[] ids;
 
         public CollectionQueryParams() {
-            this(0, 20, new String[0], new String[0], "popularity desc", new HashMap<String, Boolean>(), new HashMap<String, String>(), new String[0]);
+            this(OFFSET_DEFAULT, LIMIT_DEFAULT, FIELDS_DEFAULT, REFS_DEFAULT, ORDER_BY_DEFAULT, STREAMABILITY_FILTERS_DEFAULT, FILTERS_DEFAULT, IDS_DEFAULT);
         }
 
         public CollectionQueryParams(int offset, int limit, String[] fields, String[] refs, String orderBy, HashMap<String, Boolean> streamabilityFilters, HashMap<String, String> filters, String[] ids) {
