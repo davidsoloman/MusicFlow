@@ -51,6 +51,4 @@ public class ArtistAdapter extends ArrayAdapter<Artist> {
 
         return rowView;
     }
-    
-    
 }
