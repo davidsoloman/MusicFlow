@@ -37,4 +37,8 @@ public class Activities extends BaseJson {
     public List<Activity> getData() {
         return data;
     }
+
+    public List<Activity> getActivities() {
+        return data;
+    }
 }
