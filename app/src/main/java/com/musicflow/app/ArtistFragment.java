@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.musicflow.app.data.Artists;
-import com.musicflow.app.mappers.ArtistMapper;
 import com.musicflow.app.mappers.ArtistsMapper;
 import com.musicflow.app.network.NetworkAdapter;
 
