@@ -5,6 +5,6 @@ MusicFlow
 - Uses custom API adapter built on Fasterxml/Jackson (@sabind).
 - Uses Squareup Okhttp for making newtwork requests for photos.
 
-- License
+#License
 
-See the LICENSE file for license rights and limitations (BSD-3-Clause).
+- See the LICENSE file for license rights and limitations (BSD-3-Clause).
