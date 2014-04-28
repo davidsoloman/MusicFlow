@@ -108,6 +108,133 @@ public class UrlFactory {
         return sb.toString();
     }
 
+    public static String activitiesList() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/activities").append("?client_id=").append(clientID());
+        return sb.toString();
+    }
+
+    public static String activitiesList(CollectionQueryParams params) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/activities").append("?client_id=").append(clientID()).append('&');
+        sb.append(params.toString());
+
+        return sb.toString();
+    }
+
+    public static String activity(String id) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/activities").append(id).append("?client_id=").append(clientID());
+        return sb.toString();
+    }
+
+    public static String activity(String id, LookupQueryParams params) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/activities").append(id).append("?client_id=").append(clientID()).append('&');
+        sb.append(params.toString());
+
+        return sb.toString();
+    }
+
+    public static String activityEditorialPlaylists(String id) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/activities").append(id).append("editorial_playlists").append("?client_id=").append(clientID());
+        return sb.toString();
+    }
+
+    public static String activityEditorialPlaylists(String id, CollectionQueryParams params) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/activities").append(id).append("editorial_playlists").append("?client_id=").append(clientID()).append('&');
+        sb.append(params.toString());
+
+        return sb.toString();
+    }
+
+    public static String albumList() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/albums").append("?client_id=").append(clientID());
+        return sb.toString();
+    }
+
+    public static String albumList(CollectionQueryParams params) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/albums").append("?client_id=").append(clientID()).append('&');
+        sb.append(params.toString());
+
+        return sb.toString();
+    }
+
+    public static String album(String id) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/albums").append(id).append("?client_id=").append(clientID());
+        return sb.toString();
+    }
+
+    public static String album(String id, LookupQueryParams params) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/albums").append(id).append("?client_id=").append(clientID()).append('&');
+        sb.append(params.toString());
+
+        return sb.toString();
+    }
+
+    public static String albumArtists(String id) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/albums").append(id).append("artists").append("?client_id=").append(clientID());
+        return sb.toString();
+    }
+
+    public static String albumArtists(String id, CollectionQueryParams params) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/albums").append(id).append("artists").append("?client_id=").append(clientID()).append('&');
+        sb.append(params.toString());
+
+        return sb.toString();
+    }
+
+    public static String albumTracks(String id) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/albums").append(id).append("tracks").append("?client_id=").append(clientID());
+        return sb.toString();
+    }
+
+    public static String albumTracks(String id, CollectionQueryParams params) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/albums").append(id).append("tracks").append("?client_id=").append(clientID()).append('&');
+        sb.append(params.toString());
+
+        return sb.toString();
+    }
+
+    public static String albumReviews(String id) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/albums").append(id).append("reviews").append("?client_id=").append(clientID());
+        return sb.toString();
+    }
+
+    public static String albumReviews(String id, CollectionQueryParams params) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/albums").append(id).append("reviews").append("?client_id=").append(clientID()).append('&');
+        sb.append(params.toString());
+
+        return sb.toString();
+    }
+
+    public static String albumCompanionAlbums(String id) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/albums").append(id).append("companion_albums").append("?client_id=").append(clientID());
+        return sb.toString();
+    }
+
+    public static String albumCompanionAlbums(String id, CollectionQueryParams params) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BASE_URL).append("/api/albums").append(id).append("companion_albums").append("?client_id=").append(clientID()).append('&');
+        sb.append(params.toString());
+
+        return sb.toString();
+    }
+
+
     public class LookupQueryParams {
         protected String[] fields;
         protected String[] refs;
