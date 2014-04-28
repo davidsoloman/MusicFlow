@@ -41,7 +41,7 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
         getActionBar().setHomeButtonEnabled(true);
 
         drawerToggle =
-                new ActionBarDrawerToggle(this, drawerLayout, R.drawable.b_logo_color,
+                new ActionBarDrawerToggle(this, drawerLayout, R.drawable.beatsmusic_full_color,
                         R.string.drawer_open, R.string.drawer_close) {
                     public void onDrawerClosed(View view) {
                         getActionBar().setTitle(drawerTitle);
