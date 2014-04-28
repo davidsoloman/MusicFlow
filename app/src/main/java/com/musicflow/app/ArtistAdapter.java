@@ -31,10 +31,8 @@ public class ArtistAdapter extends ArrayAdapter<Artist> {
     public View getView(final int position, View convertView, ViewGroup parent) {
         Artist current = getItem(position);
 
-        View rowView;
-
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        rowView = inflater.inflate(R.layout.artist_list_item, parent, false);
+        View rowView = inflater.inflate(R.layout.artist_list_item, parent, false);
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
