@@ -4,9 +4,6 @@ import android.net.Uri;
 
 import java.util.HashMap;
 
-/**
- * Created by Dan on 4/27/2014.
- */
 public class UrlFactory {
     public static final String BASE_URL = "https://partner.api.beatsmusic.com/v1";
 
@@ -25,213 +22,133 @@ public class UrlFactory {
     }
 
     public static String artistList() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/artists").append("?client_id=").append(clientID());
-        return sb.toString();
+        return BASE_URL + "/api/artists" + "?client_id=" + clientID();
     }
 
     public static String artistList(CollectionQueryParams params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/artists").append("?client_id=").append(clientID()).append('&');
-        sb.append(params.toString());
 
-        return sb.toString();
+        return BASE_URL + "/api/artists" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
     public static String artist(String id) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/artists").append(id).append("?client_id=").append(clientID());
-        return sb.toString();
+        return BASE_URL + "/api/artists/" + id + "?client_id=" + clientID();
     }
 
     public static String artist(String id, LookupQueryParams params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/artists").append(id).append("?client_id=").append(clientID()).append('&');
-        sb.append(params.toString());
 
-        return sb.toString();
+        return BASE_URL + "/api/artists/" + id + "?client_id=" + clientID() + '&' + params.toString();
     }
 
     public static String artistAlbums(String id) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/artists").append(id).append("albums").append("?client_id=").append(clientID());
-        return sb.toString();
+        return BASE_URL + "/api/artists/" + id + "/albums" + "?client_id=" + clientID();
     }
 
     public static String artistAlbums(String id, CollectionQueryParams params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/artists").append(id).append("albums").append("?client_id=").append(clientID()).append('&');
-        sb.append(params.toString());
 
-        return sb.toString();
+        return BASE_URL + "/api/artists/" + id + "/albums" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
     public static String artistEssentialAlbums(String id) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/artists").append(id).append("essential_albums").append("?client_id=").append(clientID());
-        return sb.toString();
+        return BASE_URL + "/api/artists/" + id + "/essential_albums" + "?client_id=" + clientID();
     }
 
     public static String artistEssentialAlbums(String id, CollectionQueryParams params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/artists").append(id).append("essential_albums").append("?client_id=").append(clientID()).append('&');
-        sb.append(params.toString());
-
-        return sb.toString();
+        return BASE_URL + "/api/artists/" + id + "/essential_albums" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
     public static String artistTracks(String id) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/artists").append(id).append("tracks").append("?client_id=").append(clientID());
-        return sb.toString();
+        return BASE_URL + "/api/artists/" + id + "/tracks" + "?client_id=" + clientID();
     }
 
     public static String artistTracks(String id, CollectionQueryParams params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/artists").append(id).append("tracks").append("?client_id=").append(clientID()).append('&');
-        sb.append(params.toString());
-
-        return sb.toString();
+        return BASE_URL + "/api/artists/" + id + "/tracks" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
     public static String artistPlaylists(String id) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/artists").append(id).append("playlists").append("?client_id=").append(clientID());
-        return sb.toString();
+        return BASE_URL + "/api/artists/" + id + "/playlists" + "?client_id=" + clientID();
     }
 
     public static String artistPlaylists(String id, CollectionQueryParams params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/artists").append(id).append("playlists").append("?client_id=").append(clientID()).append('&');
-        sb.append(params.toString());
-
-        return sb.toString();
+        return BASE_URL + "/api/artists/" + id + "/playlists" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
     public static String activitiesList() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/activities").append("?client_id=").append(clientID());
-        return sb.toString();
+        return BASE_URL + "/api/activities" + "?client_id=" + clientID();
     }
 
     public static String activitiesList(CollectionQueryParams params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/activities").append("?client_id=").append(clientID()).append('&');
-        sb.append(params.toString());
-
-        return sb.toString();
+        return BASE_URL + "/api/activities" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
     public static String activity(String id) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/activities").append(id).append("?client_id=").append(clientID());
-        return sb.toString();
+        return BASE_URL + "/api/activities/" + id + "?client_id=" + clientID();
     }
 
     public static String activity(String id, LookupQueryParams params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/activities").append(id).append("?client_id=").append(clientID()).append('&');
-        sb.append(params.toString());
-
-        return sb.toString();
+        return BASE_URL + "/api/activities/" + id + "?client_id=" + clientID() + '&' + params.toString();
     }
 
     public static String activityEditorialPlaylists(String id) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/activities").append(id).append("editorial_playlists").append("?client_id=").append(clientID());
-        return sb.toString();
+        return BASE_URL + "/api/activities/" + id + "/editorial_playlists" + "?client_id=" + clientID();
     }
 
     public static String activityEditorialPlaylists(String id, CollectionQueryParams params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/activities").append(id).append("editorial_playlists").append("?client_id=").append(clientID()).append('&');
-        sb.append(params.toString());
 
-        return sb.toString();
+        return BASE_URL + "/api/activities/" + id + "/editorial_playlists" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
     public static String albumList() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/albums").append("?client_id=").append(clientID());
-        return sb.toString();
+        return BASE_URL + "/api/albums" + "?client_id=" + clientID();
     }
 
     public static String albumList(CollectionQueryParams params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/albums").append("?client_id=").append(clientID()).append('&');
-        sb.append(params.toString());
 
-        return sb.toString();
+        return BASE_URL + "/api/albums" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
     public static String album(String id) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/albums").append(id).append("?client_id=").append(clientID());
-        return sb.toString();
+        return BASE_URL + "/api/albums/" + id + "?client_id=" + clientID();
     }
 
     public static String album(String id, LookupQueryParams params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/albums").append(id).append("?client_id=").append(clientID()).append('&');
-        sb.append(params.toString());
 
-        return sb.toString();
+        return BASE_URL + "/api/albums/" + id + "?client_id=" + clientID() + '&' + params.toString();
     }
 
     public static String albumArtists(String id) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/albums").append(id).append("artists").append("?client_id=").append(clientID());
-        return sb.toString();
+        return BASE_URL + "/api/albums/" + id + "/artists" + "?client_id=" + clientID();
     }
 
     public static String albumArtists(String id, CollectionQueryParams params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/albums").append(id).append("artists").append("?client_id=").append(clientID()).append('&');
-        sb.append(params.toString());
 
-        return sb.toString();
+        return BASE_URL + "/api/albums/" + id + "/artists" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
     public static String albumTracks(String id) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/albums").append(id).append("tracks").append("?client_id=").append(clientID());
-        return sb.toString();
+        return BASE_URL + "/api/albums/" + id + "/tracks" + "?client_id=" + clientID();
     }
 
     public static String albumTracks(String id, CollectionQueryParams params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/albums").append(id).append("tracks").append("?client_id=").append(clientID()).append('&');
-        sb.append(params.toString());
 
-        return sb.toString();
+        return BASE_URL + "/api/albums/" + id + "/tracks" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
     public static String albumReviews(String id) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/albums").append(id).append("reviews").append("?client_id=").append(clientID());
-        return sb.toString();
+        return BASE_URL + "/api/albums/" + id + "/reviews" + "?client_id=" + clientID();
     }
 
     public static String albumReviews(String id, CollectionQueryParams params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/albums").append(id).append("reviews").append("?client_id=").append(clientID()).append('&');
-        sb.append(params.toString());
 
-        return sb.toString();
+        return BASE_URL + "/api/albums/" + id + "/reviews" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
     public static String albumCompanionAlbums(String id) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/albums").append(id).append("companion_albums").append("?client_id=").append(clientID());
-        return sb.toString();
+        return BASE_URL + "/api/albums/" + id + "/companion_albums" + "?client_id=" + clientID();
     }
 
     public static String albumCompanionAlbums(String id, CollectionQueryParams params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(BASE_URL).append("/api/albums").append(id).append("companion_albums").append("?client_id=").append(clientID()).append('&');
-        sb.append(params.toString());
 
-        return sb.toString();
+        return BASE_URL + "/api/albums/" + id + "/companion_albums" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
 
