@@ -3,9 +3,6 @@ package com.musicflow.app.data;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by whitney on 4/26/14.
- */
 public class Artists extends BaseJson {
     protected List<Artist> data;
     protected String code;
