@@ -15,6 +15,8 @@ modification, are permitted provided that the following conditions are met:
   contributors may be used to endorse or promote products derived from
   this software without specific prior written permission.
 
+* Any use, modification or distribution of this SDK is subject to the Beats Music API Terms of Use provided at https://developer.beatsmusic.com/tos, and for purposes of these Beats Music API Terms of Use this SDK is a “Beats Music API.
+
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
