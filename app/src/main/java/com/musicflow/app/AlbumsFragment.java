@@ -9,6 +9,7 @@ import android.widget.ListView;
 import com.musicflow.app.data.AlbumList;
 import com.musicflow.app.mappers.AlbumListMapper;
 import com.musicflow.app.network.NetworkAdapter;
+import com.musicflow.app.network.UrlFactory;
 
 import java.util.HashMap;
 
@@ -37,7 +38,7 @@ public class AlbumsFragment extends BeatsMusicFragment {
         View rootView = inflater.inflate(R.layout.fragment_albums, container, false);
         albumsListView = (ListView) rootView.findViewById(R.id.albums_fragment_list_view);
         networkRequest = new AlbumListNetworkAdapter();
-        networkRequest.execute(this.getString(R.string.albums_collection));
+        networkRequest.execute(UrlFactory.albumList());
 
         innerFrame.addView(rootView);
         return innerFrame;

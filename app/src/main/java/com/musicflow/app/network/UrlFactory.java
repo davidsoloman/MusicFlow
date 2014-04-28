@@ -39,6 +39,15 @@ public class UrlFactory {
         return BASE_URL + "/api/artists/" + id + "?client_id=" + clientID() + '&' + params.toString();
     }
 
+    public static String artistBio(String id) {
+        return BASE_URL + "/api/artists/" + id + "/bios" + "?client_id=" + clientID();
+    }
+
+    public static String artistBio(String id, LookupQueryParams params) {
+
+        return BASE_URL + "/api/artists/" + id + "/bios" + "?client_id=" + clientID() + '&' + params.toString();
+    }
+
     public static String artistAlbums(String id) {
         return BASE_URL + "/api/artists/" + id + "/albums" + "?client_id=" + clientID();
     }
