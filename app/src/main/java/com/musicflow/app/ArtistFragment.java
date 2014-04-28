@@ -9,6 +9,7 @@ import android.widget.ListView;
 import com.musicflow.app.data.Artists;
 import com.musicflow.app.mappers.ArtistsMapper;
 import com.musicflow.app.network.NetworkAdapter;
+import com.musicflow.app.network.UrlFactory;
 
 import java.util.HashMap;
 
@@ -37,7 +38,7 @@ public class ArtistFragment extends BeatsMusicFragment {
         View rootView = inflater.inflate(R.layout.fragment_artist, container, false);
         artistListView =  (ListView) rootView.findViewById(R.id.artist_fragment_list_view);
         networkRequest = new ArtistsResultNetworkAdapter();
-        networkRequest.execute("https://partner.api.beatsmusic.com/v1/api/artists?order_by=popularity&limit=20&offset=0&client_id=frksnm8edw2t8ddebhkqkjwk");
+        networkRequest.execute(UrlFactory.artistList());
         innerFrame.addView(rootView);
         return innerFrame;
     }

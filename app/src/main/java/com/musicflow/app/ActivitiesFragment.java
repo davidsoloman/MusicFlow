@@ -9,6 +9,7 @@ import android.widget.ListView;
 import com.musicflow.app.data.Activities;
 import com.musicflow.app.mappers.ActivitiesMapper;
 import com.musicflow.app.network.NetworkAdapter;
+import com.musicflow.app.network.UrlFactory;
 import com.musicflow.app.tests.ActivitiesAdapter;
 
 import java.util.HashMap;
@@ -44,7 +45,7 @@ public class ActivitiesFragment extends BeatsMusicFragment {
 
         networkRequest = new ActivitiesNetworkAdapter();
         networkRequest
-                .execute("https://partner.api.beatsmusic.com/v1/api/activities?client_id=frksnm8edw2t8ddebhkqkjwk");
+                .execute(UrlFactory.activitiesList());
 
         innerFrame.addView(rootView);
         return innerFrame;

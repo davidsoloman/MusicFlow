@@ -16,6 +16,7 @@ import com.musicflow.app.data.BioWrapper;
 import com.musicflow.app.mappers.ArtistMapper;
 import com.musicflow.app.mappers.BioMapper;
 import com.musicflow.app.network.NetworkAdapter;
+import com.musicflow.app.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 public class ArtistViewActivity extends Activity {
@@ -47,13 +48,11 @@ public class ArtistViewActivity extends Activity {
 
         artist = new Artist();
         networkRequest = new ArtistNetworkAdapter();
-        networkRequest.execute("https://partner.api.beatsmusic.com/v1/api/artists/" + artistId
-                + "?client_id=frksnm8edw2t8ddebhkqkjwk");
+        networkRequest.execute(UrlFactory.artist(artistId));
 
         bios = new BioWrapper();
         bioNetworkRequest = new BioNetworkAdapter();
-        bioNetworkRequest.execute("https://partner.api.beatsmusic.com/v1/api/artists/" + artistId
-                + "/bios?client_id=frksnm8edw2t8ddebhkqkjwk");
+        bioNetworkRequest.execute(UrlFactory.artistBio(artistId));
     }
 
     private void loadViewData() {
