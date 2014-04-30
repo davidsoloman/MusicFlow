@@ -243,6 +243,33 @@ public class UrlFactory {
         return BASE_URL + "/api/discoveries/editor_picks" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
+    public static String trackList() {
+        return BASE_URL + "/api/tracks" + "?client_id=" + clientID();
+    }
+
+    public static String trackList(CollectionQueryParams params) {
+
+        return BASE_URL + "/api/tracks" + "?client_id=" + clientID() + '&' + params.toString();
+    }
+
+    public static String track(String id) {
+        return BASE_URL + "/api/tracks/" + id + "?client_id=" + clientID();
+    }
+
+    public static String track(String id, LookupQueryParams params) {
+
+        return BASE_URL + "/api/tracks/" + id + "?client_id=" + clientID() + '&' + params.toString();
+    }
+
+    public static String trackArtists(String id) {
+        return BASE_URL + "/api/tracks/" + id + "/artists" + "?client_id=" + clientID();
+    }
+
+    public static String trackArtists(String id, CollectionQueryParams params) {
+
+        return BASE_URL + "/api/tracks/" + id + "/artists" + "?client_id=" + clientID() + '&' + params.toString();
+    }
+
     public class LookupQueryParams {
         protected String[] fields;
         protected String[] refs;
