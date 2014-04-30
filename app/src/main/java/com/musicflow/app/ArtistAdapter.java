@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.musicflow.app.data.Artist;
+import com.musicflow.app.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -41,9 +42,7 @@ public class ArtistAdapter extends ArrayAdapter<Artist> {
         });
 
         ImageView artistProfileImage = (ImageView) rowView.findViewById(R.id.artist_profile_image);
-        String url = "https://partner.api.beatsmusic.com/v1/api/artists/" + current.getId() + "/images/default?client_id=frksnm8edw2t8ddebhkqkjwk&size=medium";
-        Picasso.with(context).load(url).placeholder(R.drawable.placeholder).fit().centerCrop().into(artistProfileImage);
-
+        Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.MEDIUM)).placeholder(R.drawable.placeholder).fit().centerCrop().into(artistProfileImage);
         TextView artistName = (TextView) rowView.findViewById(R.id.artist_name);
         artistName.setText(current.getName());
 
