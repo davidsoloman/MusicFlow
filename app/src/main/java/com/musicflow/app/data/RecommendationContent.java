@@ -11,10 +11,16 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  * we can properly automatically map the right fields.
  */
 
+/**
+ * Here we state what variable inside the class contains the forking data
+ */
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
         include = JsonTypeInfo.As.PROPERTY,
         property = "type")
+/**
+ * Here we control what class gets loaded based on the content of the variable
+ */
 @JsonSubTypes({
         @JsonSubTypes.Type(value = AlbumRecommendationContent.class, name = "album"),
         @JsonSubTypes.Type(value = PlaylistRecommendationContent.class, name = "playlist"),
