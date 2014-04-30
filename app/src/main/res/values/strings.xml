@@ -38,6 +38,7 @@
     <string name="artists_activity">Artists</string>
     <string name="albums_activity">Albums</string>
     <string name="activities_activity">Activities</string>
+    <string name="activity_view_activity">Activity</string>
 
     <string-array name="nav_tiles">
         <item>Artists</item>

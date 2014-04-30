@@ -1,12 +1,14 @@
 package com.musicflow.app.tests;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.musicflow.app.ActivityViewActivity;
 import com.musicflow.app.R;
 import com.musicflow.app.data.Activity;
 
@@ -33,7 +35,9 @@ public class ActivitiesAdapter extends ArrayAdapter<Activity> {
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Implement
+                Intent intent = new Intent(context, ActivityViewActivity.class);
+                intent.putExtra("ActivityId", getItem(position).getId());
+                context.startActivity(intent);
             }
         });
 

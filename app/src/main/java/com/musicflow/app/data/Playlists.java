@@ -38,7 +38,7 @@ public class Playlists extends BaseJson {
         return data;
     }
 
-    public List<Playlist> getActivities() {
+    public List<Playlist> getPlaylists() {
         return data;
     }
 }

@@ -24,4 +24,16 @@ public class PlaylistReferenceLinks extends BaseJson {
             throw new Exception();
         }
     }
+
+    public List<ReferenceLink> getTracks() {
+        return tracks;
+    }
+
+    public ReferenceLink getUser() {
+        return user;
+    }
+
+    public ReferenceLink getAuthor() {
+        return author;
+    }
 }
