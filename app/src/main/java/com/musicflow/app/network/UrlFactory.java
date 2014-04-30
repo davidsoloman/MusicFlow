@@ -270,6 +270,60 @@ public class UrlFactory {
         return BASE_URL + "/api/tracks/" + id + "/artists" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
+    public static String playlistList() {
+        return BASE_URL + "/api/playlists" + "?client_id=" + clientID();
+    }
+
+    public static String playlistList(CollectionQueryParams params) {
+
+        return BASE_URL + "/api/playlists" + "?client_id=" + clientID() + '&' + params.toString();
+    }
+
+    public static String playlist(String id) {
+        return BASE_URL + "/api/playlists/" + id + "?client_id=" + clientID();
+    }
+
+    public static String playlist(String id, LookupQueryParams params) {
+
+        return BASE_URL + "/api/playlists/" + id + "?client_id=" + clientID() + '&' + params.toString();
+    }
+
+    public static String playlistSubscribers(String id) {
+        return BASE_URL + "/api/playlists/" + id + "/subscribers" + "?client_id=" + clientID();
+    }
+
+    public static String playlistSubscribers(String id, CollectionQueryParams params) {
+
+        return BASE_URL + "/api/playlists/" + id + "/subscribers" + "?client_id=" + clientID() + '&' + params.toString();
+    }
+
+    public static String playlistTracks(String id) {
+        return BASE_URL + "/api/playlists/" + id + "/tracks" + "?client_id=" + clientID();
+    }
+
+    public static String playlistTracks(String id, CollectionQueryParams params) {
+
+        return BASE_URL + "/api/playlists/" + id + "/tracks" + "?client_id=" + clientID() + '&' + params.toString();
+    }
+
+    public static String playlistArtists(String id) {
+        return BASE_URL + "/api/playlists/" + id + "/artists" + "?client_id=" + clientID();
+    }
+
+    public static String playlistArtists(String id, CollectionQueryParams params) {
+
+        return BASE_URL + "/api/playlists/" + id + "/artists" + "?client_id=" + clientID() + '&' + params.toString();
+    }
+
+    public static String usersPlaylists(String id) {
+        return BASE_URL + "/api/users/" + id + "/playlists" + "?client_id=" + clientID();
+    }
+
+    public static String usersPlaylists(String id, CollectionQueryParams params) {
+
+        return BASE_URL + "/api/users/" + id + "/playlists" + "?client_id=" + clientID() + '&' + params.toString();
+    }
+
     public class LookupQueryParams {
         protected String[] fields;
         protected String[] refs;
