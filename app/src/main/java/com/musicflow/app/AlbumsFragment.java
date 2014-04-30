@@ -46,7 +46,7 @@ public class AlbumsFragment extends BeatsMusicFragment {
     }
 
     private void setUpAdapter() {
-        albumsListView.setAdapter(new ImageAdapter(this.getActivity(), R.id.albums_fragment_list_view, albums.getAlbums()));
+        albumsListView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(), R.id.albums_fragment_list_view, albums.getAlbums()));
     }
 
     private class AlbumListNetworkAdapter extends NetworkAdapter {

@@ -58,7 +58,7 @@ public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshLi
     }
 
     private void setUpAdapter() {
-        gridView.setAdapter(new ImageAdapter(this.getActivity(), R.id.gridview, albums.getAlbums()));
+        gridView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(), R.id.gridview, albums.getAlbums()));
     }
 
     @Override

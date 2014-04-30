@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -13,13 +14,13 @@ import android.widget.ImageView;
 import com.musicflow.app.data.Album;
 import com.squareup.picasso.Picasso;
 
-public class ImageAdapter extends ArrayAdapter<Album> {
+public class LargeImageAlbumAdapter extends ArrayAdapter<Album> {
 
     private Context context;
     protected List<Album> albums;
     protected int resource;
 
-    public ImageAdapter(Context context, int resource, List<Album> albums) {
+    public LargeImageAlbumAdapter(Context context, int resource, List<Album> albums) {
         super(context, resource, albums);
         this.context = context;
         this.albums = albums;
@@ -27,16 +28,10 @@ public class ImageAdapter extends ArrayAdapter<Album> {
     }
 
     public View getView(final int position, View convertView, ViewGroup parent) {
-        ImageView imageView;
-        if (convertView == null) { // if it's not recycled, initialize some attributes
-            imageView = new ImageView(context);
-            imageView.setLayoutParams(new GridView.LayoutParams(GridView.AUTO_FIT, 300));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(5, 5, 5, 5);
-        } else {
-            imageView = (ImageView) convertView;
-        }
-        imageView.setOnClickListener(new View.OnClickListener() {
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        View rowView = inflater.inflate(R.layout.full_image_view, parent, false);
+        rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ArtistViewActivity.class);
@@ -44,12 +39,13 @@ public class ImageAdapter extends ArrayAdapter<Album> {
                 context.startActivity(intent);
             }
         });
-        // TODO: put into a function
+
         String url =
                 "https://partner.api.beatsmusic.com/v1/api/albums/" + getItem(position).getId()
-                        + "/images/default?client_id=frksnm8edw2t8ddebhkqkjwk&size=medium";
-        Picasso.with(context).load(url).placeholder(R.drawable.placeholder).into(imageView);
-        return imageView;
-    }
+                        + "/images/default?client_id=frksnm8edw2t8ddebhkqkjwk&size=large";
 
+        ImageView largeImage = (ImageView) rowView.findViewById(R.id.full_sized_image);
+        Picasso.with(context).load(url).placeholder(R.drawable.placeholder).fit().centerCrop().into(largeImage);
+        return rowView;
+    }
 }
