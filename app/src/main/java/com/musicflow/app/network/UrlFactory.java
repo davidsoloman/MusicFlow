@@ -16,6 +16,57 @@ public class UrlFactory {
     public final HashMap<String, String> FILTERS_DEFAULT = new HashMap<String, String>();
     public final String[] IDS_DEFAULT = new String[0];
 
+    public enum EntityType {
+        GENRE("genres"),
+        ARTIST("artists"),
+        PLAYLIST("playlists"),
+        ALBUM("albums"),
+        TRACK("tracks"),
+        USER("users");
+
+        private final String type;
+
+        private EntityType(final String type) {
+            this.type = type;
+        }
+
+        public String toString() {
+            return type;
+        }
+    }
+
+    public enum ImageType {
+        DEFAULT("default"),
+        COVER("cover");
+
+        private final String type;
+
+        private ImageType(final String type) {
+            this.type = type;
+        }
+
+        public String toString() {
+            return type;
+        }
+    }
+
+    public enum ImageSize {
+        THUMB("default"),
+        SMALL("small"),
+        MEDIUM("medium"),
+        LARGE("large");
+
+        private final String type;
+
+        private ImageSize(final String type) {
+            this.type = type;
+        }
+
+        public String toString() {
+            return type;
+        }
+    }
+
     @SuppressWarnings("SpellCheckingInspection")
     private static String clientID() {
         return "frksnm8edw2t8ddebhkqkjwk";
@@ -160,6 +211,29 @@ public class UrlFactory {
         return BASE_URL + "/api/albums/" + id + "/companion_albums" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
+    public static String imageUrl(String id, EntityType entity, ImageType type) {
+        return imageUrl(id, entity, type, ImageSize.MEDIUM);
+    }
+
+    public static String imageUrl(String id, EntityType entity, ImageType type, ImageSize size) {
+        if (!imageTypeEntityValidation(type, entity)) {
+            throw new IllegalArgumentException(entity + " does not have image type of " + type);
+        } else {
+            return BASE_URL + "/api/" + entity.toString() + "/" + id + "/images/" + type.toString() + "?size=" + size.toString();
+        }
+    }
+
+    private static boolean imageTypeEntityValidation(ImageType type, EntityType entity) {
+        if (ImageType.COVER.equals(type)) {
+            if (EntityType.GENRE.equals(entity) || EntityType.USER.equals(entity)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+    }
 
     public class LookupQueryParams {
         protected String[] fields;
