@@ -4,9 +4,12 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
- * Created by dsabin on 4/30/14.
+ * Recommendations come in many types: artist, track, playlist, album
+ *
+ * This class holds the logic to correctly deserialze the contained content based on a specific value
+ * of the "type" attribute. Depending on the type a different class is used to deserialze so that
+ * we can properly automatically map the right fields.
  */
-
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,

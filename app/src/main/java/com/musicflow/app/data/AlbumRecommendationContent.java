@@ -1,7 +1,8 @@
 package com.musicflow.app.data;
 
 /**
- * Created by dsabin on 4/30/14.
+ * Not wanting to duplicate the object in two places we simply extend it. We need this middle class
+ * in order to maintain the correct object hierarchy in the class containing recommendations.
  */
 public class AlbumRecommendationContent extends Album {
 }
