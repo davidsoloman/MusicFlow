@@ -1,6 +1,7 @@
 package com.musicflow.app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,9 @@ public class ArtistAdapter extends ArrayAdapter<Artist> {
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Implement
+                Intent intent = new Intent(context, ArtistViewActivity.class);
+                intent.putExtra("ArtistId", getItem(position).getId());
+                context.startActivity(intent);
             }
         });
 
