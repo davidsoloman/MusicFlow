@@ -77,7 +77,6 @@ public class UrlFactory {
     }
 
     public static String artistList(CollectionQueryParams params) {
-
         return BASE_URL + "/api/artists" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -86,7 +85,6 @@ public class UrlFactory {
     }
 
     public static String artist(String id, LookupQueryParams params) {
-
         return BASE_URL + "/api/artists/" + id + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -95,7 +93,6 @@ public class UrlFactory {
     }
 
     public static String artistBio(String id, LookupQueryParams params) {
-
         return BASE_URL + "/api/artists/" + id + "/bios" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -104,7 +101,6 @@ public class UrlFactory {
     }
 
     public static String artistAlbums(String id, CollectionQueryParams params) {
-
         return BASE_URL + "/api/artists/" + id + "/albums" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -153,7 +149,6 @@ public class UrlFactory {
     }
 
     public static String activityEditorialPlaylists(String id, CollectionQueryParams params) {
-
         return BASE_URL + "/api/activities/" + id + "/editorial_playlists" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -162,7 +157,6 @@ public class UrlFactory {
     }
 
     public static String albumList(CollectionQueryParams params) {
-
         return BASE_URL + "/api/albums" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -171,7 +165,6 @@ public class UrlFactory {
     }
 
     public static String album(String id, LookupQueryParams params) {
-
         return BASE_URL + "/api/albums/" + id + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -180,7 +173,6 @@ public class UrlFactory {
     }
 
     public static String albumArtists(String id, CollectionQueryParams params) {
-
         return BASE_URL + "/api/albums/" + id + "/artists" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -189,7 +181,6 @@ public class UrlFactory {
     }
 
     public static String albumTracks(String id, CollectionQueryParams params) {
-
         return BASE_URL + "/api/albums/" + id + "/tracks" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -198,7 +189,6 @@ public class UrlFactory {
     }
 
     public static String albumReviews(String id, CollectionQueryParams params) {
-
         return BASE_URL + "/api/albums/" + id + "/reviews" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -207,7 +197,6 @@ public class UrlFactory {
     }
 
     public static String albumCompanionAlbums(String id, CollectionQueryParams params) {
-
         return BASE_URL + "/api/albums/" + id + "/companion_albums" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -257,7 +246,6 @@ public class UrlFactory {
     }
 
     public static String track(String id, LookupQueryParams params) {
-
         return BASE_URL + "/api/tracks/" + id + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -266,7 +254,6 @@ public class UrlFactory {
     }
 
     public static String trackArtists(String id, CollectionQueryParams params) {
-
         return BASE_URL + "/api/tracks/" + id + "/artists" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -275,7 +262,6 @@ public class UrlFactory {
     }
 
     public static String playlistList(CollectionQueryParams params) {
-
         return BASE_URL + "/api/playlists" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -284,7 +270,6 @@ public class UrlFactory {
     }
 
     public static String playlist(String id, LookupQueryParams params) {
-
         return BASE_URL + "/api/playlists/" + id + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -293,7 +278,6 @@ public class UrlFactory {
     }
 
     public static String playlistSubscribers(String id, CollectionQueryParams params) {
-
         return BASE_URL + "/api/playlists/" + id + "/subscribers" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -302,7 +286,6 @@ public class UrlFactory {
     }
 
     public static String playlistTracks(String id, CollectionQueryParams params) {
-
         return BASE_URL + "/api/playlists/" + id + "/tracks" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -311,7 +294,6 @@ public class UrlFactory {
     }
 
     public static String playlistArtists(String id, CollectionQueryParams params) {
-
         return BASE_URL + "/api/playlists/" + id + "/artists" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
@@ -320,7 +302,6 @@ public class UrlFactory {
     }
 
     public static String usersPlaylists(String id, CollectionQueryParams params) {
-
         return BASE_URL + "/api/users/" + id + "/playlists" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
