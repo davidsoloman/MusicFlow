@@ -61,10 +61,7 @@ public class ArtistViewActivity extends Activity {
         totalTracks.setText("Total Tracks: " + artist.getTotalTracks());
         totalEps.setText("Total EPs: " + artist.getTotalEps());
         popularity.setText("Popularity: " + artist.getPopularity() + " followers");
-        String url =
-                "https://partner.api.beatsmusic.com/v1/api/artists/" + artist.getId()
-                        + "/images/default?client_id=frksnm8edw2t8ddebhkqkjwk&size=large";
-        Picasso.with(this).load(url).placeholder(R.drawable.placeholder).into(artistHeroImage);
+        Picasso.with(this).load(UrlFactory.imageUrl(artist.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).into(artistHeroImage);
     }
 
     private void loadBioData() {

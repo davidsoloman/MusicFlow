@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.musicflow.app.data.Artist;
 import com.musicflow.app.data.Playlist;
+import com.musicflow.app.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -42,8 +43,7 @@ public class PlaylistAdapter extends ArrayAdapter<Playlist> {
         });
 
         ImageView playlistImage = (ImageView) rowView.findViewById(R.id.playlist_cover_art);
-        String url = "https://partner.api.beatsmusic.com/v1/api/playlists/" + current.getId() + "/images/default?client_id=frksnm8edw2t8ddebhkqkjwk&size=medium";
-        Picasso.with(context).load(url).placeholder(R.drawable.placeholder).fit().centerCrop().into(playlistImage);
+        Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.PLAYLIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.THUMB)).placeholder(R.drawable.placeholder).fit().centerCrop().into(playlistImage);
 
         TextView playlistTitle = (TextView) rowView.findViewById(R.id.playlist_title);
         playlistTitle.setText(current.getName());

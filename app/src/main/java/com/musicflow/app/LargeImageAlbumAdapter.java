@@ -12,6 +12,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.musicflow.app.data.Album;
+import com.musicflow.app.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 public class LargeImageAlbumAdapter extends ArrayAdapter<Album> {
@@ -40,12 +41,8 @@ public class LargeImageAlbumAdapter extends ArrayAdapter<Album> {
             }
         });
 
-        String url =
-                "https://partner.api.beatsmusic.com/v1/api/albums/" + getItem(position).getId()
-                        + "/images/default?client_id=frksnm8edw2t8ddebhkqkjwk&size=large";
-
         ImageView largeImage = (ImageView) rowView.findViewById(R.id.full_sized_image);
-        Picasso.with(context).load(url).placeholder(R.drawable.placeholder).fit().centerCrop().into(largeImage);
+        Picasso.with(context).load(UrlFactory.imageUrl(getItem(position).getId(), UrlFactory.EntityType.ALBUM, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(largeImage);
         return rowView;
     }
 }

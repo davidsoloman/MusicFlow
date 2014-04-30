@@ -219,7 +219,7 @@ public class UrlFactory {
         if (!imageTypeEntityValidation(type, entity)) {
             throw new IllegalArgumentException(entity + " does not have image type of " + type);
         } else {
-            return BASE_URL + "/api/" + entity.toString() + "/" + id + "/images/" + type.toString() + "?size=" + size.toString();
+            return BASE_URL + "/api/" + entity.toString() + "/" + id + "/images/" + type.toString() + "?client_id=" + clientID() + "&size=" + size.toString();
         }
     }
 
