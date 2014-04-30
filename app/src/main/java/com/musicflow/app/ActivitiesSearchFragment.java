@@ -20,7 +20,7 @@ public class ActivitiesSearchFragment extends BeatsMusicFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
-        View rootView = inflater.inflate(R.layout.fragment_activities_search, container, false);
+        View rootView = inflater.inflate(R.layout.activity_search, container, false);
         innerFrame.addView(rootView);
         return innerFrame;
     }

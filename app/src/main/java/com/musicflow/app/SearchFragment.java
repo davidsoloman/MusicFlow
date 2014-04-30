@@ -1,23 +1,23 @@
 package com.musicflow.app;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
-import com.musicflow.app.data.SearchResult;
 import com.musicflow.app.data.SearchResults;
 import com.musicflow.app.mappers.SearchResultsMapper;
 import com.musicflow.app.network.NetworkAdapter;
+import com.musicflow.app.network.UrlFactory;
 
 public class SearchFragment extends BeatsMusicFragment{
     protected ListView searchResultsListView;
@@ -42,26 +42,29 @@ public class SearchFragment extends BeatsMusicFragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_search, container, false);
         searchResultsListView = (ListView) rootView.findViewById(R.id.results);
-        searchText = (EditText) rootView.findViewById(R.id.artist_search_box);
-        searchResults = new SearchResults();
-        networkRequest = new SearchResultNetworkAdapter();
-        searchButton = (ImageButton) rootView.findViewById(R.id.search_magnifier);
-        searchButton.setOnClickListener(new View.OnClickListener() {
+        searchText = (EditText) rootView.findViewById(R.id.search_box);
+        searchText.setOnEditorActionListener(new EditText.OnEditorActionListener() {
             @Override
-            public void onClick(View v) {
-            if (searchText.getText().toString().length()!=0) {
-                if (!searchResults.getSearchResults().isEmpty()) {
-                    // Throw away the previous search results
-                    searchResults = new SearchResults();
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    if (!searchResults.getSearchResults().isEmpty()) {
+                        searchResults = new SearchResults();
+                    }
+                    
+                    if (networkRequest != null) {
+                        networkRequest.cancel(true);
+                    }
+                    
+                    networkRequest = new SearchResultNetworkAdapter();
+                    networkRequest.execute("https://partner.api.beatsmusic.com/v1/api/search/predictive?q=" + Uri.encode(searchText.getText().toString()) + "&client_id=frksnm8edw2t8ddebhkqkjwk");
+                    
+                    return true;
                 }
-                if (networkRequest != null) {
-                    networkRequest.cancel(true);
-                }
-                networkRequest = new SearchResultNetworkAdapter();
-                networkRequest.execute("https://partner.api.beatsmusic.com/v1/api/search/predictive?q=" + Uri.encode(searchText.getText().toString()) + "&client_id=frksnm8edw2t8ddebhkqkjwk");
-            }
+                return false;
             }
         });
+        searchResults = new SearchResults();
+        networkRequest = new SearchResultNetworkAdapter();
 
         innerFrame.addView(rootView);
         return innerFrame;
