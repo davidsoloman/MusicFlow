@@ -56,12 +56,12 @@ public class ArtistViewActivity extends Activity {
     }
 
     private void loadViewData() {
-        artistName.setText("Introducing: " + artist.getName());
-        artistTotalAlbums.setText("Total Albums: " + artist.getTotalAlbums());
-        totalTracks.setText("Total Tracks: " + artist.getTotalTracks());
-        totalEps.setText("Total EPs: " + artist.getTotalEps());
-        popularity.setText("Popularity: " + artist.getPopularity() + " followers");
-        Picasso.with(this).load(UrlFactory.imageUrl(artist.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).into(artistHeroImage);
+        artistName.setText(artist.getName());
+        artistTotalAlbums.setText(artist.getTotalAlbums());
+        totalTracks.setText(artist.getTotalTracks());
+        totalEps.setText(artist.getTotalEps());
+        popularity.setText(artist.getPopularity() + " FOLLOWERS");
+        Picasso.with(this).load(UrlFactory.imageUrl(artist.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(artistHeroImage);
     }
 
     private void loadBioData() {
