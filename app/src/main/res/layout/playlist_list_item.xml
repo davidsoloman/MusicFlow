@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/playlist_cover_art"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:background="#ff111111"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/playlist_cover_art"
+        <TextView
+            android:id="@+id/playlist_title"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            />
+            android:textColor="#ffffffff"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:paddingTop="50dp"
+            android:typeface="sans"
+            android:singleLine="true"
+            android:paddingStart="10dp" />
 
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/playlist_title"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/cd_album_title" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/curator"/>
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:id="@+id/curator" />
     </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>
