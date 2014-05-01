@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.musicflow.app.data.AlbumList;
-import com.musicflow.app.mappers.AlbumListMapper;
+import com.musicflow.app.mappers.AlbumsMapper;
 import com.musicflow.app.network.NetworkAdapter;
 
 import uk.co.senab.actionbarpulltorefresh.library.ActionBarPullToRefresh;
@@ -76,7 +76,7 @@ public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshLi
     private class AlbumListNetworkAdapter extends NetworkAdapter {
 
         public AlbumListNetworkAdapter() {
-            super(new AlbumListMapper(), RequestType.GET, new HashMap<String, String>(), albums);
+            super(new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
         }
 
         @Override

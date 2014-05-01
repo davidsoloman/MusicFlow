@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.musicflow.app.data.AlbumList;
-import com.musicflow.app.mappers.AlbumListMapper;
+import com.musicflow.app.mappers.AlbumsMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
 
@@ -52,7 +52,7 @@ public class AlbumsFragment extends BeatsMusicFragment {
     private class AlbumListNetworkAdapter extends NetworkAdapter {
 
         public AlbumListNetworkAdapter() {
-            super(new AlbumListMapper(), RequestType.GET, new HashMap<String, String>(), albums);
+            super(new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
         }
 
         @Override

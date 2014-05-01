@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.musicflow.app.data.AlbumList;
 import com.musicflow.app.data.BaseJson;
 
-public class AlbumListMapper extends CommonMapper {
+public class AlbumsMapper extends CommonMapper {
     @Override
     public BaseJson parseJson(String json) {
         AlbumList albumList = new AlbumList();
