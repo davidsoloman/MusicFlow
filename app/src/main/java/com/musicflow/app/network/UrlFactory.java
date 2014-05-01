@@ -51,7 +51,7 @@ public class UrlFactory {
     }
 
     public enum ImageSize {
-        THUMB("default"),
+        THUMB("thumb"),
         SMALL("small"),
         MEDIUM("medium"),
         LARGE("large");
