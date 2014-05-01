@@ -1,8 +1,6 @@
 package com.musicflow.app;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.musicflow.app.data.Artist;
-import com.musicflow.app.data.Bio;
 import com.musicflow.app.data.BioWrapper;
 import com.musicflow.app.mappers.ArtistMapper;
 import com.musicflow.app.mappers.BioMapper;
@@ -60,7 +57,14 @@ public class ArtistViewActivity extends Activity {
         artistTotalAlbums.setText(artist.getTotalAlbums());
         totalTracks.setText(artist.getTotalTracks());
         totalEps.setText(artist.getTotalEps());
-        popularity.setText(artist.getPopularity() + " FOLLOWERS");
+
+        int artistPopularity = artist.getPopularity();
+        if (artistPopularity != 1) {
+            popularity.setText(artistPopularity + getString(R.string.followers));
+        } else {
+            popularity.setText(artistPopularity + getString(R.string.follower));
+        }
+
         Picasso.with(this).load(UrlFactory.imageUrl(artist.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(artistHeroImage);
     }
 

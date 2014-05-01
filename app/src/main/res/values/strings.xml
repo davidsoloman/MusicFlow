@@ -43,6 +43,8 @@
     <string name="total_eps">TOTAL EPS /</string>
     <string name="total_tracks">TOTAL TRACKS /</string>
     <string name="total_popularity">POPULARITY /</string>
+    <string name="followers">\u0020FOLLOWERS</string>
+    <string name="follower">\u0020FOLLOWER</string>
 
     <string-array name="nav_tiles">
         <item>Artists</item>
