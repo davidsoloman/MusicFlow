@@ -1,6 +1,9 @@
 package com.musicflow.app;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.ViewPager;
@@ -128,5 +131,16 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
             selectItem(position);
         }
     }
+
+    /**
+     * Checks the phone's network connectivity status.
+     */
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
 
 }

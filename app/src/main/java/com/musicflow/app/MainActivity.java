@@ -11,7 +11,7 @@ public class MainActivity extends BeatsMusicActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        sectionsPagerAdapter = new MainSectionPagerAdapter(getSupportFragmentManager());
+        sectionsPagerAdapter = new MainSectionPagerAdapter(getSupportFragmentManager(), this.getApplicationContext());
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(sectionsPagerAdapter);
     }
