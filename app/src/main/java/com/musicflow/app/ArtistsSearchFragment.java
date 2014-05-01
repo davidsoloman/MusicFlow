@@ -1,5 +1,6 @@
 package com.musicflow.app;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -46,6 +48,7 @@ public class ArtistsSearchFragment extends BeatsMusicFragment {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    hideKeyboard();
                     if (!searchResults.getSearchResults().isEmpty()) {
                         searchResults = new SearchResults();
                     }
@@ -82,6 +85,12 @@ public class ArtistsSearchFragment extends BeatsMusicFragment {
             super.onPostExecute(result);
             loadViewData();
         }
+    }
+
+    protected void hideKeyboard() {
+        InputMethodManager manager =
+                (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        manager.hideSoftInputFromWindow(searchText.getWindowToken(), 0);
     }
 
     public static CharSequence getTitle() {
