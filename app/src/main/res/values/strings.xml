@@ -41,6 +41,12 @@
     <string name="activity_view_activity">Activity</string>
     <string name="no_internet_connection">NO INTERNET CONNECTION</string>
     <string name="connect_to_use">stay calm and rock on</string>
+    <string name="total_albums">TOTAL ALBUMS /</string>
+    <string name="total_eps">TOTAL EPS /</string>
+    <string name="total_tracks">TOTAL TRACKS /</string>
+    <string name="total_popularity">POPULARITY /</string>
+    <string name="followers">\u0020FOLLOWERS</string>
+    <string name="follower">\u0020FOLLOWER</string>
 
     <string-array name="nav_tiles">
         <item>Artists</item>

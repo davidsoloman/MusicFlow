@@ -1,8 +1,6 @@
 package com.musicflow.app;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.musicflow.app.data.Artist;
-import com.musicflow.app.data.Bio;
 import com.musicflow.app.data.BioWrapper;
 import com.musicflow.app.mappers.ArtistMapper;
 import com.musicflow.app.mappers.BioMapper;
@@ -56,12 +53,19 @@ public class ArtistViewActivity extends Activity {
     }
 
     private void loadViewData() {
-        artistName.setText("Introducing: " + artist.getName());
-        artistTotalAlbums.setText("Total Albums: " + artist.getTotalAlbums());
-        totalTracks.setText("Total Tracks: " + artist.getTotalTracks());
-        totalEps.setText("Total EPs: " + artist.getTotalEps());
-        popularity.setText("Popularity: " + artist.getPopularity() + " followers");
-        Picasso.with(this).load(UrlFactory.imageUrl(artist.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).into(artistHeroImage);
+        artistName.setText(artist.getName());
+        artistTotalAlbums.setText(artist.getTotalAlbums());
+        totalTracks.setText(artist.getTotalTracks());
+        totalEps.setText(artist.getTotalEps());
+
+        int artistPopularity = artist.getPopularity();
+        if (artistPopularity != 1) {
+            popularity.setText(artistPopularity + getString(R.string.followers));
+        } else {
+            popularity.setText(artistPopularity + getString(R.string.follower));
+        }
+
+        Picasso.with(this).load(UrlFactory.imageUrl(artist.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(artistHeroImage);
     }
 
     private void loadBioData() {
