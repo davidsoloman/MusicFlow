@@ -39,6 +39,8 @@
     <string name="albums_activity">Albums</string>
     <string name="activities_activity">Activities</string>
     <string name="activity_view_activity">Activity</string>
+    <string name="no_internet_connection">NO INTERNET CONNECTION</string>
+    <string name="connect_to_use">stay calm and rock on</string>
 
     <string-array name="nav_tiles">
         <item>Artists</item>

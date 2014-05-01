@@ -15,6 +15,7 @@ public class ArtistsSectionPagerAdapter extends SectionsPagerAdapter {
 
     @Override
     public BeatsMusicFragment getItem(int position) {
+
         if (position == 0) {
             return ArtistsFragment.newInstance(position + 1);
         } else {
