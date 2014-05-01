@@ -1,16 +1,13 @@
 package com.musicflow.app;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.musicflow.app.data.Album;
 import com.musicflow.app.data.SearchResult;
 import com.musicflow.app.network.UrlFactory;
 import com.squareup.picasso.Picasso;
@@ -105,12 +102,12 @@ public class SearchResultAdapter extends ArrayAdapter<SearchResult> {
             });
 
         } else if ("track".equals(current.getResultType())) {
-            rowView = inflater.inflate(R.layout.song_list_item, parent, false);
+            rowView = inflater.inflate(R.layout.track_list_item, parent, false);
 
-            ImageView songCoverArt = (ImageView) rowView.findViewById(R.id.song_cover_art);
+            ImageView songCoverArt = (ImageView) rowView.findViewById(R.id.track_cover_art);
             Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.TRACK, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.THUMB)).placeholder(R.drawable.placeholder).into(songCoverArt);
 
-            TextView songTitle = (TextView) rowView.findViewById(R.id.song_title);
+            TextView songTitle = (TextView) rowView.findViewById(R.id.track_title);
             songTitle.setText(current.getDisplay());
             TextView albumTitle = (TextView) rowView.findViewById(R.id.album_title);
             albumTitle.setText(current.getDetail());

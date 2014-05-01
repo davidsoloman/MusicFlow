@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+import com.musicflow.app.adapters.LargeImageAlbumAdapter;
 import com.musicflow.app.data.Albums;
 import com.musicflow.app.mappers.AlbumsMapper;
 import com.musicflow.app.network.NetworkAdapter;

@@ -10,7 +10,7 @@ import com.musicflow.app.data.Activities;
 import com.musicflow.app.mappers.ActivitiesMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
-import com.musicflow.app.tests.ActivitiesAdapter;
+import com.musicflow.app.adapters.ActivitiesAdapter;
 
 import java.util.HashMap;
 
@@ -53,7 +53,7 @@ public class ActivitiesFragment extends BeatsMusicFragment {
 
     private void loadViewData() {
         activitiesListView.setAdapter(new ActivitiesAdapter(this.getActivity(),
-                R.id.artist_fragment_list_view, activities.getActivities()));
+                R.id.artists_fragment_list_view, activities.getActivities()));
     }
 
     private class ActivitiesNetworkAdapter extends NetworkAdapter {

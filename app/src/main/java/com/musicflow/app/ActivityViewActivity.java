@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.musicflow.app.adapters.PlaylistAdapter;
 import com.musicflow.app.data.Playlists;
 import com.musicflow.app.mappers.ActivityMapper;
 import com.musicflow.app.mappers.PlaylistsMapper;

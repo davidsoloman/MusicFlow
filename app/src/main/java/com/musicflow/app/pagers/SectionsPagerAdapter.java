@@ -1,10 +1,12 @@
-package com.musicflow.app;
+package com.musicflow.app.pagers;
 
 import java.util.Locale;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.musicflow.app.BeatsMusicFragment;
 
 public abstract class SectionsPagerAdapter extends FragmentPagerAdapter {
 

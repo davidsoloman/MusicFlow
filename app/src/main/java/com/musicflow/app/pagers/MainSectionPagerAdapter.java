@@ -1,6 +1,9 @@
-package com.musicflow.app;
+package com.musicflow.app.pagers;
 
 import android.support.v4.app.FragmentManager;
+
+import com.musicflow.app.BeatsMusicFragment;
+import com.musicflow.app.DocumentationFragment;
 
 import java.util.Locale;
 

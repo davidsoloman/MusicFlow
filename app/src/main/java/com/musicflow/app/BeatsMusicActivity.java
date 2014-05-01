@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.musicflow.app.pagers.SectionsPagerAdapter;
+
 public abstract class BeatsMusicActivity extends ActionBarActivity {
     protected String[] navTiles;
     protected DrawerLayout drawerLayout;

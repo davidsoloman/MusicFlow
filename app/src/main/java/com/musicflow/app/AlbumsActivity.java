@@ -3,6 +3,8 @@ package com.musicflow.app;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
+import com.musicflow.app.pagers.AlbumsSectionPagerAdapter;
+
 /**
  * Returns a view pager with an albums fragment and albums search fragment. 
  */

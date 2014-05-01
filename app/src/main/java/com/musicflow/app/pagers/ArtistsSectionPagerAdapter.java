@@ -1,6 +1,10 @@
-package com.musicflow.app;
+package com.musicflow.app.pagers;
 
 import android.support.v4.app.FragmentManager;
+
+import com.musicflow.app.ArtistsFragment;
+import com.musicflow.app.ArtistsSearchFragment;
+import com.musicflow.app.BeatsMusicFragment;
 
 import java.util.Locale;
 
@@ -12,9 +16,9 @@ public class ArtistsSectionPagerAdapter extends SectionsPagerAdapter {
     @Override
     public BeatsMusicFragment getItem(int position) {
         if (position == 0) {
-            return ArtistFragment.newInstance(position + 1);
+            return ArtistsFragment.newInstance(position + 1);
         } else {
-            return ArtistSearchFragment.newInstance(position + 1);
+            return ArtistsSearchFragment.newInstance(position + 1);
         }    }
 
     @Override
@@ -26,9 +30,9 @@ public class ArtistsSectionPagerAdapter extends SectionsPagerAdapter {
     public CharSequence getPageTitle(int position) {
         Locale l = Locale.getDefault();
         if (position == 0) {
-            return ArtistFragment.getTitle();
+            return ArtistsFragment.getTitle();
         } else {
-            return ArtistSearchFragment.getTitle();
+            return ArtistsSearchFragment.getTitle();
         }
     }
 }

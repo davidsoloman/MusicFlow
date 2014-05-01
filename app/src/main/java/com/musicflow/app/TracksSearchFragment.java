@@ -5,12 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ArtistSearchFragment extends BeatsMusicFragment {
+/**
+ * Created by whitney on 4/26/14.
+ */
+public class TracksSearchFragment extends BeatsMusicFragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    public static ArtistSearchFragment newInstance(int sectionNumber) {
-        ArtistSearchFragment fragment = new ArtistSearchFragment();
+    public static TracksSearchFragment newInstance(int sectionNumber) {
+        TracksSearchFragment fragment = new TracksSearchFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);

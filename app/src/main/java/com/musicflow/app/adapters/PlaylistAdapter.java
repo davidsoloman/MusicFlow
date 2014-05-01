@@ -1,4 +1,4 @@
-package com.musicflow.app;
+package com.musicflow.app.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.musicflow.app.R;
 import com.musicflow.app.data.Artist;
 import com.musicflow.app.data.Playlist;
 import com.musicflow.app.network.UrlFactory;
