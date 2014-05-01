@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.musicflow.app.data.AlbumList;
 import com.musicflow.app.data.Artists;
 import com.musicflow.app.data.BaseJson;
 
