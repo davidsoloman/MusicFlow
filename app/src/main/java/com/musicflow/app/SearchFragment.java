@@ -24,7 +24,6 @@ public class SearchFragment extends BeatsMusicFragment{
     protected EditText searchText;
     protected SearchResultNetworkAdapter networkRequest;
     protected SearchResults searchResults;
-    protected ImageButton searchButton;
 
     public SearchFragment() {}
 

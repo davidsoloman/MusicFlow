@@ -142,5 +142,4 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-
 }
