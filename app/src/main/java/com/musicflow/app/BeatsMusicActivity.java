@@ -109,7 +109,9 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
                 break;
             case 3:
                 break;
-            case 4: 
+            case 4:
+                i = new Intent(this, TracksActivity.class);
+                this.startActivity(i);
                 break;
             case 5:
                 break;
