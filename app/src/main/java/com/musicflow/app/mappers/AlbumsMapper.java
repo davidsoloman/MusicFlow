@@ -4,17 +4,17 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.musicflow.app.data.AlbumList;
+import com.musicflow.app.data.Albums;
 import com.musicflow.app.data.BaseJson;
 
 public class AlbumsMapper extends CommonMapper {
     @Override
     public BaseJson parseJson(String json) {
-        AlbumList albumList = new AlbumList();
+        Albums albums = new Albums();
 
         try {
             jsonParser = jsonFactory.createParser(json);
-            albumList = objMapper.readValue(jsonParser, AlbumList.class);
+            albums = objMapper.readValue(jsonParser, Albums.class);
         } catch (JsonParseException e) {
             e.printStackTrace();
         } catch (JsonMappingException e) {
@@ -23,6 +23,6 @@ public class AlbumsMapper extends CommonMapper {
             e.printStackTrace();
         }
 
-        return albumList;
+        return albums;
     }
 }

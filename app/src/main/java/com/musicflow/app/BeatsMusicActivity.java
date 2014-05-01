@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.musicflow.app.pagers.SectionsPagerAdapter;
+
 public abstract class BeatsMusicActivity extends ActionBarActivity {
     protected String[] navTiles;
     protected DrawerLayout drawerLayout;
@@ -107,7 +109,9 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
                 break;
             case 3:
                 break;
-            case 4: 
+            case 4:
+                i = new Intent(this, TracksActivity.class);
+                this.startActivity(i);
                 break;
             case 5:
                 break;

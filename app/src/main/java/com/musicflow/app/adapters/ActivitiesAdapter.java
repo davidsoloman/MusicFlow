@@ -1,4 +1,4 @@
-package com.musicflow.app.tests;
+package com.musicflow.app.adapters;
 
 import android.content.Context;
 import android.content.Intent;

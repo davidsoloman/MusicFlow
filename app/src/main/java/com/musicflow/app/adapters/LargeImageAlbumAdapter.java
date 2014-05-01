@@ -1,4 +1,4 @@
-package com.musicflow.app;
+package com.musicflow.app.adapters;
 
 import java.util.List;
 
@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.musicflow.app.ArtistViewActivity;
+import com.musicflow.app.R;
 import com.musicflow.app.data.Album;
 import com.musicflow.app.network.UrlFactory;
 import com.squareup.picasso.Picasso;

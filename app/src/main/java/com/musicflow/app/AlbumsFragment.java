@@ -6,7 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.musicflow.app.data.AlbumList;
+import com.musicflow.app.adapters.LargeImageAlbumAdapter;
+import com.musicflow.app.data.Albums;
 import com.musicflow.app.mappers.AlbumsMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
@@ -16,7 +17,7 @@ import java.util.HashMap;
 public class AlbumsFragment extends BeatsMusicFragment {
     protected ListView albumsListView; 
     protected AlbumListNetworkAdapter networkRequest;
-    protected AlbumList albums;
+    protected Albums albums;
 
 
     private static final String ARG_SECTION_NUMBER = "section_number";
@@ -33,7 +34,7 @@ public class AlbumsFragment extends BeatsMusicFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
-        albums = new AlbumList();
+        albums = new Albums();
 
         View rootView = inflater.inflate(R.layout.fragment_albums, container, false);
         albumsListView = (ListView) rootView.findViewById(R.id.albums_fragment_list_view);

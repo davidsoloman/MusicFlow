@@ -1,4 +1,4 @@
-package com.musicflow.app;
+package com.musicflow.app.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.musicflow.app.ArtistViewActivity;
+import com.musicflow.app.R;
 import com.musicflow.app.data.Artist;
 import com.musicflow.app.network.UrlFactory;
 import com.squareup.picasso.Picasso;

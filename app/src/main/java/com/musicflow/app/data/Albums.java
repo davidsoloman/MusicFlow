@@ -3,23 +3,23 @@ package com.musicflow.app.data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlbumList extends BaseJson {
+public class Albums extends BaseJson {
 
     protected String code;
     protected PagingInfo info;
     protected List<Album> data;
 
-    public AlbumList() {
+    public Albums() {
         this.data = new ArrayList<Album>();
         this.info = new PagingInfo();
     }
 
     public void fillIn(BaseJson parseJson) throws Exception {
-        if (parseJson instanceof AlbumList) {
-            List<Album> temp = ((AlbumList) parseJson).data;
+        if (parseJson instanceof Albums) {
+            List<Album> temp = ((Albums) parseJson).data;
             this.data.addAll(temp);
-            this.info = ((AlbumList) parseJson).info;
-            this.code = ((AlbumList) parseJson).code;
+            this.info = ((Albums) parseJson).info;
+            this.code = ((Albums) parseJson).code;
         } else {
             throw new Exception();
         }

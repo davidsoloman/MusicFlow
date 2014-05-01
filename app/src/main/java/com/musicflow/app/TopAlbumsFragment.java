@@ -8,7 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
-import com.musicflow.app.data.AlbumList;
+import com.musicflow.app.adapters.LargeImageAlbumAdapter;
+import com.musicflow.app.data.Albums;
 import com.musicflow.app.mappers.AlbumsMapper;
 import com.musicflow.app.network.NetworkAdapter;
 
@@ -20,7 +21,7 @@ public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshLi
 
     protected GridView gridView;
     protected AlbumListNetworkAdapter networkRequest;
-    protected AlbumList albums;
+    protected Albums albums;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
     private PullToRefreshLayout pullToRefreshLayout;
@@ -36,7 +37,7 @@ public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshLi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        albums = new AlbumList();
+        albums = new Albums();
 
         View rootView = inflater.inflate(R.layout.fragment_top_albums, container, false);
 
@@ -64,7 +65,7 @@ public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshLi
     @Override
     public void onRefreshStarted(View view) {
         if (!albums.getAlbums().isEmpty()) {
-            albums = new AlbumList();
+            albums = new Albums();
         }
         if (networkRequest != null) {
             networkRequest.cancel(true);

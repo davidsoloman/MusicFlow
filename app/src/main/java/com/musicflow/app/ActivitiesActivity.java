@@ -3,6 +3,8 @@ package com.musicflow.app;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
+import com.musicflow.app.pagers.ActivitiesSectionPagerAdapter;
+
 public class ActivitiesActivity extends BeatsMusicActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
