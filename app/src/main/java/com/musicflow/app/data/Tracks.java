@@ -3,6 +3,9 @@ package com.musicflow.app.data;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Returns a list of tracks.
+ */
 public class Tracks extends BaseJson {
     protected List<Track> data;
     protected String code;

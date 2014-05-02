@@ -2,6 +2,9 @@ package com.musicflow.app.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Returns a single track.
+ */
 public class Track extends BaseJson {
 
     protected String type;

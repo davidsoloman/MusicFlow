@@ -14,6 +14,9 @@ import com.musicflow.app.network.UrlFactory;
 
 import java.util.HashMap;
 
+/**
+ * Displays a list of albums.
+ */
 public class AlbumsFragment extends BeatsMusicFragment {
     protected ListView albumsListView; 
     protected AlbumListNetworkAdapter networkRequest;
