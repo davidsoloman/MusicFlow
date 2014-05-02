@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 public class UrlFactory {
     public static final String BASE_URL = "https://partner.api.beatsmusic.com/v1";
+    public static final String SEARCH_PREDICTIVE = "/api/searchPredictive/predictive";
 
     public final int OFFSET_DEFAULT = 0;
     public final int LIMIT_DEFAULT = 20;
@@ -303,6 +304,10 @@ public class UrlFactory {
 
     public static String usersPlaylists(String id, CollectionQueryParams params) {
         return BASE_URL + "/api/users/" + id + "/playlists" + "?client_id=" + clientID() + '&' + params.toString();
+    }
+
+    public static String searchPredictive(String searchText) {
+        return BASE_URL + SEARCH_PREDICTIVE + "?q=" + searchText + "&client_id=" + clientID();
     }
 
     public class LookupQueryParams {

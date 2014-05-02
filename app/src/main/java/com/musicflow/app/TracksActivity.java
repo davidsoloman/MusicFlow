@@ -7,7 +7,7 @@ import com.musicflow.app.pagers.TracksSectionPagerAdapter;
 
 /**
  * Returns an activity with a view pager that swaps between the track list fragment
- * and track search fragment.
+ * and track searchPredictive fragment.
  */
 public class TracksActivity extends BeatsMusicActivity {
     
