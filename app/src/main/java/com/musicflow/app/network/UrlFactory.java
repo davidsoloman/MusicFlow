@@ -307,7 +307,7 @@ public class UrlFactory {
     }
 
     public static String search(String searchText) {
-        return BASE_URL + "/api/search/predictive?q=" + searchText + "?client_id=" + clientID();
+        return BASE_URL + "/api/search/predictive?q=" + searchText + "&client_id=" + clientID();
     }
 
     public class LookupQueryParams {
