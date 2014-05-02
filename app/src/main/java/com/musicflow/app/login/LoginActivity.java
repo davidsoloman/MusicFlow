@@ -8,24 +8,30 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.musicflow.app.R;
-import com.musicflow.app.data.Authorization;
+import com.musicflow.app.data.Me;
+import com.musicflow.app.mappers.MeMapper;
+import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
+
+import java.util.HashMap;
 
 public class LoginActivity extends Activity {
     protected WebView webView;
 
-    protected Authorization authResponse;
-//    protected TokenNetworkRequest networkRequest;
+    protected Me me;
+    protected MeNetworkRequest networkRequest;
+    HashMap<String, String> authHeaders;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        authResponse = new Authorization();
+        me = new Me();
+        authHeaders = new HashMap<String, String>();
 
         webView = (WebView) findViewById(R.id.activity_login_web_view);
-        webView.getSettings().setJavaScriptEnabled(true);
+//        webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient() {
             public void onReceivedError(WebView view, int errorCode, String description,
                                         String failingUrl) {
@@ -47,14 +53,10 @@ public class LoginActivity extends Activity {
                     getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("user_state",state).commit();
                     getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_token_scope",scope).commit();
 
-                    completeSignIn();
+                    authHeaders.put("Authorization", "Bearer " + code);
 
-//                    String clientSecret = UrlFactory.clientSecret();
-//                    String clientId = UrlFactory.clientID();
-//                    AuthorizationRequest authorizationRequest = new AuthorizationRequest(clientSecret, clientId, code, getString(R.string.authorization_code_param));
-//                    networkRequest = new TokenNetworkRequest(authorizationRequest);
-//                    networkRequest.execute(UrlFactory.obtainToken());
-
+                    networkRequest = new MeNetworkRequest();
+                    networkRequest.execute(UrlFactory.me());
                     return true;
                 } else {
                     return false;
@@ -69,22 +71,18 @@ public class LoginActivity extends Activity {
         finish();
     }
 
-//    protected class TokenNetworkRequest extends NetworkAdapter {
-//
-//        public TokenNetworkRequest(AuthorizationRequest body) {
-//            super(new AuthorizationMapper(), RequestType.POST, new HashMap<String, String>(), body, authResponse);
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String result) {
-//            super.onPostExecute(result);
-//            getPreferences(MODE_PRIVATE).edit().putString("access_token",authResponse.getResult().getAccessToken()).commit();
-//            getPreferences(MODE_PRIVATE).edit().putString("refresh_token",authResponse.getResult().getRefreshToken()).commit();
-//            getPreferences(MODE_PRIVATE).edit().putString("access_token_token_type",authResponse.getResult().getTokenType()).commit();
-//            getPreferences(MODE_PRIVATE).edit().putLong("access_token_expiration", System.currentTimeMillis() + (authResponse.getResult().getExpiresIn() * 1000)).commit();
-//            getPreferences(MODE_PRIVATE).edit().putString("user_state",authResponse.getResult().getState()).commit();
-//            getPreferences(MODE_PRIVATE).edit().putString("access_token_scope",authResponse.getResult().getScope()).commit();
-//            completeSignIn();
-//        }
-//    }
+    protected class MeNetworkRequest extends NetworkAdapter {
+
+        public MeNetworkRequest() {
+            super(new MeMapper(), NetworkAdapter.RequestType.GET, authHeaders, me);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            String preferencesKey = getString(R.string.user_preferences_key);
+            getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("user_id", me.getResult().getUserContext()).commit();
+            completeSignIn();
+        }
+    }
 }

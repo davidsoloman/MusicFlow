@@ -43,7 +43,7 @@ public class ProfileActivity extends ActionBarActivity {
         String preferencesKey = getString(R.string.user_preferences_key);
         String accessToken = getSharedPreferences(preferencesKey, MODE_PRIVATE).getString("access_token", "");
         authHeaders.put("Authorization", "Bearer " + accessToken);
-        String userId = "145296034816327936";
+        String userId = getSharedPreferences(preferencesKey, MODE_PRIVATE).getString("user_id", "");
 
         networkRequest = new UserProfileNetworkAdapter();
         networkRequest.execute(UrlFactory.profile(userId));
