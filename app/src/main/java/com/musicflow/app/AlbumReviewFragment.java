@@ -5,18 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import com.musicflow.app.adapters.TracksAdapter;
 import com.musicflow.app.data.Review;
-import com.musicflow.app.data.Tracks;
 import com.musicflow.app.mappers.ReviewMapper;
-import com.musicflow.app.mappers.TracksMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
-import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
