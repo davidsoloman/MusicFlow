@@ -1,10 +1,6 @@
 package com.musicflow.app;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.musicflow.app.network.UrlFactory;
 import com.musicflow.app.utility.BaseSearchFragment;
@@ -21,7 +17,7 @@ public class ActivitiesSearchFragment extends BaseSearchFragment {
     }
 
     public String getNetworkUrl() {
-        return UrlFactory.search(searchText.getText().toString());
+        return UrlFactory.searchPredictive(searchText.getText().toString());
     }
 
     public static CharSequence getTitle() {

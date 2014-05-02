@@ -1,25 +1,9 @@
 package com.musicflow.app;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import com.musicflow.app.data.SearchResults;
-import com.musicflow.app.mappers.SearchResultsMapper;
-import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
 import com.musicflow.app.utility.BaseSearchFragment;
-
-import java.util.HashMap;
 
 public class TracksSearchFragment extends BaseSearchFragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
@@ -33,7 +17,7 @@ public class TracksSearchFragment extends BaseSearchFragment {
     }
 
     public String getNetworkUrl() {
-        return UrlFactory.search(searchText.getText().toString());
+        return UrlFactory.searchPredictive(searchText.getText().toString());
     }
 
     public static CharSequence getTitle() {

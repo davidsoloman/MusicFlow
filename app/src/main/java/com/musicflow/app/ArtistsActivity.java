@@ -7,7 +7,7 @@ import com.musicflow.app.pagers.ArtistsSectionPagerAdapter;
 
 /**
  * Returns an activity with a view pager that swaps between the artist list fragment
- * and artist search fragment.
+ * and artist searchPredictive fragment.
  */
 public class ArtistsActivity extends BeatsMusicActivity {
     

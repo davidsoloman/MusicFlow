@@ -6,7 +6,7 @@ import android.support.v4.view.ViewPager;
 import com.musicflow.app.pagers.AlbumsSectionPagerAdapter;
 
 /**
- * Returns a view pager with an albums fragment and albums search fragment. 
+ * Returns a view pager with an albums fragment and albums searchPredictive fragment.
  */
 public class AlbumsActivity extends BeatsMusicActivity {
 
