@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.musicflow.app.data.SearchResults;
 import com.musicflow.app.mappers.SearchResultsMapper;
 import com.musicflow.app.network.NetworkAdapter;
+import com.musicflow.app.network.UrlFactory;
 import com.musicflow.app.utility.BaseSearchFragment;
 
 import java.util.HashMap;
@@ -32,7 +33,7 @@ public class TracksSearchFragment extends BaseSearchFragment {
     }
 
     public String getNetworkUrl() {
-        return "https://partner.api.beatsmusic.com/v1/api/search/predictive?q=" + Uri.encode(searchText.getText().toString()) + "&client_id=frksnm8edw2t8ddebhkqkjwk";
+        return UrlFactory.search(searchText.getText().toString());
     }
 
     public static CharSequence getTitle() {
