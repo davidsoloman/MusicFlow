@@ -69,7 +69,7 @@ public class UrlFactory {
     }
 
     @SuppressWarnings("SpellCheckingInspection")
-    private static String clientID() {
+    public static String clientID() {
         return "frksnm8edw2t8ddebhkqkjwk";
     }
 

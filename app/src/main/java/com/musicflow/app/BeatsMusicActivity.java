@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.musicflow.app.login.LoginActivity;
 import com.musicflow.app.pagers.SectionsPagerAdapter;
 
 public abstract class BeatsMusicActivity extends ActionBarActivity {
@@ -87,6 +88,9 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
         switch (id) {
             case R.id.action_profile:
                 this.startActivity(new Intent(this, ProfileActivity.class));
+                break;
+            case R.id.action_login:
+                this.startActivity(new Intent(this, LoginActivity.class));
                 break;
             default:
                 return super.onOptionsItemSelected(item);
