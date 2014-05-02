@@ -3,6 +3,7 @@ package com.musicflow.app.mappers;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.musicflow.app.data.Activities;
+import com.musicflow.app.data.Authorization;
 import com.musicflow.app.data.BaseJson;
 
 import java.io.IOException;
@@ -11,11 +12,11 @@ public class AuthorizationMapper extends CommonMapper {
     
     @Override
     public BaseJson parseJson(String json) {
-        Activities activities = new Activities();
+        Authorization authorization = new Authorization();
 
         try {
             jsonParser = jsonFactory.createParser(json);
-            activities = objMapper.readValue(jsonParser, Activities.class);
+            authorization = objMapper.readValue(jsonParser, Authorization.class);
         } catch (JsonParseException e) {
             e.printStackTrace();
         } catch (JsonMappingException e) {
@@ -24,6 +25,6 @@ public class AuthorizationMapper extends CommonMapper {
             e.printStackTrace();
         }
 
-        return activities;
+        return authorization;
     }
 }
