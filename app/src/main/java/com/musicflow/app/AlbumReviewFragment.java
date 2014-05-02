@@ -28,7 +28,6 @@ public class AlbumReviewFragment extends BeatsMusicFragment {
     protected Review review;
     protected ReviewNetworkAdapter networkRequest;
 
-
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     public static AlbumReviewFragment newInstance(int sectionNumber) {
@@ -55,7 +54,6 @@ public class AlbumReviewFragment extends BeatsMusicFragment {
 
         innerFrame.addView(rootView);
         return innerFrame;
-
     }
 
     private void loadReviewData() {
@@ -74,5 +72,4 @@ public class AlbumReviewFragment extends BeatsMusicFragment {
             loadReviewData();
         }
     }
-
 }
