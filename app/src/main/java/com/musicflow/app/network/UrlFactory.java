@@ -78,8 +78,19 @@ public class UrlFactory {
         return "2vZyUjhnmgqpVRmkNYKuw285";
     }
 
+    // Reqires Auth
     public static String obtainToken() {
         return BASE_URL + "/oauth2/token";
+    }
+
+    // Requires Auth
+    public static String me() {
+        return BASE_URL + "/api/me";
+    }
+
+    // Requires Auth
+    public static String profile(String id) {
+        return BASE_URL + "/api/users/" + id;
     }
 
     public static String artistList() {

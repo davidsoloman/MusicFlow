@@ -52,6 +52,7 @@
     <string name="action_login">Login</string>
     <string name="login_welcome">Welcome to Music Flow</string>
     <string name="authorization_code_param">authorization_code</string>
+    <string name="user_preferences_key">user</string>
 
     <string-array name="nav_tiles">
         <item>Artists</item>

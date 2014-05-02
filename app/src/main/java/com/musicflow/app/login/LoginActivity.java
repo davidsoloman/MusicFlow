@@ -40,11 +40,12 @@ public class LoginActivity extends Activity {
                     String state = uri.getQueryParameter("state");
                     String scope = uri.getQueryParameter("scope");
 
-                    getPreferences(MODE_PRIVATE).edit().putString("access_token",code).commit();
-                    getPreferences(MODE_PRIVATE).edit().putString("access_token_token_type",tokenType).commit();
-                    getPreferences(MODE_PRIVATE).edit().putLong("access_token_expiration", System.currentTimeMillis() + (expiresIn * 1000)).commit();
-                    getPreferences(MODE_PRIVATE).edit().putString("user_state",state).commit();
-                    getPreferences(MODE_PRIVATE).edit().putString("access_token_scope",scope).commit();
+                    String preferencesKey = getString(R.string.user_preferences_key);
+                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_token",code).commit();
+                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_token_token_type",tokenType).commit();
+                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putLong("access_token_expiration", System.currentTimeMillis() + (expiresIn * 1000)).commit();
+                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("user_state",state).commit();
+                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_token_scope",scope).commit();
 
                     completeSignIn();
 
