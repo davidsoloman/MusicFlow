@@ -11,12 +11,18 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import com.musicflow.app.AlbumDetailActivity;
+import com.musicflow.app.AlbumDetailFragment;
 import com.musicflow.app.ArtistViewActivity;
 import com.musicflow.app.R;
 import com.musicflow.app.data.Album;
 import com.musicflow.app.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
+/**
+ * Injects large images into list view.  On click, opens up the album detail activity and
+ * corresponding fragments.
+ */
 public class LargeImageAlbumAdapter extends ArrayAdapter<Album> {
 
     private Context context;
@@ -31,14 +37,17 @@ public class LargeImageAlbumAdapter extends ArrayAdapter<Album> {
     }
 
     public View getView(final int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View rowView = inflater.inflate(R.layout.full_image_view, parent, false);
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ArtistViewActivity.class);
-                intent.putExtra("ArtistId", getItem(position).getRefs().getArtists().get(0).getId());
+                Intent intent = new Intent(context, AlbumDetailActivity.class);
+                intent.putExtra("AlbumId", getItem(position).getId());
+                intent.putExtra("ArtistName", getItem(position).getArtistDisplayName());
+                intent.putExtra("AlbumTitle", getItem(position).getTitle());
+
                 context.startActivity(intent);
             }
         });
