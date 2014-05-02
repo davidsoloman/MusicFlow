@@ -205,8 +205,8 @@ public class UrlFactory {
         return BASE_URL + "/api/albums/" + id + "/tracks" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
-    public static String albumReviews(String id) {
-        return BASE_URL + "/api/albums/" + id + "/reviews" + "?client_id=" + clientID();
+    public static String albumReview(String id) {
+        return BASE_URL + "/api/albums/" + id + "/review" + "?client_id=" + clientID();
     }
 
     public static String albumReviews(String id, CollectionQueryParams params) {

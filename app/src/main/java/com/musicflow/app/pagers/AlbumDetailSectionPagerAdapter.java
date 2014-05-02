@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.musicflow.app.ActivitiesSearchFragment;
 import com.musicflow.app.AlbumDetailFragment;
+import com.musicflow.app.AlbumReviewFragment;
 import com.musicflow.app.BeatsMusicFragment;
 import com.musicflow.app.pagers.SectionsPagerAdapter;
 
@@ -24,7 +25,7 @@ public class AlbumDetailSectionPagerAdapter extends SectionsPagerAdapter {
         if (position == 0) {
             return AlbumDetailFragment.newInstance(position + 1);
         } else {
-            return AlbumDetailFragment.newInstance(position + 1);
+            return AlbumReviewFragment.newInstance(position + 1);
         }
     }
 
@@ -39,7 +40,7 @@ public class AlbumDetailSectionPagerAdapter extends SectionsPagerAdapter {
         if (position == 0) {
             return AlbumDetailFragment.getTitle();
         } else {
-            return AlbumDetailFragment.getTitle();
+            return AlbumReviewFragment.getTitle();
         }
     }
 }
