@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class UrlFactory {
     public static final String BASE_URL = "https://partner.api.beatsmusic.com/v1";
-    public static final String SEARCH_PREDICTIVE = "/api/searchPredictive/predictive";
+    public static final String SEARCH_PREDICTIVE = "/api/search/predictive";
 
     public final int OFFSET_DEFAULT = 0;
     public final int LIMIT_DEFAULT = 20;
