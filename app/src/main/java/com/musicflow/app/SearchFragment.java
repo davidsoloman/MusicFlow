@@ -55,7 +55,7 @@ public class SearchFragment extends BeatsMusicFragment{
                     }
                     
                     networkRequest = new SearchResultNetworkAdapter();
-                    networkRequest.execute("https://partner.api.beatsmusic.com/v1/api/search/predictive?q=" + Uri.encode(searchText.getText().toString()) + "&client_id=frksnm8edw2t8ddebhkqkjwk");
+                    networkRequest.execute("https://partner.api.beatsmusic.com/v1/api/searchPredictive/predictive?q=" + Uri.encode(searchText.getText().toString()) + "&client_id=frksnm8edw2t8ddebhkqkjwk");
                     
                     return true;
                 }
