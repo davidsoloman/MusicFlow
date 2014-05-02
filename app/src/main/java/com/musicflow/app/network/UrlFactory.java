@@ -73,6 +73,26 @@ public class UrlFactory {
         return "frksnm8edw2t8ddebhkqkjwk";
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
+    public static String clientSecret() {
+        return "2vZyUjhnmgqpVRmkNYKuw285";
+    }
+
+    // Reqires Auth
+    public static String obtainToken() {
+        return BASE_URL + "/oauth2/token";
+    }
+
+    // Requires Auth
+    public static String me() {
+        return BASE_URL + "/api/me";
+    }
+
+    // Requires Auth
+    public static String profile(String id) {
+        return BASE_URL + "/api/users/" + id;
+    }
+
     public static String artistList() {
         return BASE_URL + "/api/artists" + "?client_id=" + clientID();
     }

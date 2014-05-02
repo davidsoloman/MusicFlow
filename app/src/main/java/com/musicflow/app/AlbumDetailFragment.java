@@ -88,6 +88,6 @@ public class AlbumDetailFragment extends BeatsMusicFragment {
     }
 
     public static CharSequence getTitle() {
-        return "AlbumDetail";
+        return "Album Detail";
     }
 }
