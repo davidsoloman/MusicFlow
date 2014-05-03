@@ -1,13 +1,11 @@
 package com.musicflow.app.pagers;
 
-import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
-import com.musicflow.app.ActivitiesSearchFragment;
 import com.musicflow.app.AlbumDetailFragment;
 import com.musicflow.app.AlbumReviewFragment;
 import com.musicflow.app.BeatsMusicFragment;
-import com.musicflow.app.pagers.SectionsPagerAdapter;
+import com.musicflow.app.CompanionAlbumsFragment;
 
 import java.util.Locale;
 
@@ -24,14 +22,16 @@ public class AlbumDetailSectionPagerAdapter extends SectionsPagerAdapter {
     public BeatsMusicFragment getItem(int position) {
         if (position == 0) {
             return AlbumDetailFragment.newInstance(position + 1);
-        } else {
+        } else if (position == 1) {
             return AlbumReviewFragment.newInstance(position + 1);
+        } else {
+            return CompanionAlbumsFragment.newInstance(position + 1);
         }
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -39,8 +39,10 @@ public class AlbumDetailSectionPagerAdapter extends SectionsPagerAdapter {
         Locale l = Locale.getDefault();
         if (position == 0) {
             return AlbumDetailFragment.getTitle();
-        } else {
+        } else if (position == 1) {
             return AlbumReviewFragment.getTitle();
+        } else {
+            return CompanionAlbumsFragment.getTitle();
         }
     }
 }

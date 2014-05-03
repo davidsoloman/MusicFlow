@@ -10,8 +10,6 @@ public class AuthorizationResult extends BaseJson {
     protected String accessToken;
     @JsonProperty("token_type")
     protected String tokenType;
-    @JsonProperty("expires_in")
-    protected Integer expiresIn;
     @JsonProperty("refresh_token")
     protected String refreshToken;
     protected String scope;
@@ -25,7 +23,6 @@ public class AuthorizationResult extends BaseJson {
             returnType = ((AuthorizationResult) parseJson).returnType;
             accessToken = ((AuthorizationResult) parseJson).accessToken;
             tokenType = ((AuthorizationResult) parseJson).tokenType;
-            expiresIn = ((AuthorizationResult) parseJson).expiresIn;
             refreshToken = ((AuthorizationResult) parseJson).refreshToken;
             scope = ((AuthorizationResult) parseJson).scope;
             state = ((AuthorizationResult) parseJson).state;
@@ -46,10 +43,6 @@ public class AuthorizationResult extends BaseJson {
 
     public String getTokenType() {
         return tokenType;
-    }
-
-    public Integer getExpiresIn() {
-        return expiresIn;
     }
 
     public String getRefreshToken() {
