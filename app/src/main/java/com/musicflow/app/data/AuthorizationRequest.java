@@ -11,21 +11,24 @@ public class AuthorizationRequest extends BaseJson {
     @JsonProperty("redirect_uri")
     protected String redirectUri;
     protected String code;
+    @JsonProperty("refresh_token")
+    protected String refreshToken;
     @JsonProperty("grant_type")
     protected String grantType;
 
     public AuthorizationRequest(String clientSecret, String clientId, String redirectUri, String code) {
-        this.clientSecret = clientSecret;
-        this.clientId = clientId;
-        this.redirectUri = redirectUri;
-        this.code = code;
+        this(clientSecret, clientId, redirectUri, code, "authorization_code", false);
     }
 
-    public AuthorizationRequest(String clientSecret, String clientId, String redirectUri, String code, String grantType) {
+    public AuthorizationRequest(String clientSecret, String clientId, String redirectUri, String code, String grantType, boolean refresh) {
         this.clientSecret = clientSecret;
         this.clientId = clientId;
         this.redirectUri = redirectUri;
-        this.code = code;
+        if (refresh) {
+            this.refreshToken = code;
+        } else {
+            this.code = code;
+        }
         this.grantType = grantType;
     }
 
@@ -72,5 +75,9 @@ public class AuthorizationRequest extends BaseJson {
 
     public void setGrantType(String grantType) {
         this.grantType = grantType;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
     }
 }
