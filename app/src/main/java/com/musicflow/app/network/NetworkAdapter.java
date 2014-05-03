@@ -63,7 +63,8 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
         this(mapper, type, headers, response);
         try {
             ObjectMapper jsonSerializer = new ObjectMapper();
-            this.body = new StringEntity(jsonSerializer.writeValueAsString(body));
+            String baseJsonString = jsonSerializer.writeValueAsString(body);
+            this.body = new StringEntity(baseJsonString);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (JsonProcessingException e) {
