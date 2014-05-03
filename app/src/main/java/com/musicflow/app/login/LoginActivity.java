@@ -11,6 +11,7 @@ import com.musicflow.app.R;
 import com.musicflow.app.data.Authorization;
 import com.musicflow.app.data.AuthorizationRequest;
 import com.musicflow.app.data.Me;
+import com.musicflow.app.mappers.AuthorizationMapper;
 import com.musicflow.app.mappers.MeMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
@@ -54,7 +55,7 @@ public class LoginActivity extends Activity {
                     getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("user_state",state).commit();
                     getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_code_scope",scope).commit();
 
-                    AuthorizationRequest body = new AuthorizationRequest(UrlFactory.clientSecret(), UrlFactory.clientID(), "http%3A%2F%2Fwww.musicflow.com", code, "authorization_code");
+                    AuthorizationRequest body = new AuthorizationRequest(UrlFactory.clientSecret(), UrlFactory.clientID(), "http://www.musicflow.com", code, "authorization_code");
 
                     authNetworkRequest = new AuthNetworkRequest(body);
                     authNetworkRequest.execute(UrlFactory.obtainToken());
@@ -90,7 +91,7 @@ public class LoginActivity extends Activity {
     protected class AuthNetworkRequest extends NetworkAdapter {
 
         public AuthNetworkRequest(AuthorizationRequest body) {
-            super(new MeMapper(), NetworkAdapter.RequestType.POST, authHeaders, body, me);
+            super(new AuthorizationMapper(), NetworkAdapter.RequestType.POST, authHeaders, body, authorization);
         }
 
         @Override

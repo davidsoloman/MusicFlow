@@ -41,7 +41,7 @@ public class ProfileActivity extends ActionBarActivity {
     private void fireOffNetwork()
     {
         String preferencesKey = getString(R.string.user_preferences_key);
-        String accessCode = getSharedPreferences(preferencesKey, MODE_PRIVATE).getString("access_code", "");
+        String accessCode = getSharedPreferences(preferencesKey, MODE_PRIVATE).getString("access_token", "");
         authHeaders.put("Authorization", "Bearer " + accessCode);
         String userId = getSharedPreferences(preferencesKey, MODE_PRIVATE).getString("user_id", "");
 
