@@ -1,5 +1,6 @@
 package com.musicflow.app;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +42,7 @@ public class AlbumsFragment extends BeatsMusicFragment {
 
         View rootView = inflater.inflate(R.layout.fragment_albums, container, false);
         albumsListView = (ListView) rootView.findViewById(R.id.albums_fragment_list_view);
-        networkRequest = new AlbumListNetworkAdapter();
+        networkRequest = new AlbumListNetworkAdapter(getActivity());
         networkRequest.execute(UrlFactory.albumList());
 
         innerFrame.addView(rootView);
@@ -56,8 +57,8 @@ public class AlbumsFragment extends BeatsMusicFragment {
     private class
             AlbumListNetworkAdapter extends NetworkAdapter {
 
-        public AlbumListNetworkAdapter() {
-            super(new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
+        public AlbumListNetworkAdapter(Context context) {
+            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
         }
 
         @Override

@@ -1,6 +1,7 @@
 package com.musicflow.app.login;
 
 import android.app.Activity;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.webkit.WebView;
@@ -57,7 +58,7 @@ public class LoginActivity extends Activity {
 
                     AuthorizationRequest body = new AuthorizationRequest(UrlFactory.clientSecret(), UrlFactory.clientID(), "http://www.musicflow.com", code, "authorization_code", false);
 
-                    authNetworkRequest = new AuthNetworkRequest(body);
+                    authNetworkRequest = new AuthNetworkRequest(getApplicationContext(), body);
                     authNetworkRequest.execute(UrlFactory.obtainToken());
                     return true;
                 } else {
@@ -75,8 +76,8 @@ public class LoginActivity extends Activity {
 
     protected class MeNetworkRequest extends NetworkAdapter {
 
-        public MeNetworkRequest() {
-            super(new MeMapper(), NetworkAdapter.RequestType.GET, authHeaders, me);
+        public MeNetworkRequest(Context context) {
+            super(context, new MeMapper(), NetworkAdapter.RequestType.GET, authHeaders, me);
         }
 
         @Override
@@ -90,8 +91,8 @@ public class LoginActivity extends Activity {
 
     protected class AuthNetworkRequest extends NetworkAdapter {
 
-        public AuthNetworkRequest(AuthorizationRequest body) {
-            super(new AuthorizationMapper(), NetworkAdapter.RequestType.POST, new HashMap<String, String>(), body, authorization);
+        public AuthNetworkRequest(Context context, AuthorizationRequest body) {
+            super(context, new AuthorizationMapper(), NetworkAdapter.RequestType.POST, new HashMap<String, String>(), body, authorization);
         }
 
         @Override
@@ -105,7 +106,7 @@ public class LoginActivity extends Activity {
 
             authHeaders.put("Authorization", "Bearer " + authorization.getResult().getAccessToken());
 
-            networkRequest = new MeNetworkRequest();
+            networkRequest = new MeNetworkRequest(context);
             networkRequest.execute(UrlFactory.me());
         }
     }

@@ -1,5 +1,6 @@
 package com.musicflow.app;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -57,14 +58,14 @@ public class ProfileActivity extends ActionBarActivity {
             String code = getSharedPreferences(preferencesKey, MODE_PRIVATE).getString("refresh_token", "");
             AuthorizationRequest body = new AuthorizationRequest(UrlFactory.clientSecret(), UrlFactory.clientID(), "http://www.musicflow.com", code, "refresh_token", true);
 
-            refreshAccessToken = new RefreshAccessToken(body);
+            refreshAccessToken = new RefreshAccessToken(this, body);
             refreshAccessToken.execute(UrlFactory.obtainToken());
         } else {
             String accessCode = getSharedPreferences(preferencesKey, MODE_PRIVATE).getString("access_token", "");
             authHeaders.put("Authorization", "Bearer " + accessCode);
             String userId = getSharedPreferences(preferencesKey, MODE_PRIVATE).getString("user_id", "");
 
-            networkRequest = new UserProfileNetworkAdapter();
+            networkRequest = new UserProfileNetworkAdapter(this);
             networkRequest.execute(UrlFactory.profile(userId));
         }
     }
@@ -74,8 +75,8 @@ public class ProfileActivity extends ActionBarActivity {
     }
 
     protected class UserProfileNetworkAdapter extends NetworkAdapter {
-        public UserProfileNetworkAdapter() {
-            super(new UserMapper(), RequestType.GET, authHeaders, user);
+        public UserProfileNetworkAdapter(Context context) {
+            super(context, new UserMapper(), RequestType.GET, authHeaders, user);
         }
 
         @Override
@@ -87,8 +88,8 @@ public class ProfileActivity extends ActionBarActivity {
 
     protected class RefreshAccessToken extends NetworkAdapter {
 
-        public RefreshAccessToken(AuthorizationRequest body) {
-            super(new AuthorizationMapper(), NetworkAdapter.RequestType.POST, new HashMap<String, String>(), body, authorization);
+        public RefreshAccessToken(Context context, AuthorizationRequest body) {
+            super(context, new AuthorizationMapper(), NetworkAdapter.RequestType.POST, new HashMap<String, String>(), body, authorization);
         }
 
         @Override
@@ -106,7 +107,7 @@ public class ProfileActivity extends ActionBarActivity {
             authHeaders.put("Authorization", "Bearer " + accessCode);
             String userId = getSharedPreferences(preferencesKey, MODE_PRIVATE).getString("user_id", "");
 
-            networkRequest = new UserProfileNetworkAdapter();
+            networkRequest = new UserProfileNetworkAdapter(context);
             networkRequest.execute(UrlFactory.profile(userId));
         }
     }

@@ -2,17 +2,15 @@ package com.musicflow.app;
 
 import java.util.HashMap;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.musicflow.app.data.Activities;
 import com.musicflow.app.data.Artist;
 import com.musicflow.app.data.BioWrapper;
 import com.musicflow.app.mappers.ArtistMapper;
@@ -64,11 +62,11 @@ public class ArtistViewFragment extends BeatsMusicFragment {
         totalTracks = (TextView) rootView.findViewById(R.id.total_tracks);
 
         artist = new Artist();
-        networkRequest = new ArtistNetworkAdapter();
+        networkRequest = new ArtistNetworkAdapter(getActivity());
         networkRequest.execute(UrlFactory.artist(artistId));
 
         bios = new BioWrapper();
-        bioNetworkRequest = new BioNetworkAdapter();
+        bioNetworkRequest = new BioNetworkAdapter(getActivity());
         bioNetworkRequest.execute(UrlFactory.artistBio(artistId));
 
         innerFrame.addView(rootView);
@@ -99,8 +97,8 @@ public class ArtistViewFragment extends BeatsMusicFragment {
     }
 
     private class ArtistNetworkAdapter extends NetworkAdapter {
-        public ArtistNetworkAdapter() {
-            super(new ArtistMapper(), RequestType.GET, new HashMap<String, String>(), artist);
+        public ArtistNetworkAdapter(Context context) {
+            super(context, new ArtistMapper(), RequestType.GET, new HashMap<String, String>(), artist);
         }
 
         @Override
@@ -111,8 +109,8 @@ public class ArtistViewFragment extends BeatsMusicFragment {
     }
 
     private class BioNetworkAdapter extends NetworkAdapter {
-        public BioNetworkAdapter() {
-            super(new BioMapper(), RequestType.GET, new HashMap<String, String>(), bios);
+        public BioNetworkAdapter(Context context) {
+            super(context, new BioMapper(), RequestType.GET, new HashMap<String, String>(), bios);
         }
 
         @Override
