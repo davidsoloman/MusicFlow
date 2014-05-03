@@ -14,7 +14,7 @@ public class AlbumDetailActivity extends BeatsMusicActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        sectionsPagerAdapter = new AlbumDetailSectionPagerAdapter(getSupportFragmentManager());
+        sectionsPagerAdapter = new AlbumDetailSectionPagerAdapter(getSupportFragmentManager(), this.getApplicationContext());
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(sectionsPagerAdapter);
 
