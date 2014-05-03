@@ -5,6 +5,9 @@ import android.os.Bundle;
 import com.musicflow.app.network.UrlFactory;
 import com.musicflow.app.utility.BaseSearchFragment;
 
+/**
+ * Displays a search fragment connected to the Artist Activity where a user can search.
+ */
 public class ArtistsSearchFragment extends BaseSearchFragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
 

@@ -14,7 +14,7 @@ import com.musicflow.app.network.UrlFactory;
 import java.util.HashMap;
 
 /**
- * Displays activity details and play lists.
+ * Displays a list view of Beats Music Activities.
  */
 public class ActivityViewActivity extends Activity {
     protected ActivityNetworkRequest activityNetworkRequest;
