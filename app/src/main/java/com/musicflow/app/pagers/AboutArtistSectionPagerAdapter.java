@@ -8,12 +8,13 @@ import com.musicflow.app.ActivitiesSearchFragment;
 import com.musicflow.app.ArtistViewFragment;
 import com.musicflow.app.BeatsMusicActivity;
 import com.musicflow.app.BeatsMusicFragment;
+import com.musicflow.app.EssentialAlbumsFragment;
 import com.musicflow.app.NoInternetFragment;
 
 import java.util.Locale;
 
 /**
- * Created by whitneyimura on 5/2/14.
+ * Pages between fragments about an artist.
  */
 public class AboutArtistSectionPagerAdapter extends SectionsPagerAdapter {
     protected Context context;
@@ -30,7 +31,7 @@ public class AboutArtistSectionPagerAdapter extends SectionsPagerAdapter {
             if (position == 0) {
                 return ArtistViewFragment.newInstance(position + 1);
             } else {
-                return ActivitiesSearchFragment.newInstance(position + 1);
+                return EssentialAlbumsFragment.newInstance(position + 1);
             }
         } else {
             return NoInternetFragment.newInstance(position + 1);
@@ -48,7 +49,7 @@ public class AboutArtistSectionPagerAdapter extends SectionsPagerAdapter {
         if (position == 0) {
             return ActivitiesFragment.getTitle();
         } else {
-            return ActivitiesSearchFragment.getTitle();
+            return EssentialAlbumsFragment.getTitle();
         }
     }
 }

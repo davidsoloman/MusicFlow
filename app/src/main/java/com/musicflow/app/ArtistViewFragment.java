@@ -21,6 +21,10 @@ import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
+/**
+ * Displays a view with artist image, name, info, and artist Bio.  Accessible by clicking
+ * an artist item in the artist fragment's list view. 
+ */
 public class ArtistViewFragment extends BeatsMusicFragment {
     protected ImageView artistHeroImage;
     protected TextView artistName;

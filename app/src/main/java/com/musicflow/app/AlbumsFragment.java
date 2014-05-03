@@ -53,7 +53,8 @@ public class AlbumsFragment extends BeatsMusicFragment {
         albumsListView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(), R.id.albums_fragment_list_view, albums.getAlbums()));
     }
 
-    private class AlbumListNetworkAdapter extends NetworkAdapter {
+    private class
+            AlbumListNetworkAdapter extends NetworkAdapter {
 
         public AlbumListNetworkAdapter() {
             super(new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);

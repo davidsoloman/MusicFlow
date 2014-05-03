@@ -7,26 +7,25 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.musicflow.app.adapters.LargeImageAlbumAdapter;
-import com.musicflow.app.data.Activities;
 import com.musicflow.app.data.Albums;
 import com.musicflow.app.mappers.AlbumsMapper;
+import com.musicflow.app.mappers.ArtistMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
 
 import java.util.HashMap;
 
 /**
- * Displays a list view of companion albums.  Is given AlbumId from the ArtistAdapter.
+ * Displays a list view of essential albums for an artist.
  */
-public class CompanionAlbumsFragment extends BeatsMusicFragment {
+public class EssentialAlbumsFragment extends BeatsMusicFragment{
     private static final String ARG_SECTION_NUMBER = "section_number";
-    protected CompanionAlbumsNetworkAdapter networkRequest;
-    protected Activities activities;
     protected Albums albums;
-    protected ListView companionAlbumsListView;
+    protected EssentialAlbumsNetworkAdapter networkRequest;
+    protected ListView essentialAlbumsListView;
 
-    public static CompanionAlbumsFragment newInstance(int sectionNumber) {
-        CompanionAlbumsFragment fragment = new CompanionAlbumsFragment();
+    public static EssentialAlbumsFragment newInstance(int sectionNumber) {
+        EssentialAlbumsFragment fragment = new EssentialAlbumsFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
@@ -38,25 +37,25 @@ public class CompanionAlbumsFragment extends BeatsMusicFragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         albums = new Albums();
-        String albumId = getActivity().getIntent().getStringExtra("AlbumId");
+        String artistId = getActivity().getIntent().getStringExtra("ArtistId");
         View rootView = inflater.inflate(R.layout.fragment_albums, container, false);
 
-        companionAlbumsListView = (ListView) rootView.findViewById(R.id.albums_fragment_list_view);
+        essentialAlbumsListView = (ListView) rootView.findViewById(R.id.albums_fragment_list_view);
 
-        networkRequest = new CompanionAlbumsNetworkAdapter();
-        networkRequest.execute(UrlFactory.albumCompanionAlbums(albumId));
+        networkRequest = new EssentialAlbumsNetworkAdapter();
+        networkRequest.execute(UrlFactory.artistEssentialAlbums(artistId));
 
         innerFrame.addView(rootView);
         return innerFrame;
     }
 
     private void setUpAdapter() {
-        companionAlbumsListView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(), R.id.albums_fragment_list_view, albums.getAlbums()));
+        essentialAlbumsListView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(), R.id.albums_fragment_list_view, albums.getAlbums()));
     }
 
-    private class CompanionAlbumsNetworkAdapter extends NetworkAdapter {
+    private class EssentialAlbumsNetworkAdapter extends NetworkAdapter {
 
-        public CompanionAlbumsNetworkAdapter() {
+        public EssentialAlbumsNetworkAdapter() {
             super(new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
         }
 
@@ -68,6 +67,7 @@ public class CompanionAlbumsFragment extends BeatsMusicFragment {
     }
 
     public static CharSequence getTitle() {
-        return "Companion Albums";
+        return "Essential Albums";
     }
+
 }
