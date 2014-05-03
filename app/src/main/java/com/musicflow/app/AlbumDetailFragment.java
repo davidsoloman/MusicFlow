@@ -1,6 +1,7 @@
 package com.musicflow.app;
 
-import android.app.Activity;
+import java.util.HashMap;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +11,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.musicflow.app.adapters.TracksAdapter;
-import com.musicflow.app.data.Albums;
 import com.musicflow.app.data.Tracks;
 import com.musicflow.app.mappers.TracksMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
 import com.squareup.picasso.Picasso;
-
-import java.util.HashMap;
 
 /**
  * Displays a list of tracks, an album image, album title, and artist name.

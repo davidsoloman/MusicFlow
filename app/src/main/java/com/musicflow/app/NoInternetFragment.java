@@ -9,7 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 /**
- * Created by whitneyimura on 4/30/14.
+ * Displays an image view if the user does not have any internet connection.
  */
 public class NoInternetFragment  extends BeatsMusicFragment {
 

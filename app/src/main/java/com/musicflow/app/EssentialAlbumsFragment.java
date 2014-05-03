@@ -1,5 +1,7 @@
 package com.musicflow.app;
 
+import java.util.HashMap;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,11 +11,8 @@ import android.widget.ListView;
 import com.musicflow.app.adapters.LargeImageAlbumAdapter;
 import com.musicflow.app.data.Albums;
 import com.musicflow.app.mappers.AlbumsMapper;
-import com.musicflow.app.mappers.ArtistMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
-
-import java.util.HashMap;
 
 /**
  * Displays a list view of essential albums for an artist.

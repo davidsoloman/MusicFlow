@@ -2,6 +2,9 @@ package com.musicflow.app;
 
 import android.os.Bundle;
 
+/**
+ * Displays a web view that shows the API's home page for their documentation.
+ */
 public class DocumentationFragment extends WebViewFragment {
     
     public static DocumentationFragment newInstance(int position) {

@@ -6,7 +6,7 @@ import android.support.v4.view.ViewPager;
 import com.musicflow.app.pagers.AlbumDetailSectionPagerAdapter;
 
 /**
- * Created by whitneyimura on 5/1/14.
+ * Displays fragments relating to Album Detail.
  */
 public class AlbumDetailActivity extends BeatsMusicActivity {
 
