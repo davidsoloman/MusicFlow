@@ -8,12 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.musicflow.app.AlbumDetailActivity;
-import com.musicflow.app.AlbumDetailFragment;
-import com.musicflow.app.ArtistViewActivity;
 import com.musicflow.app.R;
 import com.musicflow.app.data.Album;
 import com.musicflow.app.network.UrlFactory;
