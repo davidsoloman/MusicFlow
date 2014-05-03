@@ -1,35 +1,39 @@
 package com.musicflow.app.pagers;
 
+import java.util.Locale;
+
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
 import com.musicflow.app.ActivitiesFragment;
-import com.musicflow.app.ActivitiesSearchFragment;
+import com.musicflow.app.ArtistTracksFragment;
+import com.musicflow.app.ArtistViewFragment;
 import com.musicflow.app.BeatsMusicActivity;
 import com.musicflow.app.BeatsMusicFragment;
+import com.musicflow.app.EssentialAlbumsFragment;
 import com.musicflow.app.NoInternetFragment;
 
-import java.util.Locale;
-
 /**
- * Pages between the Activities Fragment and Activities Search Fragment.  Shows a no internet
- * Fragment if there is no internet available.
+ * Pages between fragments about an artist.
  */
-public class ActivitiesSectionPagerAdapter extends SectionsPagerAdapter {
+public class AboutArtistSectionPagerAdapter extends SectionsPagerAdapter {
     protected Context context;
 
-    public ActivitiesSectionPagerAdapter(FragmentManager fm, Context context) {
+    public AboutArtistSectionPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
+
     }
 
     @Override
     public BeatsMusicFragment getItem(int position) {
         if (BeatsMusicActivity.isNetworkAvailable(context)) {
             if (position == 0) {
-                return ActivitiesFragment.newInstance(position + 1);
+                return ArtistViewFragment.newInstance(position + 1);
+            } else if (position == 1) {
+                return EssentialAlbumsFragment.newInstance(position + 1);
             } else {
-                return ActivitiesSearchFragment.newInstance(position + 1);
+                return ArtistTracksFragment.newInstance(position + 1);
             }
         } else {
             return NoInternetFragment.newInstance(position + 1);
@@ -38,7 +42,7 @@ public class ActivitiesSectionPagerAdapter extends SectionsPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -46,8 +50,10 @@ public class ActivitiesSectionPagerAdapter extends SectionsPagerAdapter {
         Locale l = Locale.getDefault();
         if (position == 0) {
             return ActivitiesFragment.getTitle();
+        } else if (position == 1) {
+            return EssentialAlbumsFragment.getTitle();
         } else {
-            return ActivitiesSearchFragment.getTitle();
+            return ArtistTracksFragment.getTitle();
         }
     }
 }

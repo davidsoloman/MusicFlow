@@ -15,6 +15,10 @@ import com.musicflow.app.network.UrlFactory;
 
 import java.util.HashMap;
 
+/**
+ * Responsible for showing the user information about themselves.  Represents the Beats "me" 
+ * API endpoint.
+ */
 public class ProfileActivity extends ActionBarActivity {
 
     protected TextView username;

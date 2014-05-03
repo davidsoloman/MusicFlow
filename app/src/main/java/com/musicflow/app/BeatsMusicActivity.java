@@ -19,6 +19,9 @@ import android.widget.ListView;
 import com.musicflow.app.login.LoginActivity;
 import com.musicflow.app.pagers.SectionsPagerAdapter;
 
+/**
+ * Base actiivty for all other activities to inherit from.
+ */
 public abstract class BeatsMusicActivity extends ActionBarActivity {
     protected String[] navTiles;
     protected DrawerLayout drawerLayout;

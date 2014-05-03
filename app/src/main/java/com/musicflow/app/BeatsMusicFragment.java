@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 /**
- * Created by whitney on 4/25/14.
+ * Base fragment for all other fragments.
  */
 public abstract class BeatsMusicFragment extends Fragment {
 

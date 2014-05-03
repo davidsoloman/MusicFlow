@@ -9,7 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.musicflow.app.ArtistViewActivity;
+import com.musicflow.app.AboutArtistActivity;
+import com.musicflow.app.ArtistViewFragment;
 import com.musicflow.app.R;
 import com.musicflow.app.data.Artist;
 import com.musicflow.app.network.UrlFactory;
@@ -40,7 +41,7 @@ public class ArtistAdapter extends ArrayAdapter<Artist> {
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ArtistViewActivity.class);
+                Intent intent = new Intent(context, AboutArtistActivity.class);
                 intent.putExtra("ArtistId", getItem(position).getId());
                 context.startActivity(intent);
             }

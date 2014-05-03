@@ -25,8 +25,8 @@
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name=".ArtistViewActivity"
-            android:label="@string/artist_view" >
+            android:name=".AboutArtistActivity"
+            android:label="@string/about_the_artist" >
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
