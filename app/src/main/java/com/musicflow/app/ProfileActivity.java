@@ -12,6 +12,10 @@ import com.musicflow.app.network.UrlFactory;
 
 import java.util.HashMap;
 
+/**
+ * Responsible for showing the user information about themselves.  Represents the Beats "me" 
+ * API endpoint.
+ */
 public class ProfileActivity extends ActionBarActivity {
 
     protected TextView username;
@@ -41,9 +45,9 @@ public class ProfileActivity extends ActionBarActivity {
     private void fireOffNetwork()
     {
         String preferencesKey = getString(R.string.user_preferences_key);
-        String accessToken = getSharedPreferences(preferencesKey, MODE_PRIVATE).getString("access_token", "");
-        authHeaders.put("Authorization", "Bearer " + accessToken);
-        String userId = "145296034816327936";
+        String accessCode = getSharedPreferences(preferencesKey, MODE_PRIVATE).getString("access_token", "");
+        authHeaders.put("Authorization", "Bearer " + accessCode);
+        String userId = getSharedPreferences(preferencesKey, MODE_PRIVATE).getString("user_id", "");
 
         networkRequest = new UserProfileNetworkAdapter();
         networkRequest.execute(UrlFactory.profile(userId));

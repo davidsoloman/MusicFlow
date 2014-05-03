@@ -80,7 +80,7 @@ public class UrlFactory {
 
     // Reqires Auth
     public static String obtainToken() {
-        return BASE_URL + "/oauth2/token";
+        return  "https://partner.api.beatsmusic.com/oauth2/token";
     }
 
     // Requires Auth

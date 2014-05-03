@@ -14,10 +14,17 @@ public class AuthorizationRequest extends BaseJson {
     @JsonProperty("grant_type")
     protected String grantType;
 
-
-    public AuthorizationRequest(String clientSecret, String clientId, String code, String grantType) {
+    public AuthorizationRequest(String clientSecret, String clientId, String redirectUri, String code) {
         this.clientSecret = clientSecret;
         this.clientId = clientId;
+        this.redirectUri = redirectUri;
+        this.code = code;
+    }
+
+    public AuthorizationRequest(String clientSecret, String clientId, String redirectUri, String code, String grantType) {
+        this.clientSecret = clientSecret;
+        this.clientId = clientId;
+        this.redirectUri = redirectUri;
         this.code = code;
         this.grantType = grantType;
     }

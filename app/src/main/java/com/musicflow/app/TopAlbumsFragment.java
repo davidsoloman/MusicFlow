@@ -17,6 +17,9 @@ import uk.co.senab.actionbarpulltorefresh.library.ActionBarPullToRefresh;
 import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
 import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
 
+/**
+ * Displays the top albums against the Beats Music API.
+ */
 public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshListener{
 
     protected GridView gridView;
