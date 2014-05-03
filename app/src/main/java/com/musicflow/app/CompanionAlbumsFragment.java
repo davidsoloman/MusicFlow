@@ -2,6 +2,7 @@ package com.musicflow.app;
 
 import java.util.HashMap;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +44,7 @@ public class CompanionAlbumsFragment extends BeatsMusicFragment {
 
         companionAlbumsListView = (ListView) rootView.findViewById(R.id.albums_fragment_list_view);
 
-        networkRequest = new CompanionAlbumsNetworkAdapter();
+        networkRequest = new CompanionAlbumsNetworkAdapter(getActivity());
         networkRequest.execute(UrlFactory.albumCompanionAlbums(albumId));
 
         innerFrame.addView(rootView);
@@ -56,8 +57,8 @@ public class CompanionAlbumsFragment extends BeatsMusicFragment {
 
     private class CompanionAlbumsNetworkAdapter extends NetworkAdapter {
 
-        public CompanionAlbumsNetworkAdapter() {
-            super(new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
+        public CompanionAlbumsNetworkAdapter(Context context) {
+            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
         }
 
         @Override

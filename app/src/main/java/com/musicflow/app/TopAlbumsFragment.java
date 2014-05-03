@@ -2,6 +2,7 @@ package com.musicflow.app;
 
 import java.util.HashMap;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +47,7 @@ public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshLi
 
         gridView = (GridView) rootView.findViewById(R.id.gridview);
 
-        networkRequest = new AlbumListNetworkAdapter();
+        networkRequest = new AlbumListNetworkAdapter(getActivity());
         networkRequest.execute(this.getString(R.string.albums_collection));
 
         pullToRefreshLayout = (PullToRefreshLayout) rootView.findViewById(R.id.ptr_layout);
@@ -73,14 +74,14 @@ public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshLi
         if (networkRequest != null) {
             networkRequest.cancel(true);
         }
-        networkRequest = new AlbumListNetworkAdapter();
+        networkRequest = new AlbumListNetworkAdapter(getActivity());
         networkRequest.execute(this.getString(R.string.albums_collection));
     }
 
     private class AlbumListNetworkAdapter extends NetworkAdapter {
 
-        public AlbumListNetworkAdapter() {
-            super(new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
+        public AlbumListNetworkAdapter(Context context) {
+            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
         }
 
         @Override

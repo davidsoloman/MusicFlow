@@ -2,6 +2,7 @@ package com.musicflow.app;
 
 import java.util.HashMap;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -10,14 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.musicflow.app.data.SearchResults;
 import com.musicflow.app.mappers.SearchResultsMapper;
 import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
 
 public class SearchFragment extends BeatsMusicFragment{
     protected ListView searchResultsListView;
@@ -54,7 +53,7 @@ public class SearchFragment extends BeatsMusicFragment{
                         networkRequest.cancel(true);
                     }
                     
-                    networkRequest = new SearchResultNetworkAdapter();
+                    networkRequest = new SearchResultNetworkAdapter(getActivity());
                     networkRequest.execute("https://partner.api.beatsmusic.com/v1/api/searchPredictive/predictive?q=" + Uri.encode(searchText.getText().toString()) + "&client_id=frksnm8edw2t8ddebhkqkjwk");
                     
                     return true;
@@ -63,7 +62,7 @@ public class SearchFragment extends BeatsMusicFragment{
             }
         });
         searchResults = new SearchResults();
-        networkRequest = new SearchResultNetworkAdapter();
+        networkRequest = new SearchResultNetworkAdapter(getActivity());
 
         innerFrame.addView(rootView);
         return innerFrame;
@@ -74,8 +73,8 @@ public class SearchFragment extends BeatsMusicFragment{
     }
 
     private class SearchResultNetworkAdapter extends NetworkAdapter {
-        public SearchResultNetworkAdapter() {
-            super(new SearchResultsMapper(), RequestType.GET, new HashMap<String, String>(), searchResults);
+        public SearchResultNetworkAdapter(Context context) {
+            super(context, new SearchResultsMapper(), RequestType.GET, new HashMap<String, String>(), searchResults);
         }
 
         @Override

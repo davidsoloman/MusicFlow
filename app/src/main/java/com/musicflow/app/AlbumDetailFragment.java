@@ -2,6 +2,7 @@ package com.musicflow.app;
 
 import java.util.HashMap;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,7 +61,7 @@ public class AlbumDetailFragment extends BeatsMusicFragment {
         albumTitle = (TextView) rootView.findViewById(R.id.album_title);
         albumTitle.setText(albumTitleText);
 
-        networkRequest = new TrackListNetworkAdapter();
+        networkRequest = new TrackListNetworkAdapter(getActivity());
         networkRequest.execute(UrlFactory.albumTracks(albumId));
 
         innerFrame.addView(rootView);
@@ -74,8 +75,8 @@ public class AlbumDetailFragment extends BeatsMusicFragment {
 
     private class TrackListNetworkAdapter extends NetworkAdapter {
 
-        public TrackListNetworkAdapter() {
-            super(new TracksMapper(), RequestType.GET, new HashMap<String, String>(), tracks);
+        public TrackListNetworkAdapter(Context context) {
+            super(context, new TracksMapper(), RequestType.GET, new HashMap<String, String>(), tracks);
         }
 
         @Override

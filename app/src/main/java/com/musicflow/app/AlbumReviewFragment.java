@@ -1,5 +1,6 @@
 package com.musicflow.app;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +43,7 @@ public class AlbumReviewFragment extends BeatsMusicFragment {
         View rootView = inflater.inflate(R.layout.fragment_album_review, container, false);
         albumReview = (WebView) rootView.findViewById(R.id.album_review);
 
-        networkRequest = new ReviewNetworkAdapter();
+        networkRequest = new ReviewNetworkAdapter(getActivity());
         networkRequest.execute(UrlFactory.albumReview(albumId));
 
         innerFrame.addView(rootView);
@@ -55,8 +56,8 @@ public class AlbumReviewFragment extends BeatsMusicFragment {
 
     private class ReviewNetworkAdapter extends NetworkAdapter {
 
-        public ReviewNetworkAdapter() {
-            super(new ReviewMapper(), RequestType.GET, new HashMap<String, String>(), review);
+        public ReviewNetworkAdapter(Context context) {
+            super(context, new ReviewMapper(), RequestType.GET, new HashMap<String, String>(), review);
         }
 
         @Override

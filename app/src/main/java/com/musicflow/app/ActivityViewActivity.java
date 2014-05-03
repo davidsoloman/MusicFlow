@@ -1,6 +1,7 @@
 package com.musicflow.app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.ListView;
 
@@ -36,10 +37,10 @@ public class ActivityViewActivity extends Activity {
 
         playlistListView = (ListView) findViewById(R.id.activity_activity_list_view);
 
-        activityNetworkRequest = new ActivityNetworkRequest();
+        activityNetworkRequest = new ActivityNetworkRequest(this);
         activityNetworkRequest.execute(UrlFactory.activity(activityId));
 
-        playlistNetworkRequest = new PlaylistNetworkRequest();
+        playlistNetworkRequest = new PlaylistNetworkRequest(this);
         playlistNetworkRequest.execute(UrlFactory.activityEditorialPlaylists(activityId));
 
         setTitle("Activity");
@@ -54,8 +55,8 @@ public class ActivityViewActivity extends Activity {
     }
 
     private class ActivityNetworkRequest extends NetworkAdapter {
-        public ActivityNetworkRequest() {
-            super(new ActivityMapper(), RequestType.GET, new HashMap<String, String>(), activity);
+        public ActivityNetworkRequest(Context context) {
+            super(context, new ActivityMapper(), RequestType.GET, new HashMap<String, String>(), activity);
         }
 
         @Override
@@ -66,8 +67,8 @@ public class ActivityViewActivity extends Activity {
     }
 
     private class PlaylistNetworkRequest extends NetworkAdapter {
-        public PlaylistNetworkRequest() {
-            super(new PlaylistsMapper(), RequestType.GET, new HashMap<String, String>(), playlists);
+        public PlaylistNetworkRequest(Context context) {
+            super(context, new PlaylistsMapper(), RequestType.GET, new HashMap<String, String>(), playlists);
         }
 
         @Override

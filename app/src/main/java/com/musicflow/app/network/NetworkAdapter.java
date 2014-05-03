@@ -17,6 +17,7 @@ import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -39,8 +40,11 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
     protected Map<String, String> headers;
     protected BaseJson json;
     protected StringEntity body;
+    protected Context context;
 
-    public NetworkAdapter(CommonMapper mapper, RequestType type, Map<String, String> headers, BaseJson json) {
+    protected Boolean requiresAuth = false;
+
+    public NetworkAdapter(Context context, CommonMapper mapper, RequestType type, Map<String, String> headers, BaseJson json) {
         super();
         this.mapper = mapper;
         this.type = type;
@@ -48,10 +52,11 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
         headers.put("Accept", "application/json");
         headers.put("Content-Type", "application/json");
         this.json = json;
+        this.context = context;
     }
 
-    public NetworkAdapter(CommonMapper mapper, RequestType type, Map<String, String> headers, String body, BaseJson response) {
-        this(mapper, type, headers, response);
+    public NetworkAdapter(Context context, CommonMapper mapper, RequestType type, Map<String, String> headers, String body, BaseJson response) {
+        this(context, mapper, type, headers, response);
         try {
             this.body = new StringEntity(body);
         } catch (UnsupportedEncodingException e) {
@@ -59,8 +64,8 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
         }
     }
 
-    public NetworkAdapter(CommonMapper mapper, RequestType type, Map<String, String> headers, BaseJson body, BaseJson response) {
-        this(mapper, type, headers, response);
+    public NetworkAdapter(Context context, CommonMapper mapper, RequestType type, Map<String, String> headers, BaseJson body, BaseJson response) {
+        this(context, mapper, type, headers, response);
         try {
             ObjectMapper jsonSerializer = new ObjectMapper();
             String baseJsonString = jsonSerializer.writeValueAsString(body);
@@ -69,6 +74,13 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
             e.printStackTrace();
         } catch (JsonProcessingException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onPreExecute() {
+        if (requiresAuth) {
+            headers.put("Authorization", "Bearer " + context.getSharedPreferences("users", Context.MODE_PRIVATE).getString("access_token", ""));
         }
     }
 
