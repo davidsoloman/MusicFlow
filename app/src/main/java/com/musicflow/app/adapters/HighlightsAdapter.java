@@ -40,12 +40,10 @@ public class HighlightsAdapter extends ArrayAdapter<Highlight> {
             TextView playlistAuthor = (TextView) rowView.findViewById(R.id.playlist_author);
             ImageView highlightImageView = (ImageView) rowView.findViewById(R.id.highlight_image_view);
             return rowView;
-
         } else {
             rowView = inflater.inflate(R.layout.highlight_list_item, parent, false);
             TextView playlistAuthor = (TextView) rowView.findViewById(R.id.playlist_author);
             ImageView highlightImageView = (ImageView) rowView.findViewById(R.id.highlight_image_view);
-
             return rowView;
         }
 
