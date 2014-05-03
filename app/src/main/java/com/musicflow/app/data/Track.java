@@ -89,7 +89,7 @@ public class Track extends BaseJson {
         return diskNumber;
     }
 
-    public Boolean getSteamable() {
+    public Boolean getStreamable() {
         return streamable;
     }
 

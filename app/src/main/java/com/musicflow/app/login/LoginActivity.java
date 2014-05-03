@@ -55,7 +55,7 @@ public class LoginActivity extends Activity {
                     getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("user_state",state).commit();
                     getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_code_scope",scope).commit();
 
-                    AuthorizationRequest body = new AuthorizationRequest(UrlFactory.clientSecret(), UrlFactory.clientID(), "http://www.musicflow.com", code, "authorization_code");
+                    AuthorizationRequest body = new AuthorizationRequest(UrlFactory.clientSecret(), UrlFactory.clientID(), "http://www.musicflow.com", code, "authorization_code", false);
 
                     authNetworkRequest = new AuthNetworkRequest(body);
                     authNetworkRequest.execute(UrlFactory.obtainToken());
@@ -91,7 +91,7 @@ public class LoginActivity extends Activity {
     protected class AuthNetworkRequest extends NetworkAdapter {
 
         public AuthNetworkRequest(AuthorizationRequest body) {
-            super(new AuthorizationMapper(), NetworkAdapter.RequestType.POST, authHeaders, body, authorization);
+            super(new AuthorizationMapper(), NetworkAdapter.RequestType.POST, new HashMap<String, String>(), body, authorization);
         }
 
         @Override
@@ -101,6 +101,7 @@ public class LoginActivity extends Activity {
             String preferencesKey = getString(R.string.user_preferences_key);
             getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_token", authorization.getResult().getAccessToken()).commit();
             getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("refresh_token", authorization.getResult().getRefreshToken()).commit();
+            getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putLong("access_expires_at", System.currentTimeMillis() + (1000 * authorization.getResult().getExpiresIn())).commit();
 
             authHeaders.put("Authorization", "Bearer " + authorization.getResult().getAccessToken());
 

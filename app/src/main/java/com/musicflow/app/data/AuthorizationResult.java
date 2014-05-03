@@ -12,6 +12,8 @@ public class AuthorizationResult extends BaseJson {
     protected String tokenType;
     @JsonProperty("refresh_token")
     protected String refreshToken;
+    @JsonProperty("expires_in")
+    protected Integer expiresIn;
     protected String scope;
     protected String state;
     protected String uri;
@@ -63,5 +65,9 @@ public class AuthorizationResult extends BaseJson {
 
     public Boolean getExtended() {
         return extended;
+    }
+
+    public Integer getExpiresIn() {
+        return expiresIn;
     }
 }

@@ -78,7 +78,7 @@ public class UrlFactory {
         return "2vZyUjhnmgqpVRmkNYKuw285";
     }
 
-    // Reqires Auth
+    // Requires Auth
     public static String obtainToken() {
         return  "https://partner.api.beatsmusic.com/oauth2/token";
     }
