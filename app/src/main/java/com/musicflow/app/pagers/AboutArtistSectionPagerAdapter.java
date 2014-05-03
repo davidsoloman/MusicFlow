@@ -6,6 +6,7 @@ import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
 import com.musicflow.app.ActivitiesFragment;
+import com.musicflow.app.ArtistTracksFragment;
 import com.musicflow.app.ArtistViewFragment;
 import com.musicflow.app.BeatsMusicActivity;
 import com.musicflow.app.BeatsMusicFragment;
@@ -29,8 +30,10 @@ public class AboutArtistSectionPagerAdapter extends SectionsPagerAdapter {
         if (BeatsMusicActivity.isNetworkAvailable(context)) {
             if (position == 0) {
                 return ArtistViewFragment.newInstance(position + 1);
-            } else {
+            } else if (position == 1) {
                 return EssentialAlbumsFragment.newInstance(position + 1);
+            } else {
+                return ArtistTracksFragment.newInstance(position + 1);
             }
         } else {
             return NoInternetFragment.newInstance(position + 1);
@@ -39,7 +42,7 @@ public class AboutArtistSectionPagerAdapter extends SectionsPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -47,8 +50,10 @@ public class AboutArtistSectionPagerAdapter extends SectionsPagerAdapter {
         Locale l = Locale.getDefault();
         if (position == 0) {
             return ActivitiesFragment.getTitle();
-        } else {
+        } else if (position == 1) {
             return EssentialAlbumsFragment.getTitle();
+        } else {
+            return ArtistTracksFragment.getTitle();
         }
     }
 }
