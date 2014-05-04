@@ -1,7 +1,5 @@
 package com.musicflow.app.adapters;
 
-import java.util.List;
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -16,15 +14,17 @@ import com.musicflow.app.data.Album;
 import com.musicflow.app.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 /**
  * Injects large images into list view.  On click, opens up the album detail activity and
  * corresponding fragments.
  */
 public class LargeImageAlbumAdapter extends ArrayAdapter<Album> {
 
-    private Context context;
     protected List<Album> albums;
     protected int resource;
+    private Context context;
 
     public LargeImageAlbumAdapter(Context context, int resource, List<Album> albums) {
         super(context, resource, albums);
@@ -50,7 +50,7 @@ public class LargeImageAlbumAdapter extends ArrayAdapter<Album> {
         });
 
         ImageView largeImage = (ImageView) rowView.findViewById(R.id.full_sized_image);
-        Picasso.with(context).load(UrlFactory.imageUrl(getItem(position).getId(), UrlFactory.EntityType.ALBUM, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(largeImage);
+        Picasso.with(context).load(UrlFactory.imageUrl(getItem(position).getId(), UrlFactory.EntityType.ALBUM, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.MEDIUM)).placeholder(R.drawable.placeholder).fit().centerCrop().into(largeImage);
         return rowView;
     }
 }

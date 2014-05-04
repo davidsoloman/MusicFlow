@@ -1,7 +1,6 @@
 package com.musicflow.app;
 
-import java.util.HashMap;
-
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +13,12 @@ import com.musicflow.app.mappers.AlbumsMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
 
+import java.util.HashMap;
+
 /**
  * Displays a list view of essential albums for an artist.
  */
-public class EssentialAlbumsFragment extends BeatsMusicFragment{
+public class EssentialAlbumsFragment extends BeatsMusicFragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     protected Albums albums;
     protected EssentialAlbumsNetworkAdapter networkRequest;
@@ -31,6 +32,10 @@ public class EssentialAlbumsFragment extends BeatsMusicFragment{
         return fragment;
     }
 
+    public static CharSequence getTitle() {
+        return "Essential Albums";
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
@@ -41,7 +46,7 @@ public class EssentialAlbumsFragment extends BeatsMusicFragment{
 
         essentialAlbumsListView = (ListView) rootView.findViewById(R.id.albums_fragment_list_view);
 
-        networkRequest = new EssentialAlbumsNetworkAdapter();
+        networkRequest = new EssentialAlbumsNetworkAdapter(getActivity());
         networkRequest.execute(UrlFactory.artistEssentialAlbums(artistId));
 
         innerFrame.addView(rootView);
@@ -54,8 +59,8 @@ public class EssentialAlbumsFragment extends BeatsMusicFragment{
 
     private class EssentialAlbumsNetworkAdapter extends NetworkAdapter {
 
-        public EssentialAlbumsNetworkAdapter() {
-            super(new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
+        public EssentialAlbumsNetworkAdapter(Context context) {
+            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
         }
 
         @Override
@@ -63,10 +68,6 @@ public class EssentialAlbumsFragment extends BeatsMusicFragment{
             super.onPostExecute(result);
             setUpAdapter();
         }
-    }
-
-    public static CharSequence getTitle() {
-        return "Essential Albums";
     }
 
 }

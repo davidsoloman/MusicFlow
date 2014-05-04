@@ -1,7 +1,6 @@
 package com.musicflow.app.utility;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -51,7 +50,7 @@ public abstract class BaseSearchFragment extends BeatsMusicFragment {
                         networkRequest.cancel(true);
                     }
 
-                    networkRequest = new SearchResultNetworkAdapter();
+                    networkRequest = new SearchResultNetworkAdapter(getActivity());
                     networkRequest.execute(getNetworkUrl());
 
                     return true;
@@ -60,25 +59,13 @@ public abstract class BaseSearchFragment extends BeatsMusicFragment {
             }
         });
         searchResults = new SearchResults();
-        networkRequest = new SearchResultNetworkAdapter();
+        networkRequest = new SearchResultNetworkAdapter(getActivity());
         innerFrame.addView(rootView);
         return innerFrame;
     }
 
     private void loadViewData() {
         searchResultsListView.setAdapter(new SearchResultAdapter(this.getActivity(), R.id.results, searchResults.getSearchResults()));
-    }
-
-    private class SearchResultNetworkAdapter extends NetworkAdapter {
-        public SearchResultNetworkAdapter() {
-            super(new SearchResultsMapper(), RequestType.GET, new HashMap<String, String>(), searchResults);
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-            loadViewData();
-        }
     }
 
     protected void hideKeyboard() {
@@ -88,5 +75,17 @@ public abstract class BaseSearchFragment extends BeatsMusicFragment {
     }
 
     public abstract String getNetworkUrl();
+
+    private class SearchResultNetworkAdapter extends NetworkAdapter {
+        public SearchResultNetworkAdapter(Context context) {
+            super(context, new SearchResultsMapper(), RequestType.GET, new HashMap<String, String>(), searchResults);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            loadViewData();
+        }
+    }
 
 }

@@ -1,21 +1,19 @@
 package com.musicflow.app;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.TextView;
 
 /**
  * Displays an image view if the user does not have any internet connection.
  */
-public class NoInternetFragment  extends BeatsMusicFragment {
-
-    public NoInternetFragment() {}
+public class NoInternetFragment extends BeatsMusicFragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
+
+    public NoInternetFragment() {
+    }
 
     public static NoInternetFragment newInstance(int sectionNumber) {
         NoInternetFragment fragment = new NoInternetFragment();

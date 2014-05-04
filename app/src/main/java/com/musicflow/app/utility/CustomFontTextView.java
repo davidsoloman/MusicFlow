@@ -1,7 +1,5 @@
 package com.musicflow.app.utility;
 
-import java.util.HashMap;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
@@ -9,6 +7,8 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 import com.musicflow.app.R;
+
+import java.util.HashMap;
 
 public class CustomFontTextView extends TextView {
     public static final String BLACK = "fonts/NeuzeitGro-Bla.otf";

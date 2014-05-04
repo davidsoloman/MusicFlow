@@ -2,14 +2,13 @@ package com.musicflow.app.mappers;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.musicflow.app.data.Activities;
 import com.musicflow.app.data.Authorization;
 import com.musicflow.app.data.BaseJson;
 
 import java.io.IOException;
 
 public class AuthorizationMapper extends CommonMapper {
-    
+
     @Override
     public BaseJson parseJson(String json) {
         Authorization authorization = new Authorization();

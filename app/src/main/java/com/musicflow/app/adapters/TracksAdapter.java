@@ -19,9 +19,9 @@ import java.util.List;
  * Takes a list of tracks and produces one layout for each single track.
  */
 public class TracksAdapter extends ArrayAdapter<Track> {
-    private Context context;
     protected List<Track> tracks;
     protected int resource;
+    private Context context;
 
     public TracksAdapter(Context context, int resource, List<Track> tracks) {
         super(context, resource, tracks);
@@ -43,7 +43,7 @@ public class TracksAdapter extends ArrayAdapter<Track> {
         });
 
         ImageView trackCoverArt = (ImageView) rowView.findViewById(R.id.track_cover_art);
-        Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.TRACK, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.MEDIUM)).placeholder(R.drawable.placeholder).fit().centerCrop().into(trackCoverArt);
+        Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.TRACK, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).fit().centerCrop().into(trackCoverArt);
         TextView trackName = (TextView) rowView.findViewById(R.id.track_title);
         trackName.setText(current.getTitle());
 

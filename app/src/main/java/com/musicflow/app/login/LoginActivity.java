@@ -1,6 +1,7 @@
 package com.musicflow.app.login;
 
 import android.app.Activity;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.webkit.WebView;
@@ -25,7 +26,6 @@ public class LoginActivity extends Activity {
     protected Authorization authorization;
     protected MeNetworkRequest networkRequest;
     protected AuthNetworkRequest authNetworkRequest;
-    HashMap<String, String> authHeaders;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,14 +35,13 @@ public class LoginActivity extends Activity {
         me = new Me();
         authorization = new Authorization();
 
-        authHeaders = new HashMap<String, String>();
-
         webView = (WebView) findViewById(R.id.activity_login_web_view);
         webView.setWebViewClient(new WebViewClient() {
             public void onReceivedError(WebView view, int errorCode, String description,
                                         String failingUrl) {
 
             }
+
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if (url.contains("musicflow") && url.contains("code")) {
                     Uri uri = Uri.parse(url);
@@ -52,12 +51,12 @@ public class LoginActivity extends Activity {
 
                     String preferencesKey = getString(R.string.user_preferences_key);
                     getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_code", code).commit();
-                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("user_state",state).commit();
-                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_code_scope",scope).commit();
+                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("user_state", state).commit();
+                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_code_scope", scope).commit();
 
                     AuthorizationRequest body = new AuthorizationRequest(UrlFactory.clientSecret(), UrlFactory.clientID(), "http://www.musicflow.com", code, "authorization_code", false);
 
-                    authNetworkRequest = new AuthNetworkRequest(body);
+                    authNetworkRequest = new AuthNetworkRequest(getApplicationContext(), body);
                     authNetworkRequest.execute(UrlFactory.obtainToken());
                     return true;
                 } else {
@@ -75,8 +74,13 @@ public class LoginActivity extends Activity {
 
     protected class MeNetworkRequest extends NetworkAdapter {
 
-        public MeNetworkRequest() {
-            super(new MeMapper(), NetworkAdapter.RequestType.GET, authHeaders, me);
+        public MeNetworkRequest(Context context) {
+            super(context, new MeMapper(), NetworkAdapter.RequestType.GET, new HashMap<String, String>(), me);
+        }
+
+        @Override
+        protected Boolean authRequired() {
+            return true;
         }
 
         @Override
@@ -90,8 +94,8 @@ public class LoginActivity extends Activity {
 
     protected class AuthNetworkRequest extends NetworkAdapter {
 
-        public AuthNetworkRequest(AuthorizationRequest body) {
-            super(new AuthorizationMapper(), NetworkAdapter.RequestType.POST, new HashMap<String, String>(), body, authorization);
+        public AuthNetworkRequest(Context context, AuthorizationRequest body) {
+            super(context, new AuthorizationMapper(), NetworkAdapter.RequestType.POST, new HashMap<String, String>(), body, authorization);
         }
 
         @Override
@@ -103,9 +107,7 @@ public class LoginActivity extends Activity {
             getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("refresh_token", authorization.getResult().getRefreshToken()).commit();
             getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putLong("access_expires_at", System.currentTimeMillis() + (1000 * authorization.getResult().getExpiresIn())).commit();
 
-            authHeaders.put("Authorization", "Bearer " + authorization.getResult().getAccessToken());
-
-            networkRequest = new MeNetworkRequest();
+            networkRequest = new MeNetworkRequest(context);
             networkRequest.execute(UrlFactory.me());
         }
     }

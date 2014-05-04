@@ -1,5 +1,6 @@
 package com.musicflow.app;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +16,10 @@ import com.musicflow.app.network.UrlFactory;
 import java.util.HashMap;
 
 public class TracksFragment extends BeatsMusicFragment {
+    private static final String ARG_SECTION_NUMBER = "section_number";
     protected ListView tracksListView;
     protected TrackListNetworkAdapter networkRequest;
     protected Tracks tracks;
-
-
-    private static final String ARG_SECTION_NUMBER = "section_number";
 
     public static TracksFragment newInstance(int sectionNumber) {
         TracksFragment fragment = new TracksFragment();
@@ -28,6 +27,10 @@ public class TracksFragment extends BeatsMusicFragment {
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public static CharSequence getTitle() {
+        return "Tracks";
     }
 
     @Override
@@ -38,12 +41,12 @@ public class TracksFragment extends BeatsMusicFragment {
 
         View rootView = inflater.inflate(R.layout.fragment_tracks, container, false);
         tracksListView = (ListView) rootView.findViewById(R.id.tracks_fragment_list_view);
-        networkRequest = new TrackListNetworkAdapter();
+        networkRequest = new TrackListNetworkAdapter(getActivity());
         networkRequest.execute(UrlFactory.trackList());
 
         innerFrame.addView(rootView);
         return innerFrame;
-        
+
     }
 
     private void setUpAdapter() {
@@ -52,8 +55,8 @@ public class TracksFragment extends BeatsMusicFragment {
 
     private class TrackListNetworkAdapter extends NetworkAdapter {
 
-        public TrackListNetworkAdapter() {
-            super(new TracksMapper(), RequestType.GET, new HashMap<String, String>(), tracks);
+        public TrackListNetworkAdapter(Context context) {
+            super(context, new TracksMapper(), RequestType.GET, new HashMap<String, String>(), tracks);
         }
 
         @Override
@@ -61,9 +64,5 @@ public class TracksFragment extends BeatsMusicFragment {
             super.onPostExecute(result);
             setUpAdapter();
         }
-    }
-
-    public static CharSequence getTitle() {
-        return "Tracks";
     }
 }

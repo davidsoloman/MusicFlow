@@ -1,5 +1,6 @@
 package com.musicflow.app;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,7 +46,7 @@ public class HighlightsFragment extends BeatsMusicFragment{
 
         View rootView = inflater.inflate(R.layout.fragment_highlights, container, false);
         highlightsListView = (ListView) rootView.findViewById(R.id.fragment_highlights_list_view);
-        networkRequest = new HighlightsNetworkAdapter();
+        networkRequest = new HighlightsNetworkAdapter(getActivity());
         networkRequest.execute(UrlFactory.highlightsFeatured());
 
         innerFrame.addView(rootView);
@@ -59,8 +60,8 @@ public class HighlightsFragment extends BeatsMusicFragment{
 
     private class HighlightsNetworkAdapter extends NetworkAdapter {
 
-        public HighlightsNetworkAdapter() {
-            super(new HighlightsMapper(), RequestType.GET, new HashMap<String, String>(), highlights);
+        public HighlightsNetworkAdapter(Context context) {
+            super(context, new HighlightsMapper(), RequestType.GET, new HashMap<String, String>(), highlights);
         }
 
         @Override

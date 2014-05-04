@@ -19,11 +19,11 @@ public class ArtistsSearchFragment extends BaseSearchFragment {
         return fragment;
     }
 
-    public String getNetworkUrl() {
-        return UrlFactory.searchPredictive(searchText.getText().toString());
-    }
-
     public static CharSequence getTitle() {
         return "Search";
+    }
+
+    public String getNetworkUrl() {
+        return UrlFactory.searchPredictive(searchText.getText().toString());
     }
 }

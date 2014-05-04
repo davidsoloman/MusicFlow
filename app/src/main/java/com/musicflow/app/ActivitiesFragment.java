@@ -1,21 +1,22 @@
 package com.musicflow.app;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.musicflow.app.adapters.ActivitiesAdapter;
 import com.musicflow.app.data.Activities;
 import com.musicflow.app.mappers.ActivitiesMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
-import com.musicflow.app.adapters.ActivitiesAdapter;
 
 import java.util.HashMap;
 
 /**
- * Displays a list of beats music activities. 
+ * Displays a list of beats music activities.
  */
 public class ActivitiesFragment extends BeatsMusicFragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
@@ -43,7 +44,7 @@ public class ActivitiesFragment extends BeatsMusicFragment {
         View rootView = inflater.inflate(R.layout.fragment_activities, container, false);
         activitiesListView = (ListView) rootView.findViewById(R.id.activities_fragment_list_view);
 
-        networkRequest = new ActivitiesNetworkAdapter();
+        networkRequest = new ActivitiesNetworkAdapter(getActivity());
         networkRequest
                 .execute(UrlFactory.activitiesList());
 
@@ -57,8 +58,8 @@ public class ActivitiesFragment extends BeatsMusicFragment {
     }
 
     private class ActivitiesNetworkAdapter extends NetworkAdapter {
-        public ActivitiesNetworkAdapter() {
-            super(new ActivitiesMapper(), RequestType.GET, new HashMap<String, String>(),
+        public ActivitiesNetworkAdapter(Context context) {
+            super(context, new ActivitiesMapper(), RequestType.GET, new HashMap<String, String>(),
                     activities);
         }
 

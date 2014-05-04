@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.musicflow.app.AboutArtistActivity;
-import com.musicflow.app.ArtistViewFragment;
 import com.musicflow.app.R;
 import com.musicflow.app.data.Artist;
 import com.musicflow.app.network.UrlFactory;
@@ -22,9 +21,9 @@ import java.util.List;
  * Takes a list of artists and produces one layout for each single artist.
  */
 public class ArtistAdapter extends ArrayAdapter<Artist> {
-    private Context context;
     protected List<Artist> artists;
     protected int resource;
+    private Context context;
 
     public ArtistAdapter(Context context, int resource, List<Artist> artists) {
         super(context, resource, artists);
@@ -48,7 +47,7 @@ public class ArtistAdapter extends ArrayAdapter<Artist> {
         });
 
         ImageView artistProfileImage = (ImageView) rowView.findViewById(R.id.artist_profile_image);
-        Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.MEDIUM)).placeholder(R.drawable.placeholder).fit().centerCrop().into(artistProfileImage);
+        Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).fit().centerCrop().into(artistProfileImage);
         TextView artistName = (TextView) rowView.findViewById(R.id.artist_name);
         artistName.setText(current.getName());
 
