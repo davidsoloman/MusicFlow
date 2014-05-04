@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.musicflow.app.data.Review;
 import com.musicflow.app.mappers.ReviewMapper;
@@ -20,7 +22,12 @@ import java.util.HashMap;
 public class AlbumReviewFragment extends BeatsMusicFragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     protected WebView albumReview;
+    protected FrameLayout noResultsFrame;
+    protected FrameLayout resultsFrame;
+    protected TextView albumTitle;
     protected Review review;
+    protected TextView reviewBy;
+    protected String albumName;
     protected ReviewNetworkAdapter networkRequest;
 
     public static AlbumReviewFragment newInstance(int sectionNumber) {
@@ -36,11 +43,17 @@ public class AlbumReviewFragment extends BeatsMusicFragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         String albumId = getActivity().getIntent().getStringExtra("AlbumId");
+        albumName = getActivity().getIntent().getStringExtra("AlbumTitle");
 
         review = new Review();
 
         View rootView = inflater.inflate(R.layout.fragment_album_review, container, false);
+
         albumReview = (WebView) rootView.findViewById(R.id.album_review);
+        albumTitle = (TextView) rootView.findViewById(R.id.review_title);
+        reviewBy = (TextView) rootView.findViewById(R.id.review_by);
+        resultsFrame = (FrameLayout) rootView.findViewById(R.id.web_view_result_frame);
+        noResultsFrame = (FrameLayout) rootView.findViewById(R.id.no_reviews_frame);
 
         networkRequest = new ReviewNetworkAdapter(getActivity());
         networkRequest.execute(UrlFactory.albumReview(albumId));
@@ -50,7 +63,17 @@ public class AlbumReviewFragment extends BeatsMusicFragment {
     }
 
     private void loadReviewData() {
-        albumReview.loadData(review.getContent(), "text/html", "utf-8");
+        if (review.getContent() != null) {
+            albumReview.loadData(review.getContent(), "text/html", "utf-8");
+            albumTitle.setText(albumName);
+            if (review.getAuthor() != null) {
+                reviewBy.setText(review.getAuthor());
+            }
+        } else {
+            noResultsFrame.setVisibility(View.VISIBLE);
+            resultsFrame.setVisibility(View.GONE);
+
+        }
     }
 
     private class ReviewNetworkAdapter extends NetworkAdapter {
