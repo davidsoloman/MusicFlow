@@ -38,7 +38,7 @@ public class LargeImageAlbumAdapter extends ArrayAdapter<Album> {
         final LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         Album current = getItem(position);
 
-        View rowView = inflater.inflate(R.layout.fragment_albums, parent, false);
+        View rowView = inflater.inflate(R.layout.large_image_album_list_item, parent, false);
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
