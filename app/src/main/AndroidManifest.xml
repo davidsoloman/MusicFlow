@@ -67,8 +67,14 @@
                 android:value=".MainActivity"/>
         </activity>
         <activity
-            android:name=".GenreActivity"
-            android:label="@string/genre_activity" >
+            android:name=".HighlightsActivity"
+            android:label="@string/album_detail_activity" >
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity
+        android:name=".GenreActivity"
+        android:label="@string/genre_activity" >
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
