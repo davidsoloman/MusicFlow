@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.musicflow.app.R;
-import com.musicflow.app.data.Artist;
 import com.musicflow.app.data.Playlist;
 import com.musicflow.app.network.UrlFactory;
 import com.squareup.picasso.Picasso;
@@ -20,9 +19,9 @@ import java.util.List;
  * Takes a list of artists and produces one layout for each single artist.
  */
 public class PlaylistAdapter extends ArrayAdapter<Playlist> {
-    private Context context;
     protected List<Playlist> playlists;
     protected int resource;
+    private Context context;
 
     public PlaylistAdapter(Context context, int resource, List<Playlist> playlists) {
         super(context, resource, playlists);

@@ -16,9 +16,9 @@ import java.util.List;
 
 public class SearchResultAdapter extends ArrayAdapter<SearchResult> {
 
-    private Context context;
     protected List<SearchResult> searchResults;
     protected int resource;
+    private Context context;
 
     public SearchResultAdapter(Context context, int resource, List<SearchResult> searchResults) {
         super(context, resource, searchResults);

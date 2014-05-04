@@ -17,6 +17,7 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
     public void loadActivityUiElements() {
         viewPager = (ViewPager) getActivity().findViewById(R.id.viewpager);
     }
+
     public void testViewPagerNotNull() {
         loadActivityUiElements();
         // fail the test to show jenkins catching the error

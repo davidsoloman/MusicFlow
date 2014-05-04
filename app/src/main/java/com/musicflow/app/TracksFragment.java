@@ -16,12 +16,10 @@ import com.musicflow.app.network.UrlFactory;
 import java.util.HashMap;
 
 public class TracksFragment extends BeatsMusicFragment {
+    private static final String ARG_SECTION_NUMBER = "section_number";
     protected ListView tracksListView;
     protected TrackListNetworkAdapter networkRequest;
     protected Tracks tracks;
-
-
-    private static final String ARG_SECTION_NUMBER = "section_number";
 
     public static TracksFragment newInstance(int sectionNumber) {
         TracksFragment fragment = new TracksFragment();
@@ -29,6 +27,10 @@ public class TracksFragment extends BeatsMusicFragment {
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public static CharSequence getTitle() {
+        return "Tracks";
     }
 
     @Override
@@ -44,7 +46,7 @@ public class TracksFragment extends BeatsMusicFragment {
 
         innerFrame.addView(rootView);
         return innerFrame;
-        
+
     }
 
     private void setUpAdapter() {
@@ -62,9 +64,5 @@ public class TracksFragment extends BeatsMusicFragment {
             super.onPostExecute(result);
             setUpAdapter();
         }
-    }
-
-    public static CharSequence getTitle() {
-        return "Tracks";
     }
 }

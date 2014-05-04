@@ -19,9 +19,9 @@ import java.util.List;
  * Takes a list of tracks and produces one layout for each single track.
  */
 public class TracksAdapter extends ArrayAdapter<Track> {
-    private Context context;
     protected List<Track> tracks;
     protected int resource;
+    private Context context;
 
     public TracksAdapter(Context context, int resource, List<Track> tracks) {
         super(context, resource, tracks);

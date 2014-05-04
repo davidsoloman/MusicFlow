@@ -10,7 +10,7 @@ import com.musicflow.app.pagers.TracksSectionPagerAdapter;
  * and track searchPredictive fragment.
  */
 public class TracksActivity extends BeatsMusicActivity {
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

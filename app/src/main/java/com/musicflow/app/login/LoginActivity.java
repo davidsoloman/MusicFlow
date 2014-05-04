@@ -41,6 +41,7 @@ public class LoginActivity extends Activity {
                                         String failingUrl) {
 
             }
+
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if (url.contains("musicflow") && url.contains("code")) {
                     Uri uri = Uri.parse(url);
@@ -50,8 +51,8 @@ public class LoginActivity extends Activity {
 
                     String preferencesKey = getString(R.string.user_preferences_key);
                     getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_code", code).commit();
-                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("user_state",state).commit();
-                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_code_scope",scope).commit();
+                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("user_state", state).commit();
+                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_code_scope", scope).commit();
 
                     AuthorizationRequest body = new AuthorizationRequest(UrlFactory.clientSecret(), UrlFactory.clientID(), "http://www.musicflow.com", code, "authorization_code", false);
 
@@ -73,13 +74,13 @@ public class LoginActivity extends Activity {
 
     protected class MeNetworkRequest extends NetworkAdapter {
 
+        public MeNetworkRequest(Context context) {
+            super(context, new MeMapper(), NetworkAdapter.RequestType.GET, new HashMap<String, String>(), me);
+        }
+
         @Override
         protected Boolean authRequired() {
             return true;
-        }
-
-        public MeNetworkRequest(Context context) {
-            super(context, new MeMapper(), NetworkAdapter.RequestType.GET, new HashMap<String, String>(), me);
         }
 
         @Override

@@ -18,11 +18,10 @@ import java.util.HashMap;
  * Displays a the review of album.
  */
 public class AlbumReviewFragment extends BeatsMusicFragment {
+    private static final String ARG_SECTION_NUMBER = "section_number";
     protected WebView albumReview;
     protected Review review;
     protected ReviewNetworkAdapter networkRequest;
-
-    private static final String ARG_SECTION_NUMBER = "section_number";
 
     public static AlbumReviewFragment newInstance(int sectionNumber) {
         AlbumReviewFragment fragment = new AlbumReviewFragment();

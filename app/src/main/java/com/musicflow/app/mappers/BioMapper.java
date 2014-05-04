@@ -2,7 +2,6 @@ package com.musicflow.app.mappers;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.musicflow.app.data.AlbumWrapper;
 import com.musicflow.app.data.BaseJson;
 import com.musicflow.app.data.BioWrapper;
 

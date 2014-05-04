@@ -1,13 +1,13 @@
 package com.musicflow.app.mappers;
 
-import java.io.IOException;
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.musicflow.app.data.AlbumWrapper;
 import com.musicflow.app.data.BaseJson;
 
-public class AlbumMapper extends CommonMapper{
+import java.io.IOException;
+
+public class AlbumMapper extends CommonMapper {
     @Override
     public BaseJson parseJson(String json) {
         AlbumWrapper albumWrapper = new AlbumWrapper();

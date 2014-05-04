@@ -14,7 +14,7 @@ import java.util.Locale;
 /**
  * Switches between the different Albums fragments that are displayed on the Album activity.
  */
-public class AlbumsSectionPagerAdapter extends SectionsPagerAdapter{
+public class AlbumsSectionPagerAdapter extends SectionsPagerAdapter {
     protected Context context;
 
     public AlbumsSectionPagerAdapter(FragmentManager fm, Context context) {

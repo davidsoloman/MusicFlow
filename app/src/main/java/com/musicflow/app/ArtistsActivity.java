@@ -10,7 +10,7 @@ import com.musicflow.app.pagers.ArtistsSectionPagerAdapter;
  * and artist searchPredictive fragment.
  */
 public class ArtistsActivity extends BeatsMusicActivity {
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

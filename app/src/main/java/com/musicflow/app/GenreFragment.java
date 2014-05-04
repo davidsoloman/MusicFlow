@@ -1,7 +1,5 @@
 package com.musicflow.app;
 
-import java.util.HashMap;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +12,8 @@ import com.musicflow.app.data.Genres;
 import com.musicflow.app.mappers.GenresMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
+
+import java.util.HashMap;
 
 /**
  * Displays a list of genres.
@@ -31,6 +31,10 @@ public class GenreFragment extends BeatsMusicFragment {
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public static CharSequence getTitle() {
+        return "Genres";
     }
 
     @Override
@@ -64,9 +68,5 @@ public class GenreFragment extends BeatsMusicFragment {
             super.onPostExecute(result);
             loadViewData();
         }
-    }
-
-    public static CharSequence getTitle() {
-        return "Genres";
     }
 }

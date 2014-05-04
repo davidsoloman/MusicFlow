@@ -10,7 +10,7 @@ import com.musicflow.app.NoInternetFragment;
 
 import java.util.Locale;
 
-public class MainSectionPagerAdapter extends SectionsPagerAdapter{
+public class MainSectionPagerAdapter extends SectionsPagerAdapter {
     protected Context context;
 
     public MainSectionPagerAdapter(FragmentManager fm, Context context) {

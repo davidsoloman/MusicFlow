@@ -8,7 +8,7 @@ import com.musicflow.app.data.Highlights;
 import java.io.IOException;
 
 public class HighlightsMapper extends CommonMapper {
-    
+
     @Override
     public BaseJson parseJson(String json) {
         Highlights highlights = new Highlights();

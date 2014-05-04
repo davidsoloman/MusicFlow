@@ -1,8 +1,5 @@
 package com.musicflow.app.data;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ReviewWrapper extends BaseJson {
     protected Review data;
     protected String code;
