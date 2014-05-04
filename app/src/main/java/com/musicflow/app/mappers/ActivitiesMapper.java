@@ -1,14 +1,14 @@
 package com.musicflow.app.mappers;
 
-import java.io.IOException;
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.musicflow.app.data.Activities;
 import com.musicflow.app.data.BaseJson;
 
-public class ActivitiesMapper extends CommonMapper {
+import java.io.IOException;
 
+public class ActivitiesMapper extends CommonMapper {
+    
     @Override
     public BaseJson parseJson(String json) {
         Activities activities = new Activities();

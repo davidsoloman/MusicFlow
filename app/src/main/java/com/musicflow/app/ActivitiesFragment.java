@@ -1,7 +1,5 @@
 package com.musicflow.app;
 
-import java.util.HashMap;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,14 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.musicflow.app.adapters.ActivitiesAdapter;
 import com.musicflow.app.data.Activities;
 import com.musicflow.app.mappers.ActivitiesMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
+import com.musicflow.app.adapters.ActivitiesAdapter;
+
+import java.util.HashMap;
 
 /**
- * Displays a list of beats music activities.
+ * Displays a list of beats music activities. 
  */
 public class ActivitiesFragment extends BeatsMusicFragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
@@ -45,7 +45,8 @@ public class ActivitiesFragment extends BeatsMusicFragment {
         activitiesListView = (ListView) rootView.findViewById(R.id.activities_fragment_list_view);
 
         networkRequest = new ActivitiesNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.activitiesList());
+        networkRequest
+                .execute(UrlFactory.activitiesList());
 
         innerFrame.addView(rootView);
         return innerFrame;

@@ -1,6 +1,6 @@
 package com.musicflow.app.data;
 
-public class ReferenceLink extends BaseJson {
+public class ReferenceLink extends BaseJson{
     protected String refType;
     protected String id;
     protected String display;

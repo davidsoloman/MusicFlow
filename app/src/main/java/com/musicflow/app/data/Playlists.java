@@ -13,7 +13,7 @@ public class Playlists extends BaseJson {
         this.data = new ArrayList<Playlist>();
         this.info = new PagingInfo();
     }
-
+    
     @Override
     public void fillIn(BaseJson parseJson) throws Exception {
         if (parseJson instanceof Playlists) {
@@ -23,7 +23,7 @@ public class Playlists extends BaseJson {
             this.code = ((Playlists) parseJson).code;
         } else {
             throw new Exception();
-        }
+        }       
     }
 
     public String getCode() {

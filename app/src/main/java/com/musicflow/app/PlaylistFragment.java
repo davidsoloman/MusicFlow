@@ -10,9 +10,10 @@ import android.widget.TextView;
 
 public class PlaylistFragment extends Fragment {
 
+    public PlaylistFragment() {}
+
     private static final String ARG_SECTION_NUMBER = "section_number";
     private ListView listView;
-    public PlaylistFragment() {}
 
     public static PlaylistFragment newInstance(int sectionNumber) {
         PlaylistFragment fragment = new PlaylistFragment();

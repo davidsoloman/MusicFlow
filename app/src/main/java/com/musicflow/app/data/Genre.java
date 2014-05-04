@@ -2,10 +2,10 @@ package com.musicflow.app.data;
 
 /**
  * Genre returns a Beats genre (eg. "Pop").
- * 
+ *
  * Requires Auth.
  */
-public class Genre extends BaseJson {
+public class Genre  extends BaseJson {
     protected String id;
     protected Boolean verified;
     protected String username;

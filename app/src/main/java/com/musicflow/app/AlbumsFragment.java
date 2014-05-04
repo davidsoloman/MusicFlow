@@ -1,7 +1,5 @@
 package com.musicflow.app;
 
-import java.util.HashMap;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,14 +13,18 @@ import com.musicflow.app.mappers.AlbumsMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
 
+import java.util.HashMap;
+
 /**
  * Displays a list of albums inside the Albums Activity.
  */
 public class AlbumsFragment extends BeatsMusicFragment {
-    private static final String ARG_SECTION_NUMBER = "section_number";
-    protected ListView albumsListView;
+    protected ListView albumsListView; 
     protected AlbumListNetworkAdapter networkRequest;
     protected Albums albums;
+
+
+    private static final String ARG_SECTION_NUMBER = "section_number";
 
     public static AlbumsFragment newInstance(int sectionNumber) {
         AlbumsFragment fragment = new AlbumsFragment();
@@ -30,10 +32,6 @@ public class AlbumsFragment extends BeatsMusicFragment {
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    public static CharSequence getTitle() {
-        return "Albums";
     }
 
     @Override
@@ -49,19 +47,18 @@ public class AlbumsFragment extends BeatsMusicFragment {
 
         innerFrame.addView(rootView);
         return innerFrame;
-
+        
     }
 
     private void setUpAdapter() {
-        albumsListView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(),
-                R.id.albums_fragment_list_view, albums.getAlbums()));
+        albumsListView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(), R.id.albums_fragment_list_view, albums.getAlbums()));
     }
 
-    private class AlbumListNetworkAdapter extends NetworkAdapter {
+    private class
+            AlbumListNetworkAdapter extends NetworkAdapter {
 
         public AlbumListNetworkAdapter(Context context) {
-            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(),
-                    albums);
+            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
         }
 
         @Override
@@ -69,5 +66,9 @@ public class AlbumsFragment extends BeatsMusicFragment {
             super.onPostExecute(result);
             setUpAdapter();
         }
+    }
+
+    public static CharSequence getTitle() {
+        return "Albums";
     }
 }

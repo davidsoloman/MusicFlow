@@ -12,25 +12,25 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:background="#ff111111"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/playlist_title"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:paddingStart="10dp"
-            android:paddingTop="50dp"
-            android:singleLine="true"
             android:textColor="#ffffffff"
             android:textSize="17sp"
             android:textStyle="bold"
-            android:typeface="sans" />
+            android:paddingTop="50dp"
+            android:typeface="sans"
+            android:singleLine="true"
+            android:paddingStart="10dp" />
 
         <TextView
-            android:id="@+id/curator"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:id="@+id/curator" />
     </LinearLayout>
 </LinearLayout>

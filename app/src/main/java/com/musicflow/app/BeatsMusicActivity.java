@@ -33,16 +33,6 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
     SectionsPagerAdapter sectionsPagerAdapter;
     ViewPager viewPager;
 
-    /**
-     * Checks the phone's network connectivity status.
-     */
-    public static boolean isNetworkAvailable(Context context) {
-        ConnectivityManager connectivityManager =
-                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +84,7 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -114,7 +105,7 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
     private void selectItem(int position) {
         Intent i;
         switch (position) {
-            case 0:
+            case 0: 
                 i = new Intent(this, ArtistsActivity.class);
                 this.startActivity(i);
                 break;
@@ -148,6 +139,16 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             selectItem(position);
         }
+    }
+
+    /**
+     * Checks the phone's network connectivity status.
+     */
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 }

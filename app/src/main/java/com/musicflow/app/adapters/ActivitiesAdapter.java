@@ -1,7 +1,5 @@
 package com.musicflow.app.adapters;
 
-import java.util.List;
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -13,6 +11,8 @@ import android.widget.TextView;
 import com.musicflow.app.ActivityViewActivity;
 import com.musicflow.app.R;
 import com.musicflow.app.data.Activity;
+
+import java.util.List;
 
 public class ActivitiesAdapter extends ArrayAdapter<Activity> {
     protected List<Activity> activities;

@@ -17,7 +17,7 @@ import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
 
 /**
- * Displays a list view of companion albums. Is given AlbumId from the ArtistAdapter.
+ * Displays a list view of companion albums.  Is given AlbumId from the ArtistAdapter.
  */
 public class CompanionAlbumsFragment extends BeatsMusicFragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
@@ -32,10 +32,6 @@ public class CompanionAlbumsFragment extends BeatsMusicFragment {
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    public static CharSequence getTitle() {
-        return "Companion Albums";
     }
 
     @Override
@@ -56,15 +52,13 @@ public class CompanionAlbumsFragment extends BeatsMusicFragment {
     }
 
     private void setUpAdapter() {
-        companionAlbumsListView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(),
-                R.id.albums_fragment_list_view, albums.getAlbums()));
+        companionAlbumsListView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(), R.id.albums_fragment_list_view, albums.getAlbums()));
     }
 
     private class CompanionAlbumsNetworkAdapter extends NetworkAdapter {
 
         public CompanionAlbumsNetworkAdapter(Context context) {
-            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(),
-                    albums);
+            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
         }
 
         @Override
@@ -72,5 +66,9 @@ public class CompanionAlbumsFragment extends BeatsMusicFragment {
             super.onPostExecute(result);
             setUpAdapter();
         }
+    }
+
+    public static CharSequence getTitle() {
+        return "Companion Albums";
     }
 }

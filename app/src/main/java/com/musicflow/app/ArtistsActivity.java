@@ -6,18 +6,16 @@ import android.support.v4.view.ViewPager;
 import com.musicflow.app.pagers.ArtistsSectionPagerAdapter;
 
 /**
- * Returns an activity with a view pager that swaps between the artist list fragment and artist
- * searchPredictive fragment.
+ * Returns an activity with a view pager that swaps between the artist list fragment
+ * and artist searchPredictive fragment.
  */
 public class ArtistsActivity extends BeatsMusicActivity {
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        sectionsPagerAdapter =
-                new ArtistsSectionPagerAdapter(getSupportFragmentManager(),
-                        this.getApplicationContext());
+        sectionsPagerAdapter = new ArtistsSectionPagerAdapter(getSupportFragmentManager(), this.getApplicationContext());
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(sectionsPagerAdapter);
 

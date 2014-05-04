@@ -19,17 +19,16 @@
             android:layout_gravity="center"
             android:contentDescription="@string/cd_artist_hero_image"
             android:src="@drawable/beatsmusic_full_bw" />
-
         <TextView
-            android:id="@+id/artist_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end"
+            android:textAllCaps="true"
+            android:id="@+id/artist_name"
             android:paddingEnd="15dp"
             android:paddingTop="10dp"
-            android:textAllCaps="true"
-            android:textColor="#fcf9ff"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textColor="#fcf9ff" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -40,50 +39,44 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp">
-
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
+                    android:orientation="horizontal"
+                    android:layout_height="match_parent">
                     <TextView
+                        android:text="@string/total_albums"
+                        android:paddingEnd="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:contentDescription="@string/cd_total_eps"
                         android:paddingBottom="5dp"
-                        android:paddingEnd="10dp"
-                        android:text="@string/total_albums"
                         android:textColor="#fcf9ff" />
-
                     <TextView
+                        android:layout_width="match_parent"
+                        android:textColor="#ffc9c3bc"
                         android:id="@+id/artist_total_albums"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#ffc9c3bc" />
-                </LinearLayout>
+                        android:layout_height="wrap_content" />
+                    </LinearLayout>
             </FrameLayout>
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp">
-
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
+                    android:orientation="horizontal"
+                    android:layout_height="match_parent">
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:contentDescription="@string/cd_artist_total_albums"
-                        android:paddingBottom="5dp"
-                        android:paddingEnd="10dp"
                         android:text="@string/total_eps"
+                        android:paddingEnd="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:contentDescription="@string/cd_artist_total_albums"
+                        android:paddingBottom="5dp"
                         android:textColor="#fcf9ff" />
-
                     <TextView
+                        android:layout_width="match_parent"
                         android:id="@+id/total_eps"
-                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="#ffc9c3bc" />
                 </LinearLayout>
@@ -92,52 +85,45 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp">
-
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
+                    android:orientation="horizontal"
+                    android:layout_height="match_parent">
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
-                        android:contentDescription="@string/cd_artist_total_albums"
-                        android:paddingBottom="5dp"
-                        android:paddingEnd="10dp"
                         android:text="@string/total_tracks"
-                        android:textColor="#fcf9ff" />
-
-                    <TextView
-                        android:id="@+id/total_tracks"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#ffc9c3bc" />
-                </LinearLayout>
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
+                        android:paddingEnd="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="fill_parent"
                         android:contentDescription="@string/cd_artist_total_albums"
                         android:paddingBottom="5dp"
-                        android:paddingEnd="10dp"
-                        android:text="@string/total_popularity"
                         android:textColor="#fcf9ff" />
-
                     <TextView
-                        android:id="@+id/popularity"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="#ffc9c3bc" />
+                        android:id="@+id/total_tracks"
+                        android:textColor="#ffc9c3bc"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="@string/total_popularity"
+                        android:paddingEnd="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:contentDescription="@string/cd_artist_total_albums"
+                        android:paddingBottom="5dp"
+                        android:textColor="#fcf9ff" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:id="@+id/popularity"
+                        android:textColor="#ffc9c3bc"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>
@@ -146,8 +132,8 @@
             android:id="@+id/artist_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#b2373737"
             android:contentDescription="@string/cd_artist_description"
-            android:textColor="#fcf9ff" />
+            android:textColor="#fcf9ff"
+            android:background="#b2373737" />
     </LinearLayout>
 </ScrollView>

@@ -2,9 +2,6 @@ package com.musicflow.app;
 
 import java.util.HashMap;
 
-import uk.co.senab.actionbarpulltorefresh.library.ActionBarPullToRefresh;
-import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
-import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,16 +14,20 @@ import com.musicflow.app.data.Albums;
 import com.musicflow.app.mappers.AlbumsMapper;
 import com.musicflow.app.network.NetworkAdapter;
 
+import uk.co.senab.actionbarpulltorefresh.library.ActionBarPullToRefresh;
+import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
+import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
+
 /**
  * Displays the top albums against the Beats Music API.
  */
-public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshListener {
+public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshListener{
 
-    private static final String ARG_SECTION_NUMBER = "section_number";
     protected GridView gridView;
     protected AlbumListNetworkAdapter networkRequest;
-
     protected Albums albums;
+
+    private static final String ARG_SECTION_NUMBER = "section_number";
     private PullToRefreshLayout pullToRefreshLayout;
 
     public static TopAlbumsFragment newInstance(int sectionNumber) {
@@ -37,13 +38,7 @@ public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshLi
         return fragment;
     }
 
-    @
-ublic static CharSequence getTitle() {
-        return "Albums";
-    }
-
-    p
-Override
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         albums = new Albums();
@@ -57,7 +52,9 @@ Override
 
         pullToRefreshLayout = (PullToRefreshLayout) rootView.findViewById(R.id.ptr_layout);
 
-        ActionBarPullToRefresh.from(getActivity()).listener(this).allChildrenArePullable()
+        ActionBarPullToRefresh.from(getActivity())
+                .listener(this)
+                .allChildrenArePullable()
                 .setup(pullToRefreshLayout);
 
         innerFrame.addView(rootView);
@@ -65,14 +62,11 @@ Override
         return innerFrame;
     }
 
-    @
-rivate void setUpAdapter() {
-        gridView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(), R.id.gridview, albums
-                .getAlbums()));
+    private void setUpAdapter() {
+        gridView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(), R.id.gridview, albums.getAlbums()));
     }
 
-    p
-Override
+    @Override
     public void onRefreshStarted(View view) {
         if (!albums.getAlbums().isEmpty()) {
             albums = new Albums();
@@ -84,12 +78,10 @@ Override
         networkRequest.execute(this.getString(R.string.albums_collection));
     }
 
-    p
-rivate class AlbumListNetworkAdapter extends NetworkAdapter {
+    private class AlbumListNetworkAdapter extends NetworkAdapter {
 
         public AlbumListNetworkAdapter(Context context) {
-            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(),
-                    albums);
+            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
         }
 
         @Override
@@ -100,5 +92,9 @@ rivate class AlbumListNetworkAdapter extends NetworkAdapter {
                 pullToRefreshLayout.setRefreshComplete();
             }
         }
+    }
+
+    public static CharSequence getTitle() {
+        return "Albums";
     }
 }

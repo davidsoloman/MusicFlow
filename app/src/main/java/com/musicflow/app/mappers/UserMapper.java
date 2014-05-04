@@ -1,11 +1,11 @@
 package com.musicflow.app.mappers;
 
-import java.io.IOException;
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.musicflow.app.data.BaseJson;
 import com.musicflow.app.data.UserWrapper;
+
+import java.io.IOException;
 
 public class UserMapper extends CommonMapper {
     @Override

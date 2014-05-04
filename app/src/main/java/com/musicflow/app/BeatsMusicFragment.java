@@ -17,11 +17,7 @@ public abstract class BeatsMusicFragment extends Fragment {
 
     protected int position;
     protected FrameLayout innerFrame;
-
-    public static CharSequence getTitle() {
-        return "Beats Music";
-    }
-
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +28,7 @@ public abstract class BeatsMusicFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        FrameLayout.LayoutParams params =
-                new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
-                        FrameLayout.LayoutParams.MATCH_PARENT);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
 
         FrameLayout fl = new FrameLayout(getActivity());
         fl.setLayoutParams(params);
@@ -43,5 +37,9 @@ public abstract class BeatsMusicFragment extends Fragment {
         innerFrame.setBackgroundColor(Color.BLACK);
 
         return fl;
+    }
+    
+    public static CharSequence getTitle() {
+        return "Beats Music";
     }
 }

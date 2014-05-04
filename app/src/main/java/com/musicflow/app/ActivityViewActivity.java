@@ -1,7 +1,5 @@
 package com.musicflow.app;
 
-import java.util.HashMap;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -13,6 +11,8 @@ import com.musicflow.app.mappers.ActivityMapper;
 import com.musicflow.app.mappers.PlaylistsMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
+
+import java.util.HashMap;
 
 /**
  * Displays a list view of Beats Music Activities.
@@ -51,14 +51,12 @@ public class ActivityViewActivity extends Activity {
     }
 
     private void loadPlaylistViewData() {
-        playlistListView.setAdapter(new PlaylistAdapter(this, R.id.activity_activity_list_view,
-                playlists.getPlaylists()));
+        playlistListView.setAdapter(new PlaylistAdapter(this, R.id.activity_activity_list_view, playlists.getPlaylists()));
     }
 
     private class ActivityNetworkRequest extends NetworkAdapter {
         public ActivityNetworkRequest(Context context) {
-            super(context, new ActivityMapper(), RequestType.GET, new HashMap<String, String>(),
-                    activity);
+            super(context, new ActivityMapper(), RequestType.GET, new HashMap<String, String>(), activity);
         }
 
         @Override
@@ -70,8 +68,7 @@ public class ActivityViewActivity extends Activity {
 
     private class PlaylistNetworkRequest extends NetworkAdapter {
         public PlaylistNetworkRequest(Context context) {
-            super(context, new PlaylistsMapper(), RequestType.GET, new HashMap<String, String>(),
-                    playlists);
+            super(context, new PlaylistsMapper(), RequestType.GET, new HashMap<String, String>(), playlists);
         }
 
         @Override

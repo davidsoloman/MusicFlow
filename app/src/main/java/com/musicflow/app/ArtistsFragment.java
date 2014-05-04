@@ -1,7 +1,5 @@
 package com.musicflow.app;
 
-import java.util.HashMap;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,14 +13,17 @@ import com.musicflow.app.mappers.ArtistsMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
 
+import java.util.HashMap;
+
 /**
- * Displays artists in a list view.
+ * Displays artists in a list view. 
  */
 public class ArtistsFragment extends BeatsMusicFragment {
-    private static final String ARG_SECTION_NUMBER = "section_number";
     protected ArtistsResultNetworkAdapter networkRequest;
     protected Artists artists;
     protected ListView artistListView;
+
+    private static final String ARG_SECTION_NUMBER = "section_number";
 
     public static ArtistsFragment newInstance(int sectionNumber) {
         ArtistsFragment fragment = new ArtistsFragment();
@@ -32,16 +33,12 @@ public class ArtistsFragment extends BeatsMusicFragment {
         return fragment;
     }
 
-    public static CharSequence getTitle() {
-        return "Artist";
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         artists = new Artists();
         View rootView = inflater.inflate(R.layout.fragment_artists, container, false);
-        artistListView = (ListView) rootView.findViewById(R.id.artists_fragment_list_view);
+        artistListView =  (ListView) rootView.findViewById(R.id.artists_fragment_list_view);
         networkRequest = new ArtistsResultNetworkAdapter(getActivity());
         networkRequest.execute(UrlFactory.artistList());
         innerFrame.addView(rootView);
@@ -49,14 +46,12 @@ public class ArtistsFragment extends BeatsMusicFragment {
     }
 
     private void loadViewData() {
-        artistListView.setAdapter(new ArtistAdapter(this.getActivity(),
-                R.id.artists_fragment_list_view, artists.getArtists()));
+        artistListView.setAdapter(new ArtistAdapter(this.getActivity(), R.id.artists_fragment_list_view, artists.getArtists()));
     }
 
     private class ArtistsResultNetworkAdapter extends NetworkAdapter {
         public ArtistsResultNetworkAdapter(Context context) {
-            super(context, new ArtistsMapper(), RequestType.GET, new HashMap<String, String>(),
-                    artists);
+            super(context, new ArtistsMapper(), RequestType.GET, new HashMap<String, String>(), artists);
         }
 
         @Override
@@ -64,5 +59,9 @@ public class ArtistsFragment extends BeatsMusicFragment {
             super.onPostExecute(result);
             loadViewData();
         }
+    }
+
+    public static CharSequence getTitle() {
+        return "Artist";
     }
 }

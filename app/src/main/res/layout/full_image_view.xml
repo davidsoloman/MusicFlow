@@ -7,7 +7,7 @@
     <ImageView
         android:id="@+id/full_sized_image"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:scaleType="fitXY" />
+        android:scaleType="fitXY"
+        android:layout_height="250dp" />
 
 </RelativeLayout>

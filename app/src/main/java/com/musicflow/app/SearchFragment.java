@@ -18,8 +18,7 @@ import com.musicflow.app.data.SearchResults;
 import com.musicflow.app.mappers.SearchResultsMapper;
 import com.musicflow.app.network.NetworkAdapter;
 
-public class SearchFragment extends BeatsMusicFragment {
-    private static final String ARG_SECTION_NUMBER = "section_number";
+public class SearchFragment extends BeatsMusicFragment{
     protected ListView searchResultsListView;
     protected EditText searchText;
     protected SearchResultNetworkAdapter networkRequest;
@@ -27,16 +26,14 @@ public class SearchFragment extends BeatsMusicFragment {
 
     public SearchFragment() {}
 
+    private static final String ARG_SECTION_NUMBER = "section_number";
+
     public static SearchFragment newInstance(int sectionNumber) {
         SearchFragment fragment = new SearchFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    public static CharSequence getTitle() {
-        return "Search";
     }
 
     @Override
@@ -51,17 +48,14 @@ public class SearchFragment extends BeatsMusicFragment {
                     if (!searchResults.getSearchResults().isEmpty()) {
                         searchResults = new SearchResults();
                     }
-
+                    
                     if (networkRequest != null) {
                         networkRequest.cancel(true);
                     }
-
+                    
                     networkRequest = new SearchResultNetworkAdapter(getActivity());
-                    networkRequest
-                            .execute("https://partner.api.beatsmusic.com/v1/api/searchPredictive/predictive?q="
-                                    + Uri.encode(searchText.getText().toString())
-                                    + "&client_id=frksnm8edw2t8ddebhkqkjwk");
-
+                    networkRequest.execute("https://partner.api.beatsmusic.com/v1/api/searchPredictive/predictive?q=" + Uri.encode(searchText.getText().toString()) + "&client_id=frksnm8edw2t8ddebhkqkjwk");
+                    
                     return true;
                 }
                 return false;
@@ -75,14 +69,12 @@ public class SearchFragment extends BeatsMusicFragment {
     }
 
     private void loadViewData() {
-        searchResultsListView.setAdapter(new SearchResultAdapter(this.getActivity(), R.id.results,
-                searchResults.getSearchResults()));
+        searchResultsListView.setAdapter(new SearchResultAdapter(this.getActivity(), R.id.results, searchResults.getSearchResults()));
     }
 
     private class SearchResultNetworkAdapter extends NetworkAdapter {
         public SearchResultNetworkAdapter(Context context) {
-            super(context, new SearchResultsMapper(), RequestType.GET,
-                    new HashMap<String, String>(), searchResults);
+            super(context, new SearchResultsMapper(), RequestType.GET, new HashMap<String, String>(), searchResults);
         }
 
         @Override
@@ -90,6 +82,10 @@ public class SearchFragment extends BeatsMusicFragment {
             super.onPostExecute(result);
             loadViewData();
         }
+    }
+
+    public static CharSequence getTitle() {
+        return "Search";
     }
 
 }

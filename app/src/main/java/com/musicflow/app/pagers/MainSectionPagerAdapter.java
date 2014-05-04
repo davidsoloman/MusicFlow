@@ -1,7 +1,5 @@
 package com.musicflow.app.pagers;
 
-import java.util.Locale;
-
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
@@ -10,7 +8,9 @@ import com.musicflow.app.BeatsMusicFragment;
 import com.musicflow.app.DocumentationFragment;
 import com.musicflow.app.NoInternetFragment;
 
-public class MainSectionPagerAdapter extends SectionsPagerAdapter {
+import java.util.Locale;
+
+public class MainSectionPagerAdapter extends SectionsPagerAdapter{
     protected Context context;
 
     public MainSectionPagerAdapter(FragmentManager fm, Context context) {

@@ -13,12 +13,12 @@ import com.musicflow.app.R;
 import com.musicflow.app.data.Genre;
 
 /**
- * Displays a list of genres to a list view.
+ *  Displays a list of genres to a list view.
  */
 public class GenreAdapter extends ArrayAdapter<Genre> {
+    private Context context;
     protected List<Genre> genres;
     protected int resource;
-    private Context context;
 
     public GenreAdapter(Context context, int resource, List<Genre> genres) {
         super(context, resource, genres);

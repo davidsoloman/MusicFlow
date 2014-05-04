@@ -1,7 +1,7 @@
 package com.musicflow.app.data;
 
 
-public class Bio extends BaseJson {
+public class Bio extends BaseJson{
     protected String type;
     protected String content;
     protected String headline;

@@ -1,7 +1,5 @@
 package com.musicflow.app;
 
-import java.util.HashMap;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,14 +12,17 @@ import com.musicflow.app.mappers.ReviewMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
 
+import java.util.HashMap;
+
 /**
  * Displays a the review of album.
  */
 public class AlbumReviewFragment extends BeatsMusicFragment {
-    private static final String ARG_SECTION_NUMBER = "section_number";
     protected WebView albumReview;
     protected Review review;
     protected ReviewNetworkAdapter networkRequest;
+
+    private static final String ARG_SECTION_NUMBER = "section_number";
 
     public static AlbumReviewFragment newInstance(int sectionNumber) {
         AlbumReviewFragment fragment = new AlbumReviewFragment();
@@ -56,8 +57,7 @@ public class AlbumReviewFragment extends BeatsMusicFragment {
     private class ReviewNetworkAdapter extends NetworkAdapter {
 
         public ReviewNetworkAdapter(Context context) {
-            super(context, new ReviewMapper(), RequestType.GET, new HashMap<String, String>(),
-                    review);
+            super(context, new ReviewMapper(), RequestType.GET, new HashMap<String, String>(), review);
         }
 
         @Override
