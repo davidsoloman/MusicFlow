@@ -128,20 +128,6 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
     }
 
     @Override
-    protected void onPreExecute() {
-        if (authRequired()) {
-            String preferencesKey = context.getString(R.string.user_preferences_key);
-            String accessToken = context.getSharedPreferences(preferencesKey, Context.MODE_PRIVATE).getString("access_token", null);
-
-            if (accessToken == null) {
-                Intent i = new Intent(context, LoginActivity.class);
-                context.startActivity(i);
-                cancel(true);
-            }
-        }
-    }
-
-    @Override
     protected String doInBackground(String... uri) {
         String responseString = null;
         if (!isCancelled()) {
