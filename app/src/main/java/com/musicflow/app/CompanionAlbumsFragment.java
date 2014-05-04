@@ -46,7 +46,7 @@ public class CompanionAlbumsFragment extends BeatsMusicFragment {
         String albumId = getActivity().getIntent().getStringExtra("AlbumId");
         View rootView = inflater.inflate(R.layout.fragment_albums, container, false);
 
-        companionAlbumsListView = (ListView) rootView.findViewById(R.id.albums_fragment_list_view);
+        companionAlbumsListView = (ListView) rootView.findViewById(R.id.generic_list_view);
 
         networkRequest = new CompanionAlbumsNetworkAdapter(getActivity());
         networkRequest.execute(UrlFactory.albumCompanionAlbums(albumId));
@@ -56,7 +56,7 @@ public class CompanionAlbumsFragment extends BeatsMusicFragment {
     }
 
     private void setUpAdapter() {
-        companionAlbumsListView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(), R.id.albums_fragment_list_view, albums.getAlbums()));
+        companionAlbumsListView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(), R.id.generic_list_view, albums.getAlbums()));
     }
 
     private class CompanionAlbumsNetworkAdapter extends NetworkAdapter {
