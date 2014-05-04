@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         @JsonSubTypes.Type(value = TrackRecommendationContent.class, name = "track"),
         @JsonSubTypes.Type(value = ArtistRecommendationContent.class, name = "artist")
 })
-public class RecommendationContent extends BaseJson{
+public class RecommendationContent extends BaseJson {
     protected String type;
 
     @Override

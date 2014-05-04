@@ -1,7 +1,5 @@
 package com.musicflow.app.adapters;
 
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,13 +10,15 @@ import android.widget.TextView;
 import com.musicflow.app.R;
 import com.musicflow.app.data.Genre;
 
+import java.util.List;
+
 /**
- *  Displays a list of genres to a list view.
+ * Displays a list of genres to a list view.
  */
 public class GenreAdapter extends ArrayAdapter<Genre> {
-    private Context context;
     protected List<Genre> genres;
     protected int resource;
+    private Context context;
 
     public GenreAdapter(Context context, int resource, List<Genre> genres) {
         super(context, resource, genres);

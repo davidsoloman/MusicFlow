@@ -19,12 +19,10 @@ import java.util.HashMap;
  * Displays a list of albums inside the Albums Activity.
  */
 public class AlbumsFragment extends BeatsMusicFragment {
-    protected ListView albumsListView; 
+    private static final String ARG_SECTION_NUMBER = "section_number";
+    protected ListView albumsListView;
     protected AlbumListNetworkAdapter networkRequest;
     protected Albums albums;
-
-
-    private static final String ARG_SECTION_NUMBER = "section_number";
 
     public static AlbumsFragment newInstance(int sectionNumber) {
         AlbumsFragment fragment = new AlbumsFragment();
@@ -32,6 +30,10 @@ public class AlbumsFragment extends BeatsMusicFragment {
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public static CharSequence getTitle() {
+        return "Albums";
     }
 
     @Override
@@ -47,7 +49,7 @@ public class AlbumsFragment extends BeatsMusicFragment {
 
         innerFrame.addView(rootView);
         return innerFrame;
-        
+
     }
 
     private void setUpAdapter() {
@@ -66,9 +68,5 @@ public class AlbumsFragment extends BeatsMusicFragment {
             super.onPostExecute(result);
             setUpAdapter();
         }
-    }
-
-    public static CharSequence getTitle() {
-        return "Albums";
     }
 }

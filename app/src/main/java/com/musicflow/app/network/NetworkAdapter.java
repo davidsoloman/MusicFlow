@@ -1,22 +1,5 @@
 package com.musicflow.app.network;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.Map;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.StatusLine;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpDelete;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -32,14 +15,24 @@ import com.musicflow.app.login.LoginActivity;
 import com.musicflow.app.mappers.AuthorizationMapper;
 import com.musicflow.app.mappers.CommonMapper;
 
-public class NetworkAdapter extends AsyncTask<String, Void, String> {
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.StatusLine;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
 
-    public enum RequestType {
-        GET,
-        PUT,
-        POST,
-        DELETE
-    }
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.Map;
+
+public class NetworkAdapter extends AsyncTask<String, Void, String> {
 
     protected CommonMapper mapper;
     protected RequestType type;
@@ -47,7 +40,6 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
     protected BaseJson json;
     protected StringEntity body;
     protected Context context;
-
     public NetworkAdapter(Context context, CommonMapper mapper, RequestType type, Map<String, String> headers, BaseJson json) {
         super();
         this.mapper = mapper;
@@ -231,5 +223,12 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public enum RequestType {
+        GET,
+        PUT,
+        POST,
+        DELETE
     }
 }

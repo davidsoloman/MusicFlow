@@ -3,9 +3,7 @@ package com.musicflow.app.pagers;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
-import com.musicflow.app.ActivitiesFragment;
 import com.musicflow.app.ArtistTracksFragment;
-import com.musicflow.app.ArtistViewFragment;
 import com.musicflow.app.BeatsMusicActivity;
 import com.musicflow.app.BeatsMusicFragment;
 import com.musicflow.app.EssentialAlbumsFragment;
@@ -17,7 +15,7 @@ import java.util.Locale;
 /**
  * Pages between fragments relating to genres, which are displayed in the Genre Activity.
  */
-public class GenreSectionPagerAdapter  extends SectionsPagerAdapter {
+public class GenreSectionPagerAdapter extends SectionsPagerAdapter {
     protected Context context;
 
     public GenreSectionPagerAdapter(FragmentManager fm, Context context) {

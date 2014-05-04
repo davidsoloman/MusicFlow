@@ -7,16 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.musicflow.app.adapters.ActivitiesAdapter;
 import com.musicflow.app.data.Activities;
 import com.musicflow.app.mappers.ActivitiesMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
-import com.musicflow.app.adapters.ActivitiesAdapter;
 
 import java.util.HashMap;
 
 /**
- * Displays a list of beats music activities. 
+ * Displays a list of beats music activities.
  */
 public class ActivitiesFragment extends BeatsMusicFragment {
     private static final String ARG_SECTION_NUMBER = "section_number";

@@ -68,6 +68,14 @@ public abstract class BaseSearchFragment extends BeatsMusicFragment {
         searchResultsListView.setAdapter(new SearchResultAdapter(this.getActivity(), R.id.results, searchResults.getSearchResults()));
     }
 
+    protected void hideKeyboard() {
+        InputMethodManager manager =
+                (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        manager.hideSoftInputFromWindow(searchText.getWindowToken(), 0);
+    }
+
+    public abstract String getNetworkUrl();
+
     private class SearchResultNetworkAdapter extends NetworkAdapter {
         public SearchResultNetworkAdapter(Context context) {
             super(context, new SearchResultsMapper(), RequestType.GET, new HashMap<String, String>(), searchResults);
@@ -79,13 +87,5 @@ public abstract class BaseSearchFragment extends BeatsMusicFragment {
             loadViewData();
         }
     }
-
-    protected void hideKeyboard() {
-        InputMethodManager manager =
-                (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        manager.hideSoftInputFromWindow(searchText.getWindowToken(), 0);
-    }
-
-    public abstract String getNetworkUrl();
 
 }

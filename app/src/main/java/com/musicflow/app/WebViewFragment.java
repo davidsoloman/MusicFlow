@@ -1,8 +1,6 @@
 package com.musicflow.app;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +11,11 @@ import android.widget.TextView;
 public abstract class WebViewFragment extends BeatsMusicFragment {
     private WebView webView;
     private TextView header;
-    
+
     protected abstract String getUrl();
+
     protected abstract String getHeaderText();
-    
+
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -26,7 +25,7 @@ public abstract class WebViewFragment extends BeatsMusicFragment {
 
         initializeHeaderText(rootView);
         initializeWebView(rootView);
-        
+
         innerFrame.addView(rootView);
         return innerFrame;
     }

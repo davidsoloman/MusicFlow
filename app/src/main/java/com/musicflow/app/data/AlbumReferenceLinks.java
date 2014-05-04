@@ -3,7 +3,7 @@ package com.musicflow.app.data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlbumReferenceLinks extends BaseJson{
+public class AlbumReferenceLinks extends BaseJson {
     protected List<ReferenceLink> artists;
     protected ReferenceLink label;
     protected List<ReferenceLink> tracks;

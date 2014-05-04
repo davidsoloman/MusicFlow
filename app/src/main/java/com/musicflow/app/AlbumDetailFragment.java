@@ -1,7 +1,5 @@
 package com.musicflow.app;
 
-import java.util.HashMap;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,10 +16,13 @@ import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+
 /**
  * Displays a list of tracks, an album image, album title, and artist name.
  */
 public class AlbumDetailFragment extends BeatsMusicFragment {
+    private static final String ARG_SECTION_NUMBER = "section_number";
     protected ImageView albumCoverArt;
     protected TextView artistName;
     protected TextView albumTitle;
@@ -29,14 +30,16 @@ public class AlbumDetailFragment extends BeatsMusicFragment {
     protected TrackListNetworkAdapter networkRequest;
     protected Tracks tracks;
 
-    private static final String ARG_SECTION_NUMBER = "section_number";
-
     public static AlbumDetailFragment newInstance(int sectionNumber) {
         AlbumDetailFragment fragment = new AlbumDetailFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public static CharSequence getTitle() {
+        return "Album Detail";
     }
 
     @Override
@@ -84,9 +87,5 @@ public class AlbumDetailFragment extends BeatsMusicFragment {
             super.onPostExecute(result);
             setUpAdapter();
         }
-    }
-
-    public static CharSequence getTitle() {
-        return "Album Detail";
     }
 }

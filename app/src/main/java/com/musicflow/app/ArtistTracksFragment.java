@@ -1,7 +1,5 @@
 package com.musicflow.app;
 
-import java.util.HashMap;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,15 +13,16 @@ import com.musicflow.app.mappers.TracksMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
 
+import java.util.HashMap;
+
 /**
  * Displays a list of tracks for which the artist is credited.
  */
 public class ArtistTracksFragment extends BeatsMusicFragment {
+    private static final String ARG_SECTION_NUMBER = "section_number";
     protected ArtistTrackNetworkAdapter networkRequest;
     protected Tracks tracks;
     protected ListView trackListView;
-
-    private static final String ARG_SECTION_NUMBER = "section_number";
 
     public static ArtistTracksFragment newInstance(int sectionNumber) {
         ArtistTracksFragment fragment = new ArtistTracksFragment();
@@ -31,6 +30,10 @@ public class ArtistTracksFragment extends BeatsMusicFragment {
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public static CharSequence getTitle() {
+        return "Artist Tracks";
     }
 
     @Override
@@ -64,9 +67,5 @@ public class ArtistTracksFragment extends BeatsMusicFragment {
             super.onPostExecute(result);
             loadViewData();
         }
-    }
-
-    public static CharSequence getTitle() {
-        return "Artist Tracks";
     }
 }

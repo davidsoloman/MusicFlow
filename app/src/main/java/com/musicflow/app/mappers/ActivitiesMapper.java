@@ -8,7 +8,7 @@ import com.musicflow.app.data.BaseJson;
 import java.io.IOException;
 
 public class ActivitiesMapper extends CommonMapper {
-    
+
     @Override
     public BaseJson parseJson(String json) {
         Activities activities = new Activities();

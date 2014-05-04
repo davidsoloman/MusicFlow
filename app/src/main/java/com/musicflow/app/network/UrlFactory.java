@@ -17,57 +17,6 @@ public class UrlFactory {
     public final HashMap<String, String> FILTERS_DEFAULT = new HashMap<String, String>();
     public final String[] IDS_DEFAULT = new String[0];
 
-    public enum EntityType {
-        GENRE("genres"),
-        ARTIST("artists"),
-        PLAYLIST("playlists"),
-        ALBUM("albums"),
-        TRACK("tracks"),
-        USER("users");
-
-        private final String type;
-
-        private EntityType(final String type) {
-            this.type = type;
-        }
-
-        public String toString() {
-            return type;
-        }
-    }
-
-    public enum ImageType {
-        DEFAULT("default"),
-        COVER("cover");
-
-        private final String type;
-
-        private ImageType(final String type) {
-            this.type = type;
-        }
-
-        public String toString() {
-            return type;
-        }
-    }
-
-    public enum ImageSize {
-        THUMB("thumb"),
-        SMALL("small"),
-        MEDIUM("medium"),
-        LARGE("large");
-
-        private final String type;
-
-        private ImageSize(final String type) {
-            this.type = type;
-        }
-
-        public String toString() {
-            return type;
-        }
-    }
-
     @SuppressWarnings("SpellCheckingInspection")
     public static String clientID() {
         return "frksnm8edw2t8ddebhkqkjwk";
@@ -80,7 +29,7 @@ public class UrlFactory {
 
     // Requires Auth
     public static String obtainToken() {
-        return  "https://partner.api.beatsmusic.com/oauth2/token";
+        return "https://partner.api.beatsmusic.com/oauth2/token";
     }
 
     // Requires Auth
@@ -332,6 +281,57 @@ public class UrlFactory {
 
     public static String genresCollection() {
         return BASE_URL + "/api/genres" + "?client_id=" + clientID();
+    }
+
+    public enum EntityType {
+        GENRE("genres"),
+        ARTIST("artists"),
+        PLAYLIST("playlists"),
+        ALBUM("albums"),
+        TRACK("tracks"),
+        USER("users");
+
+        private final String type;
+
+        private EntityType(final String type) {
+            this.type = type;
+        }
+
+        public String toString() {
+            return type;
+        }
+    }
+
+    public enum ImageType {
+        DEFAULT("default"),
+        COVER("cover");
+
+        private final String type;
+
+        private ImageType(final String type) {
+            this.type = type;
+        }
+
+        public String toString() {
+            return type;
+        }
+    }
+
+    public enum ImageSize {
+        THUMB("thumb"),
+        SMALL("small"),
+        MEDIUM("medium"),
+        LARGE("large");
+
+        private final String type;
+
+        private ImageSize(final String type) {
+            this.type = type;
+        }
+
+        public String toString() {
+            return type;
+        }
     }
 
     public class LookupQueryParams {
