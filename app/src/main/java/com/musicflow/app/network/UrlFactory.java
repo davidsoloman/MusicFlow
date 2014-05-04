@@ -330,6 +330,10 @@ public class UrlFactory {
         return BASE_URL + SEARCH_PREDICTIVE + "?q=" + searchText + "&client_id=" + clientID();
     }
 
+    public static String genresCollection() {
+        return BASE_URL + "/api/genres" + "?client_id=" + clientID();
+    }
+
     public class LookupQueryParams {
         protected String[] fields;
         protected String[] refs;

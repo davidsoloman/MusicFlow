@@ -67,6 +67,12 @@
                 android:value=".MainActivity"/>
         </activity>
         <activity
+            android:name=".GenreActivity"
+            android:label="@string/genre_activity" >
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity
             android:name=".login.LoginActivity"
             android:label="Log in to Beats Music"
             android:theme="@android:style/Theme.NoTitleBar"/>
