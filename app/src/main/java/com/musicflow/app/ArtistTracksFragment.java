@@ -41,8 +41,8 @@ public class ArtistTracksFragment extends BeatsMusicFragment {
         super.onCreateView(inflater, container, savedInstanceState);
         tracks = new Tracks();
 
-        View rootView = inflater.inflate(R.layout.fragment_tracks, container, false);
-        trackListView = (ListView) rootView.findViewById(R.id.tracks_fragment_list_view);
+        View rootView = inflater.inflate(R.layout.fragment_list_view, container, false);
+        trackListView = (ListView) rootView.findViewById(R.id.generic_list_view);
 
         String artistId = getActivity().getIntent().getStringExtra("ArtistId");
 
