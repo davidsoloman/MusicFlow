@@ -44,8 +44,8 @@ public class HighlightsFragment extends BeatsMusicFragment{
 
         highlights = new Highlights();
 
-        View rootView = inflater.inflate(R.layout.fragment_highlights, container, false);
-        highlightsListView = (ListView) rootView.findViewById(R.id.fragment_highlights_list_view);
+        View rootView = inflater.inflate(R.layout.fragment_list_view, container, false);
+        highlightsListView = (ListView) rootView.findViewById(R.id.generic_list_view);
         networkRequest = new HighlightsNetworkAdapter(getActivity());
         networkRequest.execute(UrlFactory.highlightsFeatured());
 
@@ -55,7 +55,7 @@ public class HighlightsFragment extends BeatsMusicFragment{
     }
 
     private void setUpAdapter() {
-        highlightsListView.setAdapter(new HighlightsAdapter(this.getActivity(), R.id.fragment_highlights_list_view, highlights.getHighlights()));
+        highlightsListView.setAdapter(new HighlightsAdapter(this.getActivity(), R.id.generic_list_view, highlights.getHighlights()));
     }
 
     private class HighlightsNetworkAdapter extends NetworkAdapter {
