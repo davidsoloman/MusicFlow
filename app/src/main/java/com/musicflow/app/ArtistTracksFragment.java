@@ -19,11 +19,10 @@ import com.musicflow.app.network.UrlFactory;
  * Displays a list of tracks for which the artist is credited.
  */
 public class ArtistTracksFragment extends BeatsMusicFragment {
+    private static final String ARG_SECTION_NUMBER = "section_number";
     protected ArtistTrackNetworkAdapter networkRequest;
     protected Tracks tracks;
     protected ListView trackListView;
-
-    private static final String ARG_SECTION_NUMBER = "section_number";
 
     public static ArtistTracksFragment newInstance(int sectionNumber) {
         ArtistTracksFragment fragment = new ArtistTracksFragment();
@@ -31,6 +30,10 @@ public class ArtistTracksFragment extends BeatsMusicFragment {
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public static CharSequence getTitle() {
+        return "Artist Tracks";
     }
 
     @Override
@@ -51,12 +54,14 @@ public class ArtistTracksFragment extends BeatsMusicFragment {
     }
 
     private void loadViewData() {
-        trackListView.setAdapter(new TracksAdapter(this.getActivity(), R.id.track_list_view, tracks.getTracks()));
+        trackListView.setAdapter(new TracksAdapter(this.getActivity(), R.id.track_list_view, tracks
+                .getTracks()));
     }
 
     private class ArtistTrackNetworkAdapter extends NetworkAdapter {
         public ArtistTrackNetworkAdapter(Context context) {
-            super(context, new TracksMapper(), RequestType.GET, new HashMap<String, String>(), tracks);
+            super(context, new TracksMapper(), RequestType.GET, new HashMap<String, String>(),
+                    tracks);
         }
 
         @Override
@@ -64,9 +69,5 @@ public class ArtistTracksFragment extends BeatsMusicFragment {
             super.onPostExecute(result);
             loadViewData();
         }
-    }
-
-    public static CharSequence getTitle() {
-        return "Artist Tracks";
     }
 }

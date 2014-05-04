@@ -18,7 +18,7 @@ import com.musicflow.app.network.UrlFactory;
 /**
  * Displays a list view of essential albums for an artist.
  */
-public class EssentialAlbumsFragment extends BeatsMusicFragment{
+public class EssentialAlbumsFragment extends BeatsMusicFragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     protected Albums albums;
     protected EssentialAlbumsNetworkAdapter networkRequest;
@@ -30,6 +30,10 @@ public class EssentialAlbumsFragment extends BeatsMusicFragment{
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public static CharSequence getTitle() {
+        return "Essential Albums";
     }
 
     @Override
@@ -50,13 +54,15 @@ public class EssentialAlbumsFragment extends BeatsMusicFragment{
     }
 
     private void setUpAdapter() {
-        essentialAlbumsListView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(), R.id.albums_fragment_list_view, albums.getAlbums()));
+        essentialAlbumsListView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(),
+                R.id.albums_fragment_list_view, albums.getAlbums()));
     }
 
     private class EssentialAlbumsNetworkAdapter extends NetworkAdapter {
 
         public EssentialAlbumsNetworkAdapter(Context context) {
-            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
+            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(),
+                    albums);
         }
 
         @Override
@@ -64,10 +70,6 @@ public class EssentialAlbumsFragment extends BeatsMusicFragment{
             super.onPostExecute(result);
             setUpAdapter();
         }
-    }
-
-    public static CharSequence getTitle() {
-        return "Essential Albums";
     }
 
 }

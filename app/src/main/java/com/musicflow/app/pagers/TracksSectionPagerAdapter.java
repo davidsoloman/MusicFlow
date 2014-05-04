@@ -1,5 +1,7 @@
 package com.musicflow.app.pagers;
 
+import java.util.Locale;
+
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
@@ -8,8 +10,6 @@ import com.musicflow.app.BeatsMusicFragment;
 import com.musicflow.app.NoInternetFragment;
 import com.musicflow.app.TracksFragment;
 import com.musicflow.app.TracksSearchFragment;
-
-import java.util.Locale;
 
 /**
  * Adapter for the TracksActivity that switches between different tracks fragments.

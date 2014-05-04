@@ -21,24 +21,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="end"
-            android:textStyle="bold"
             android:paddingEnd="15dp"
             android:paddingTop="5dp"
             android:textAllCaps="true"
             android:textColor="#fcf9ff"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/album_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:layout_gravity="end"
             android:paddingEnd="15dp"
             android:paddingTop="5dp"
             android:textAllCaps="true"
             android:textColor="#fcf9ff"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <ListView

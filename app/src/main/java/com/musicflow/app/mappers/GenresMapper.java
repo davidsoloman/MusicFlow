@@ -5,7 +5,6 @@ import java.io.IOException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.musicflow.app.data.BaseJson;
-import com.musicflow.app.data.GenreWrapper;
 import com.musicflow.app.data.Genres;
 
 /**

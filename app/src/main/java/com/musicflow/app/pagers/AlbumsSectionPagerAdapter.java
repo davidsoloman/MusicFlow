@@ -1,5 +1,7 @@
 package com.musicflow.app.pagers;
 
+import java.util.Locale;
+
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
@@ -9,12 +11,10 @@ import com.musicflow.app.BeatsMusicActivity;
 import com.musicflow.app.BeatsMusicFragment;
 import com.musicflow.app.NoInternetFragment;
 
-import java.util.Locale;
-
 /**
  * Switches between the different Albums fragments that are displayed on the Album activity.
  */
-public class AlbumsSectionPagerAdapter extends SectionsPagerAdapter{
+public class AlbumsSectionPagerAdapter extends SectionsPagerAdapter {
     protected Context context;
 
     public AlbumsSectionPagerAdapter(FragmentManager fm, Context context) {

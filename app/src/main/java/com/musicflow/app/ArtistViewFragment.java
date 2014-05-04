@@ -20,10 +20,11 @@ import com.musicflow.app.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 /**
- * Displays a view with artist image, name, info, and artist Bio.  Accessible by clicking
- * an artist item in the artist fragment's list view. 
+ * Displays a view with artist image, name, info, and artist Bio. Accessible by clicking an artist
+ * item in the artist fragment's list view.
  */
 public class ArtistViewFragment extends BeatsMusicFragment {
+    private static final String ARG_SECTION_NUMBER = "section_number";
     protected ImageView artistHeroImage;
     protected TextView artistName;
     protected TextView artistFollowerCount;
@@ -36,7 +37,6 @@ public class ArtistViewFragment extends BeatsMusicFragment {
     protected TextView totalEps;
     protected TextView totalTracks;
     protected TextView popularity;
-    private static final String ARG_SECTION_NUMBER = "section_number";
 
     public static ArtistViewFragment newInstance(int sectionNumber) {
         ArtistViewFragment fragment = new ArtistViewFragment();
@@ -88,7 +88,10 @@ public class ArtistViewFragment extends BeatsMusicFragment {
             popularity.setText(artistPopularity + getString(R.string.follower));
         }
 
-        Picasso.with(getActivity()).load(UrlFactory.imageUrl(artist.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(artistHeroImage);
+        Picasso.with(getActivity())
+                .load(UrlFactory.imageUrl(artist.getId(), UrlFactory.EntityType.ARTIST,
+                        UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE))
+                .placeholder(R.drawable.placeholder).fit().centerCrop().into(artistHeroImage);
     }
 
     private void loadBioData() {
@@ -98,7 +101,8 @@ public class ArtistViewFragment extends BeatsMusicFragment {
 
     private class ArtistNetworkAdapter extends NetworkAdapter {
         public ArtistNetworkAdapter(Context context) {
-            super(context, new ArtistMapper(), RequestType.GET, new HashMap<String, String>(), artist);
+            super(context, new ArtistMapper(), RequestType.GET, new HashMap<String, String>(),
+                    artist);
         }
 
         @Override

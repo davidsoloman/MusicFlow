@@ -2,6 +2,9 @@ package com.musicflow.app;
 
 import java.util.HashMap;
 
+import uk.co.senab.actionbarpulltorefresh.library.ActionBarPullToRefresh;
+import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
+import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,20 +17,16 @@ import com.musicflow.app.data.Albums;
 import com.musicflow.app.mappers.AlbumsMapper;
 import com.musicflow.app.network.NetworkAdapter;
 
-import uk.co.senab.actionbarpulltorefresh.library.ActionBarPullToRefresh;
-import uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout;
-import uk.co.senab.actionbarpulltorefresh.library.listeners.OnRefreshListener;
-
 /**
  * Displays the top albums against the Beats Music API.
  */
-public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshListener{
-
-    protected GridView gridView;
-    protected AlbumListNetworkAdapter networkRequest;
-    protected Albums albums;
+public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshListener {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
+    protected GridView gridView;
+    protected AlbumListNetworkAdapter networkRequest;
+
+    protected Albums albums;
     private PullToRefreshLayout pullToRefreshLayout;
 
     public static TopAlbumsFragment newInstance(int sectionNumber) {
@@ -38,7 +37,13 @@ public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshLi
         return fragment;
     }
 
-    @Override
+    @
+ublic static CharSequence getTitle() {
+        return "Albums";
+    }
+
+    p
+Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         albums = new Albums();
@@ -52,9 +57,7 @@ public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshLi
 
         pullToRefreshLayout = (PullToRefreshLayout) rootView.findViewById(R.id.ptr_layout);
 
-        ActionBarPullToRefresh.from(getActivity())
-                .listener(this)
-                .allChildrenArePullable()
+        ActionBarPullToRefresh.from(getActivity()).listener(this).allChildrenArePullable()
                 .setup(pullToRefreshLayout);
 
         innerFrame.addView(rootView);
@@ -62,11 +65,14 @@ public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshLi
         return innerFrame;
     }
 
-    private void setUpAdapter() {
-        gridView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(), R.id.gridview, albums.getAlbums()));
+    @
+rivate void setUpAdapter() {
+        gridView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(), R.id.gridview, albums
+                .getAlbums()));
     }
 
-    @Override
+    p
+Override
     public void onRefreshStarted(View view) {
         if (!albums.getAlbums().isEmpty()) {
             albums = new Albums();
@@ -78,10 +84,12 @@ public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshLi
         networkRequest.execute(this.getString(R.string.albums_collection));
     }
 
-    private class AlbumListNetworkAdapter extends NetworkAdapter {
+    p
+rivate class AlbumListNetworkAdapter extends NetworkAdapter {
 
         public AlbumListNetworkAdapter(Context context) {
-            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
+            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(),
+                    albums);
         }
 
         @Override
@@ -92,9 +100,5 @@ public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshLi
                 pullToRefreshLayout.setRefreshComplete();
             }
         }
-    }
-
-    public static CharSequence getTitle() {
-        return "Albums";
     }
 }

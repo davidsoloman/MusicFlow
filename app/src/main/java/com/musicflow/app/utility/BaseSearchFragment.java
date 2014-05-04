@@ -1,5 +1,7 @@
 package com.musicflow.app.utility;
 
+import java.util.HashMap;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -18,8 +20,6 @@ import com.musicflow.app.SearchResultAdapter;
 import com.musicflow.app.data.SearchResults;
 import com.musicflow.app.mappers.SearchResultsMapper;
 import com.musicflow.app.network.NetworkAdapter;
-
-import java.util.HashMap;
 
 /**
  * Created by whitneyimura on 5/1/14.
@@ -65,19 +65,8 @@ public abstract class BaseSearchFragment extends BeatsMusicFragment {
     }
 
     private void loadViewData() {
-        searchResultsListView.setAdapter(new SearchResultAdapter(this.getActivity(), R.id.results, searchResults.getSearchResults()));
-    }
-
-    private class SearchResultNetworkAdapter extends NetworkAdapter {
-        public SearchResultNetworkAdapter(Context context) {
-            super(context, new SearchResultsMapper(), RequestType.GET, new HashMap<String, String>(), searchResults);
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-            loadViewData();
-        }
+        searchResultsListView.setAdapter(new SearchResultAdapter(this.getActivity(), R.id.results,
+                searchResults.getSearchResults()));
     }
 
     protected void hideKeyboard() {
@@ -87,5 +76,18 @@ public abstract class BaseSearchFragment extends BeatsMusicFragment {
     }
 
     public abstract String getNetworkUrl();
+
+    private class SearchResultNetworkAdapter extends NetworkAdapter {
+        public SearchResultNetworkAdapter(Context context) {
+            super(context, new SearchResultsMapper(), RequestType.GET,
+                    new HashMap<String, String>(), searchResults);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            loadViewData();
+        }
+    }
 
 }

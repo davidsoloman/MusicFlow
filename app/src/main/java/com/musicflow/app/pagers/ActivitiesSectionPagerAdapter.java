@@ -1,5 +1,7 @@
 package com.musicflow.app.pagers;
 
+import java.util.Locale;
+
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
@@ -9,10 +11,8 @@ import com.musicflow.app.BeatsMusicActivity;
 import com.musicflow.app.BeatsMusicFragment;
 import com.musicflow.app.NoInternetFragment;
 
-import java.util.Locale;
-
 /**
- * Pages between the Activities Fragment and Activities Search Fragment.  Shows a no internet
+ * Pages between the Activities Fragment and Activities Search Fragment. Shows a no internet
  * Fragment if there is no internet available.
  */
 public class ActivitiesSectionPagerAdapter extends SectionsPagerAdapter {

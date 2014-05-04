@@ -33,6 +33,10 @@ public class GenreFragment extends BeatsMusicFragment {
         return fragment;
     }
 
+    public static CharSequence getTitle() {
+        return "Genres";
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
@@ -64,9 +68,5 @@ public class GenreFragment extends BeatsMusicFragment {
             super.onPostExecute(result);
             loadViewData();
         }
-    }
-
-    public static CharSequence getTitle() {
-        return "Genres";
     }
 }

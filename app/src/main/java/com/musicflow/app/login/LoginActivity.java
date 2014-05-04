@@ -1,5 +1,7 @@
 package com.musicflow.app.login;
 
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
@@ -16,8 +18,6 @@ import com.musicflow.app.mappers.AuthorizationMapper;
 import com.musicflow.app.mappers.MeMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
-
-import java.util.HashMap;
 
 public class LoginActivity extends Activity {
     protected WebView webView;
@@ -38,9 +38,10 @@ public class LoginActivity extends Activity {
         webView = (WebView) findViewById(R.id.activity_login_web_view);
         webView.setWebViewClient(new WebViewClient() {
             public void onReceivedError(WebView view, int errorCode, String description,
-                                        String failingUrl) {
+                    String failingUrl) {
 
             }
+
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if (url.contains("musicflow") && url.contains("code")) {
                     Uri uri = Uri.parse(url);
@@ -49,11 +50,17 @@ public class LoginActivity extends Activity {
                     String scope = uri.getQueryParameter("scope");
 
                     String preferencesKey = getString(R.string.user_preferences_key);
-                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_code", code).commit();
-                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("user_state",state).commit();
-                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_code_scope",scope).commit();
+                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit()
+                            .putString("access_code", code).commit();
+                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit()
+                            .putString("user_state", state).commit();
+                    getSharedPreferences(preferencesKey, MODE_PRIVATE).edit()
+                            .putString("access_code_scope", scope).commit();
 
-                    AuthorizationRequest body = new AuthorizationRequest(UrlFactory.clientSecret(), UrlFactory.clientID(), "http://www.musicflow.com", code, "authorization_code", false);
+                    AuthorizationRequest body =
+                            new AuthorizationRequest(UrlFactory.clientSecret(), UrlFactory
+                                    .clientID(), "http://www.musicflow.com", code,
+                                    "authorization_code", false);
 
                     authNetworkRequest = new AuthNetworkRequest(getApplicationContext(), body);
                     authNetworkRequest.execute(UrlFactory.obtainToken());
@@ -63,7 +70,8 @@ public class LoginActivity extends Activity {
                 }
             }
         });
-        webView.loadUrl("https://partner.api.beatsmusic.com/v1/oauth2/authorize?response_type=code&redirect_uri=http%3A%2F%2Fwww.musicflow.com&client_id=" + UrlFactory.clientID());
+        webView.loadUrl("https://partner.api.beatsmusic.com/v1/oauth2/authorize?response_type=code&redirect_uri=http%3A%2F%2Fwww.musicflow.com&client_id="
+                + UrlFactory.clientID());
     }
 
     public void completeSignIn() {
@@ -73,20 +81,22 @@ public class LoginActivity extends Activity {
 
     protected class MeNetworkRequest extends NetworkAdapter {
 
+        public MeNetworkRequest(Context context) {
+            super(context, new MeMapper(), NetworkAdapter.RequestType.GET,
+                    new HashMap<String, String>(), me);
+        }
+
         @Override
         protected Boolean authRequired() {
             return true;
-        }
-
-        public MeNetworkRequest(Context context) {
-            super(context, new MeMapper(), NetworkAdapter.RequestType.GET, new HashMap<String, String>(), me);
         }
 
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             String preferencesKey = getString(R.string.user_preferences_key);
-            getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("user_id", me.getResult().getUserContext()).commit();
+            getSharedPreferences(preferencesKey, MODE_PRIVATE).edit()
+                    .putString("user_id", me.getResult().getUserContext()).commit();
             completeSignIn();
         }
     }
@@ -94,7 +104,8 @@ public class LoginActivity extends Activity {
     protected class AuthNetworkRequest extends NetworkAdapter {
 
         public AuthNetworkRequest(Context context, AuthorizationRequest body) {
-            super(context, new AuthorizationMapper(), NetworkAdapter.RequestType.POST, new HashMap<String, String>(), body, authorization);
+            super(context, new AuthorizationMapper(), NetworkAdapter.RequestType.POST,
+                    new HashMap<String, String>(), body, authorization);
         }
 
         @Override
@@ -102,9 +113,18 @@ public class LoginActivity extends Activity {
             super.onPostExecute(result);
 
             String preferencesKey = getString(R.string.user_preferences_key);
-            getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_token", authorization.getResult().getAccessToken()).commit();
-            getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("refresh_token", authorization.getResult().getRefreshToken()).commit();
-            getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putLong("access_expires_at", System.currentTimeMillis() + (1000 * authorization.getResult().getExpiresIn())).commit();
+            getSharedPreferences(preferencesKey, MODE_PRIVATE).edit()
+                    .putString("access_token", authorization.getResult().getAccessToken()).commit();
+            getSharedPreferences(preferencesKey, MODE_PRIVATE).edit()
+                    .putString("refresh_token", authorization.getResult().getRefreshToken())
+                    .commit();
+            getSharedPreferences(preferencesKey, MODE_PRIVATE)
+                    .edit()
+                    .putLong(
+                            "access_expires_at",
+                            System.currentTimeMillis()
+                                    + (1000 * authorization.getResult().getExpiresIn())
+                    ).commit();
 
             networkRequest = new MeNetworkRequest(context);
             networkRequest.execute(UrlFactory.me());

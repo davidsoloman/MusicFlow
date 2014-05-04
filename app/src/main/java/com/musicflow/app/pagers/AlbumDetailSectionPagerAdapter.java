@@ -1,5 +1,7 @@
 package com.musicflow.app.pagers;
 
+import java.util.Locale;
+
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
@@ -9,8 +11,6 @@ import com.musicflow.app.BeatsMusicActivity;
 import com.musicflow.app.BeatsMusicFragment;
 import com.musicflow.app.CompanionAlbumsFragment;
 import com.musicflow.app.NoInternetFragment;
-
-import java.util.Locale;
 
 /**
  * Links an album detail view, album review, and related albums fragment.

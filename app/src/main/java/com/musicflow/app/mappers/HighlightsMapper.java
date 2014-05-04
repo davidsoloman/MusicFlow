@@ -1,14 +1,14 @@
 package com.musicflow.app.mappers;
 
+import java.io.IOException;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.musicflow.app.data.BaseJson;
 import com.musicflow.app.data.Highlights;
 
-import java.io.IOException;
-
 public class HighlightsMapper extends CommonMapper {
-    
+
     @Override
     public BaseJson parseJson(String json) {
         Highlights highlights = new Highlights();

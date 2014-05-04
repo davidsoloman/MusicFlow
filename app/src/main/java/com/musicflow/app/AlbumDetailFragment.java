@@ -22,6 +22,7 @@ import com.squareup.picasso.Picasso;
  * Displays a list of tracks, an album image, album title, and artist name.
  */
 public class AlbumDetailFragment extends BeatsMusicFragment {
+    private static final String ARG_SECTION_NUMBER = "section_number";
     protected ImageView albumCoverArt;
     protected TextView artistName;
     protected TextView albumTitle;
@@ -29,14 +30,16 @@ public class AlbumDetailFragment extends BeatsMusicFragment {
     protected TrackListNetworkAdapter networkRequest;
     protected Tracks tracks;
 
-    private static final String ARG_SECTION_NUMBER = "section_number";
-
     public static AlbumDetailFragment newInstance(int sectionNumber) {
         AlbumDetailFragment fragment = new AlbumDetailFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public static CharSequence getTitle() {
+        return "Album Detail";
     }
 
     @Override
@@ -53,7 +56,10 @@ public class AlbumDetailFragment extends BeatsMusicFragment {
         trackList = (ListView) rootView.findViewById(R.id.track_list_view);
 
         albumCoverArt = (ImageView) rootView.findViewById(R.id.album_cover_art);
-        Picasso.with(getActivity()).load(UrlFactory.imageUrl(albumId, UrlFactory.EntityType.ALBUM, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(albumCoverArt);
+        Picasso.with(getActivity())
+                .load(UrlFactory.imageUrl(albumId, UrlFactory.EntityType.ALBUM,
+                        UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE))
+                .placeholder(R.drawable.placeholder).fit().centerCrop().into(albumCoverArt);
 
         artistName = (TextView) rootView.findViewById(R.id.artist_name);
         artistName.setText(artistNameText + getResources().getString(R.string.spacer));
@@ -70,13 +76,15 @@ public class AlbumDetailFragment extends BeatsMusicFragment {
     }
 
     private void setUpAdapter() {
-        trackList.setAdapter(new TracksAdapter(this.getActivity(), R.id.track_list_view, tracks.getTracks()));
+        trackList.setAdapter(new TracksAdapter(this.getActivity(), R.id.track_list_view, tracks
+                .getTracks()));
     }
 
     private class TrackListNetworkAdapter extends NetworkAdapter {
 
         public TrackListNetworkAdapter(Context context) {
-            super(context, new TracksMapper(), RequestType.GET, new HashMap<String, String>(), tracks);
+            super(context, new TracksMapper(), RequestType.GET, new HashMap<String, String>(),
+                    tracks);
         }
 
         @Override
@@ -84,9 +92,5 @@ public class AlbumDetailFragment extends BeatsMusicFragment {
             super.onPostExecute(result);
             setUpAdapter();
         }
-    }
-
-    public static CharSequence getTitle() {
-        return "Album Detail";
     }
 }

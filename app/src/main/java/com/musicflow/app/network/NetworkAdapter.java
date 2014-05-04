@@ -34,21 +34,14 @@ import com.musicflow.app.mappers.CommonMapper;
 
 public class NetworkAdapter extends AsyncTask<String, Void, String> {
 
-    public enum RequestType {
-        GET,
-        PUT,
-        POST,
-        DELETE
-    }
-
     protected CommonMapper mapper;
     protected RequestType type;
     protected Map<String, String> headers;
     protected BaseJson json;
     protected StringEntity body;
     protected Context context;
-
-    public NetworkAdapter(Context context, CommonMapper mapper, RequestType type, Map<String, String> headers, BaseJson json) {
+    public NetworkAdapter(Context context, CommonMapper mapper, RequestType type,
+            Map<String, String> headers, BaseJson json) {
         super();
         this.mapper = mapper;
         this.type = type;
@@ -59,7 +52,8 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
         this.context = context;
     }
 
-    public NetworkAdapter(Context context, CommonMapper mapper, RequestType type, Map<String, String> headers, String body, BaseJson response) {
+    public NetworkAdapter(Context context, CommonMapper mapper, RequestType type,
+            Map<String, String> headers, String body, BaseJson response) {
         this(context, mapper, type, headers, response);
         try {
             this.body = new StringEntity(body);
@@ -68,7 +62,8 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
         }
     }
 
-    public NetworkAdapter(Context context, CommonMapper mapper, RequestType type, Map<String, String> headers, BaseJson body, BaseJson response) {
+    public NetworkAdapter(Context context, CommonMapper mapper, RequestType type,
+            Map<String, String> headers, BaseJson body, BaseJson response) {
         this(context, mapper, type, headers, response);
         try {
             ObjectMapper jsonSerializer = new ObjectMapper();
@@ -118,9 +113,18 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
             authorization.fillIn(new AuthorizationMapper().parseJson(responseString));
 
             String preferencesKey = context.getString(R.string.user_preferences_key);
-            context.getSharedPreferences(preferencesKey, Context.MODE_PRIVATE).edit().putString("access_token", authorization.getResult().getAccessToken()).commit();
-            context.getSharedPreferences(preferencesKey, Context.MODE_PRIVATE).edit().putString("refresh_token", authorization.getResult().getRefreshToken()).commit();
-            context.getSharedPreferences(preferencesKey, Context.MODE_PRIVATE).edit().putLong("access_expires_at", System.currentTimeMillis() + (1000 * authorization.getResult().getExpiresIn())).commit();
+            context.getSharedPreferences(preferencesKey, Context.MODE_PRIVATE).edit()
+                    .putString("access_token", authorization.getResult().getAccessToken()).commit();
+            context.getSharedPreferences(preferencesKey, Context.MODE_PRIVATE).edit()
+                    .putString("refresh_token", authorization.getResult().getRefreshToken())
+                    .commit();
+            context.getSharedPreferences(preferencesKey, Context.MODE_PRIVATE)
+                    .edit()
+                    .putLong(
+                            "access_expires_at",
+                            System.currentTimeMillis()
+                                    + (1000 * authorization.getResult().getExpiresIn())
+                    ).commit();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (JsonProcessingException e) {
@@ -139,7 +143,9 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
     protected void onPreExecute() {
         if (authRequired()) {
             String preferencesKey = context.getString(R.string.user_preferences_key);
-            String accessToken = context.getSharedPreferences(preferencesKey, Context.MODE_PRIVATE).getString("access_token", null);
+            String accessToken =
+                    context.getSharedPreferences(preferencesKey, Context.MODE_PRIVATE).getString(
+                            "access_token", null);
 
             if (accessToken == null) {
                 Intent i = new Intent(context, LoginActivity.class);
@@ -158,14 +164,26 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
 
             if (authRequired()) {
                 String preferencesKey = context.getString(R.string.user_preferences_key);
-                Long accessExpires = context.getSharedPreferences(preferencesKey, Context.MODE_PRIVATE).getLong("access_expires_at", System.currentTimeMillis());
+                Long accessExpires =
+                        context.getSharedPreferences(preferencesKey, Context.MODE_PRIVATE).getLong(
+                                "access_expires_at", System.currentTimeMillis());
                 if (accessExpires < System.currentTimeMillis()) {
-                    String code = context.getSharedPreferences(preferencesKey, Context.MODE_PRIVATE).getString("refresh_token", "");
-                    AuthorizationRequest body = new AuthorizationRequest(UrlFactory.clientSecret(), UrlFactory.clientID(), "http://www.musicflow.com", code, "refresh_token", true);
+                    String code =
+                            context.getSharedPreferences(preferencesKey, Context.MODE_PRIVATE)
+                                    .getString("refresh_token", "");
+                    AuthorizationRequest body =
+                            new AuthorizationRequest(UrlFactory.clientSecret(),
+                                    UrlFactory.clientID(), "http://www.musicflow.com", code,
+                                    "refresh_token", true);
                     makeRefreshRequest(body);
                 }
 
-                headers.put("Authorization", "Bearer " + context.getSharedPreferences(preferencesKey, Context.MODE_PRIVATE).getString("access_token", ""));
+                headers.put(
+                        "Authorization",
+                        "Bearer "
+                                + context
+                                        .getSharedPreferences(preferencesKey, Context.MODE_PRIVATE)
+                                        .getString("access_token", ""));
             }
 
             try {
@@ -214,7 +232,7 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
                     throw new IOException(statusLine.getReasonPhrase());
                 }
             } catch (ClientProtocolException e) {
-                //TODO Handle problems...
+                // TODO Handle problems...
             } catch (IOException e) {
                 String answer = e.getLocalizedMessage();
                 Log.d("network manager", answer);
@@ -231,5 +249,9 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public enum RequestType {
+        GET, PUT, POST, DELETE
     }
 }
