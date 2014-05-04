@@ -42,7 +42,7 @@ public class EssentialAlbumsFragment extends BeatsMusicFragment {
 
         albums = new Albums();
         String artistId = getActivity().getIntent().getStringExtra("ArtistId");
-        View rootView = inflater.inflate(R.layout.fragment_albums, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_list_view, container, false);
 
         essentialAlbumsListView = (ListView) rootView.findViewById(R.id.generic_list_view);
 
