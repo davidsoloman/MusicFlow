@@ -87,7 +87,7 @@ public class ArtistViewFragment extends BeatsMusicFragment {
             popularity.setText(artistPopularity + getString(R.string.follower));
         }
 
-        Picasso.with(getActivity()).load(UrlFactory.imageUrl(artist.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(artistHeroImage);
+        Picasso.with(getActivity()).load(UrlFactory.imageUrl(artist.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.MEDIUM)).placeholder(R.drawable.placeholder).fit().centerCrop().into(artistHeroImage);
     }
 
     private void loadBioData() {
