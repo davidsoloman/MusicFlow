@@ -4,10 +4,6 @@ public class Highlight extends BaseJson {
     protected String type;
     protected RecommendationContent content;
 
-    public Highlight() {
-        this.content = new RecommendationContent();
-    }
-
     @Override
     public void fillIn(BaseJson parseJson) throws Exception {
         if (parseJson instanceof Highlight) {

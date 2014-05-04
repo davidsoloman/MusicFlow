@@ -194,8 +194,16 @@ public class UrlFactory {
         }
     }
 
+    public static String highlightsFeatured() {
+        return BASE_URL + "/api/discoveries/featured" + "?client_id=" + clientID();
+    }
+
     public static String highlightsFeatured(CollectionQueryParams params) {
         return BASE_URL + "/api/discoveries/featured" + "?client_id=" + clientID() + '&' + params.toString();
+    }
+
+    public static String highlightsEditorPicks() {
+        return BASE_URL + "/api/discoveries/editor_picks" + "?client_id=" + clientID();
     }
 
     public static String highlightsEditorPicks(CollectionQueryParams params) {
