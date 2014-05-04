@@ -9,8 +9,6 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,7 +18,7 @@ import com.musicflow.app.login.LoginActivity;
 import com.musicflow.app.pagers.SectionsPagerAdapter;
 
 /**
- * Base actiivty for all other activities to inherit from.
+ * Base activity for all other activities to inherit from.
  */
 public abstract class BeatsMusicActivity extends ActionBarActivity {
     protected String[] navTiles;
@@ -82,34 +80,6 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
         getActionBar().setTitle(actionBarTitle);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        // boolean drawerOpen = drawerLayout.isDrawerOpen(drawerList);
-        return super.onPrepareOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.action_profile:
-                this.startActivity(new Intent(this, ProfileActivity.class));
-                break;
-            case R.id.action_login:
-                this.startActivity(new Intent(this, LoginActivity.class));
-                break;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-        return true;
-    }
-
     /**
      * Swaps fragments in the main content view
      */
@@ -144,6 +114,14 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
                 i = new Intent(this, PlaylistActivity.class);
                 this.startActivity(i);
                 break;
+            case 7:
+                if (loggedIn()) {
+                    i = new Intent(this, ProfileActivity.class);
+                } else {
+                    i = new Intent(this, LoginActivity.class);
+                }
+                this.startActivity(i);
+                break;
         }
 
 
@@ -154,6 +132,12 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             selectItem(position);
         }
+    }
+
+    private Boolean loggedIn() {
+        String preferencesKey = getString(R.string.user_preferences_key);
+        String accessToken = getSharedPreferences(preferencesKey, MODE_PRIVATE).getString("access_token", null);
+        return accessToken != null;
     }
 
     @Override
