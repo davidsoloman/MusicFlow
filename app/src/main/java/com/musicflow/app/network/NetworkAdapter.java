@@ -23,7 +23,11 @@ import android.util.Log;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.musicflow.app.R;
+import com.musicflow.app.data.Authorization;
+import com.musicflow.app.data.AuthorizationRequest;
 import com.musicflow.app.data.BaseJson;
+import com.musicflow.app.mappers.AuthorizationMapper;
 import com.musicflow.app.mappers.CommonMapper;
 
 public class NetworkAdapter extends AsyncTask<String, Void, String> {
@@ -41,8 +45,6 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
     protected BaseJson json;
     protected StringEntity body;
     protected Context context;
-
-    protected Boolean requiresAuth = false;
 
     public NetworkAdapter(Context context, CommonMapper mapper, RequestType type, Map<String, String> headers, BaseJson json) {
         super();
@@ -77,11 +79,63 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
         }
     }
 
+    protected Boolean authRequired() {
+        return false;
+    }
+
+    private void makeRefreshRequest(AuthorizationRequest authorizationRequest) {
+        try {
+            Authorization authorization = new Authorization();
+            ObjectMapper jsonSerializer = new ObjectMapper();
+            String baseJsonString = jsonSerializer.writeValueAsString(authorizationRequest);
+            StringEntity body = new StringEntity(baseJsonString);
+
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpResponse response;
+            String responseString = null;
+
+            HttpPost post = new HttpPost(UrlFactory.obtainToken());
+            for (String key : headers.keySet()) {
+                post.addHeader(key, headers.get(key));
+            }
+            post.setEntity(body);
+            response = httpclient.execute(post);
+
+            StatusLine statusLine = response.getStatusLine();
+
+            if (statusLine.getStatusCode() == HttpStatus.SC_OK) {
+                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                response.getEntity().writeTo(out);
+                out.close();
+                responseString = out.toString();
+            } else {
+                response.getEntity().getContent().close();
+                throw new IOException(statusLine.getReasonPhrase());
+            }
+
+            authorization.fillIn(new AuthorizationMapper().parseJson(responseString));
+
+            String preferencesKey = context.getString(R.string.user_preferences_key);
+            context.getSharedPreferences(preferencesKey, context.MODE_PRIVATE).edit().putString("access_token", authorization.getResult().getAccessToken()).commit();
+            context.getSharedPreferences(preferencesKey, context.MODE_PRIVATE).edit().putString("refresh_token", authorization.getResult().getRefreshToken()).commit();
+            context.getSharedPreferences(preferencesKey, context.MODE_PRIVATE).edit().putLong("access_expires_at", System.currentTimeMillis() + (1000 * authorization.getResult().getExpiresIn())).commit();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            String answer = e.getLocalizedMessage();
+            Log.d("network manager", answer);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     protected void onPreExecute() {
-        if (requiresAuth) {
-            headers.put("Authorization", "Bearer " + context.getSharedPreferences("users", Context.MODE_PRIVATE).getString("access_token", ""));
-        }
+
     }
 
     @Override
@@ -89,6 +143,20 @@ public class NetworkAdapter extends AsyncTask<String, Void, String> {
         HttpClient httpclient = new DefaultHttpClient();
         HttpResponse response;
         String responseString = null;
+
+        if (authRequired()) {
+            String preferencesKey = context.getString(R.string.user_preferences_key);
+            Long accessExpires = context.getSharedPreferences(preferencesKey, context.MODE_PRIVATE).getLong("access_expires_at", System.currentTimeMillis());
+
+            if (accessExpires < System.currentTimeMillis()) {
+                String code = context.getSharedPreferences(preferencesKey, context.MODE_PRIVATE).getString("refresh_token", "");
+                AuthorizationRequest body = new AuthorizationRequest(UrlFactory.clientSecret(), UrlFactory.clientID(), "http://www.musicflow.com", code, "refresh_token", true);
+                makeRefreshRequest(body);
+            }
+
+            headers.put("Authorization", "Bearer " + context.getSharedPreferences(preferencesKey, context.MODE_PRIVATE).getString("access_token", ""));
+        }
+
         try {
             switch (type) {
                 case GET:

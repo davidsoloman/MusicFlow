@@ -26,7 +26,6 @@ public class LoginActivity extends Activity {
     protected Authorization authorization;
     protected MeNetworkRequest networkRequest;
     protected AuthNetworkRequest authNetworkRequest;
-    HashMap<String, String> authHeaders;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,8 +34,6 @@ public class LoginActivity extends Activity {
 
         me = new Me();
         authorization = new Authorization();
-
-        authHeaders = new HashMap<String, String>();
 
         webView = (WebView) findViewById(R.id.activity_login_web_view);
         webView.setWebViewClient(new WebViewClient() {
@@ -76,8 +73,13 @@ public class LoginActivity extends Activity {
 
     protected class MeNetworkRequest extends NetworkAdapter {
 
+        @Override
+        protected Boolean authRequired() {
+            return true;
+        }
+
         public MeNetworkRequest(Context context) {
-            super(context, new MeMapper(), NetworkAdapter.RequestType.GET, authHeaders, me);
+            super(context, new MeMapper(), NetworkAdapter.RequestType.GET, new HashMap<String, String>(), me);
         }
 
         @Override
@@ -103,8 +105,6 @@ public class LoginActivity extends Activity {
             getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_token", authorization.getResult().getAccessToken()).commit();
             getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("refresh_token", authorization.getResult().getRefreshToken()).commit();
             getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putLong("access_expires_at", System.currentTimeMillis() + (1000 * authorization.getResult().getExpiresIn())).commit();
-
-            authHeaders.put("Authorization", "Bearer " + authorization.getResult().getAccessToken());
 
             networkRequest = new MeNetworkRequest(context);
             networkRequest.execute(UrlFactory.me());
