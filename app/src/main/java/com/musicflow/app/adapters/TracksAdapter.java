@@ -43,7 +43,7 @@ public class TracksAdapter extends ArrayAdapter<Track> {
         });
 
         ImageView trackCoverArt = (ImageView) rowView.findViewById(R.id.track_cover_art);
-        Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.TRACK, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.MEDIUM)).placeholder(R.drawable.placeholder).fit().centerCrop().into(trackCoverArt);
+        Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.TRACK, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).fit().centerCrop().into(trackCoverArt);
         TextView trackName = (TextView) rowView.findViewById(R.id.track_title);
         trackName.setText(current.getTitle());
 
