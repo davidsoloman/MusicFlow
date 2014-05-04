@@ -18,8 +18,8 @@ public class AlbumDetailActivity extends BeatsMusicActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(sectionsPagerAdapter);
 
-        drawerList.setItemChecked(0, true);
-        setTitle(navTiles[0]);
+        drawerList.setItemChecked(1, true);
+        setTitle(navTiles[1]);
         drawerLayout.closeDrawer(drawerList);
     }
 }
