@@ -235,52 +235,59 @@ public class UrlFactory {
         return BASE_URL + "/api/tracks/" + id + "/artists" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
-    public static String playlistList() {
-        return BASE_URL + "/api/playlists" + "?client_id=" + clientID();
-    }
-
     public static String playlistList(CollectionQueryParams params) {
-        return BASE_URL + "/api/playlists" + "?client_id=" + clientID() + '&' + params.toString();
+        if (params.ids == null || params.ids.length == 0) {
+            throw new IllegalArgumentException("Ids are required for lookup");
+        }
+        return BASE_URL + "/api/playlists?" + params.toString();
     }
 
     public static String playlist(String id) {
-        return BASE_URL + "/api/playlists/" + id + "?client_id=" + clientID();
+        return BASE_URL + "/api/playlists/" + id;
     }
 
     public static String playlist(String id, LookupQueryParams params) {
-        return BASE_URL + "/api/playlists/" + id + "?client_id=" + clientID() + '&' + params.toString();
+        return BASE_URL + "/api/playlists/" + id + '?' + params.toString();
     }
 
     public static String playlistSubscribers(String id) {
-        return BASE_URL + "/api/playlists/" + id + "/subscribers" + "?client_id=" + clientID();
+        return BASE_URL + "/api/playlists/" + id + "/subscribers";
     }
 
     public static String playlistSubscribers(String id, CollectionQueryParams params) {
-        return BASE_URL + "/api/playlists/" + id + "/subscribers" + "?client_id=" + clientID() + '&' + params.toString();
+        return BASE_URL + "/api/playlists/" + id + "/subscribers" + '?' + params.toString();
     }
 
     public static String playlistTracks(String id) {
-        return BASE_URL + "/api/playlists/" + id + "/tracks" + "?client_id=" + clientID();
+        return BASE_URL + "/api/playlists/" + id + "/tracks";
     }
 
     public static String playlistTracks(String id, CollectionQueryParams params) {
-        return BASE_URL + "/api/playlists/" + id + "/tracks" + "?client_id=" + clientID() + '&' + params.toString();
+        return BASE_URL + "/api/playlists/" + id + "/tracks" + '?' + params.toString();
     }
 
     public static String playlistArtists(String id) {
-        return BASE_URL + "/api/playlists/" + id + "/artists" + "?client_id=" + clientID();
+        return BASE_URL + "/api/playlists/" + id + "/artists";
     }
 
     public static String playlistArtists(String id, CollectionQueryParams params) {
-        return BASE_URL + "/api/playlists/" + id + "/artists" + "?client_id=" + clientID() + '&' + params.toString();
+        return BASE_URL + "/api/playlists/" + id + "/artists" + '?' + params.toString();
     }
 
     public static String usersPlaylists(String id) {
-        return BASE_URL + "/api/users/" + id + "/playlists" + "?client_id=" + clientID();
+        return BASE_URL + "/api/users/" + id + "/playlists";
     }
 
     public static String usersPlaylists(String id, CollectionQueryParams params) {
-        return BASE_URL + "/api/users/" + id + "/playlists" + "?client_id=" + clientID() + '&' + params.toString();
+        return BASE_URL + "/api/users/" + id + "/playlists" + '?' + params.toString();
+    }
+
+    public static String usersSubscribedPlaylists(String id) {
+        return BASE_URL + "/api/users/" + id + "/playlist_subscriptions";
+    }
+
+    public static String usersSubscribedPlaylists(String id, CollectionQueryParams params) {
+        return BASE_URL + "/api/users/" + id + "/playlist_subscriptions" + '?' + params.toString();
     }
 
     public static String searchPredictive(String searchText) {

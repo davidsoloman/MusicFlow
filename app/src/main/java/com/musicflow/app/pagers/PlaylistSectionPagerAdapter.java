@@ -9,16 +9,18 @@ import com.musicflow.app.BeatsMusicFragment;
 import com.musicflow.app.EssentialAlbumsFragment;
 import com.musicflow.app.GenreFragment;
 import com.musicflow.app.NoInternetFragment;
+import com.musicflow.app.PlaylistFragment;
+import com.musicflow.app.SubscribedPlaylistFragment;
 
 import java.util.Locale;
 
 /**
  * Pages between fragments relating to genres, which are displayed in the Genre Activity.
  */
-public class GenreSectionPagerAdapter extends SectionsPagerAdapter {
+public class PlaylistSectionPagerAdapter extends SectionsPagerAdapter {
     protected Context context;
 
-    public GenreSectionPagerAdapter(FragmentManager fm, Context context) {
+    public PlaylistSectionPagerAdapter(FragmentManager fm, Context context) {
         super(fm);
         this.context = context;
     }
@@ -27,11 +29,9 @@ public class GenreSectionPagerAdapter extends SectionsPagerAdapter {
     public BeatsMusicFragment getItem(int position) {
         if (BeatsMusicActivity.isNetworkAvailable(context)) {
             if (position == 0) {
-                return GenreFragment.newInstance(position + 1);
-            } else if (position == 1) {
-                return EssentialAlbumsFragment.newInstance(position + 1);
+                return PlaylistFragment.newInstance(position + 1);
             } else {
-                return ArtistTracksFragment.newInstance(position + 1);
+                return SubscribedPlaylistFragment.newInstance(position + 1);
             }
         } else {
             return NoInternetFragment.newInstance(position + 1);
@@ -40,18 +40,15 @@ public class GenreSectionPagerAdapter extends SectionsPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        Locale l = Locale.getDefault();
         if (position == 0) {
-            return GenreFragment.getTitle();
-        } else if (position == 1) {
-            return EssentialAlbumsFragment.getTitle();
+            return PlaylistFragment.getTitle();
         } else {
-            return ArtistTracksFragment.getTitle();
+            return SubscribedPlaylistFragment.getTitle();
         }
     }
 }
