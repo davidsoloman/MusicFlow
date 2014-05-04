@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff111111"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/genre_cover_image"
+        android:layout_width="fill_parent"
+        android:layout_height="170dp"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/genre_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:paddingEnd="15dp"
+        android:paddingTop="5dp"
+        android:textAllCaps="true"
+        android:textColor="#fcf9ff"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/genre_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:paddingEnd="15dp"
+        android:paddingTop="5dp"
+        android:textAllCaps="true"
+        android:textColor="#fcf9ff"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/genre_playlist_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
