@@ -26,6 +26,7 @@ public class AlbumReviewFragment extends BeatsMusicFragment {
     protected FrameLayout resultsFrame;
     protected TextView albumTitle;
     protected Review review;
+    protected TextView reviewBy;
     protected String albumName;
     protected ReviewNetworkAdapter networkRequest;
 
@@ -50,6 +51,7 @@ public class AlbumReviewFragment extends BeatsMusicFragment {
 
         albumReview = (WebView) rootView.findViewById(R.id.album_review);
         albumTitle = (TextView) rootView.findViewById(R.id.review_title);
+        reviewBy = (TextView) rootView.findViewById(R.id.review_by);
         resultsFrame = (FrameLayout) rootView.findViewById(R.id.web_view_result_frame);
         noResultsFrame = (FrameLayout) rootView.findViewById(R.id.no_reviews_frame);
 
@@ -64,6 +66,9 @@ public class AlbumReviewFragment extends BeatsMusicFragment {
         if (review.getContent() != null) {
             albumReview.loadData(review.getContent(), "text/html", "utf-8");
             albumTitle.setText(albumName);
+            if (review.getAuthor() != null) {
+                reviewBy.setText(review.getAuthor());
+            }
         } else {
             noResultsFrame.setVisibility(View.VISIBLE);
             resultsFrame.setVisibility(View.GONE);

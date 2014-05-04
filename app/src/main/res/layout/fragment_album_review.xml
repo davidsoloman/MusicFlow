@@ -22,7 +22,7 @@
                 <TextView
                     android:id="@+id/review_title"
                     android:layout_width="fill_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="40dp"
                     android:gravity="center_horizontal"
                     android:lineSpacingExtra="5dp"
                     android:lines="2"
@@ -31,6 +31,14 @@
                     android:textColor="#ffffffff"
                     android:paddingTop="10dp"
                     android:textSize="20sp" />
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="35dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="#ffffffff"
+                    android:id="@+id/review_by"
+                    android:textStyle="bold"
+                    android:textSize="13sp"/>
 
                 <WebView
                     android:id="@+id/album_review"
