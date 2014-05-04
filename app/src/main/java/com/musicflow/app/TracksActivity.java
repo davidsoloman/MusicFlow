@@ -19,8 +19,8 @@ public class TracksActivity extends BeatsMusicActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(sectionsPagerAdapter);
 
-        drawerList.setItemChecked(0, true);
-        setTitle(navTiles[0]);
+        drawerList.setItemChecked(4, true);
+        setTitle(navTiles[4]);
         drawerLayout.closeDrawer(drawerList);
     }
 }
