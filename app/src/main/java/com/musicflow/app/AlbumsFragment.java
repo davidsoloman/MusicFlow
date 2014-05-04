@@ -42,8 +42,8 @@ public class AlbumsFragment extends BeatsMusicFragment {
 
         albums = new Albums();
 
-        View rootView = inflater.inflate(R.layout.fragment_albums, container, false);
-        albumsListView = (ListView) rootView.findViewById(R.id.albums_fragment_list_view);
+        View rootView = inflater.inflate(R.layout.fragment_list_view, container, false);
+        albumsListView = (ListView) rootView.findViewById(R.id.generic_list_view);
         networkRequest = new AlbumListNetworkAdapter(getActivity());
         networkRequest.execute(UrlFactory.albumList());
 
@@ -53,7 +53,7 @@ public class AlbumsFragment extends BeatsMusicFragment {
     }
 
     private void setUpAdapter() {
-        albumsListView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(), R.id.albums_fragment_list_view, albums.getAlbums()));
+        albumsListView.setAdapter(new LargeImageAlbumAdapter(this.getActivity(), R.id.generic_list_view, albums.getAlbums()));
     }
 
     private class

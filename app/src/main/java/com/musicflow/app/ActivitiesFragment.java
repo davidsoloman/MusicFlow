@@ -41,8 +41,8 @@ public class ActivitiesFragment extends BeatsMusicFragment {
         super.onCreateView(inflater, container, savedInstanceState);
         activities = new Activities();
 
-        View rootView = inflater.inflate(R.layout.fragment_activities, container, false);
-        activitiesListView = (ListView) rootView.findViewById(R.id.activities_fragment_list_view);
+        View rootView = inflater.inflate(R.layout.fragment_list_view, container, false);
+        activitiesListView = (ListView) rootView.findViewById(R.id.generic_list_view);
 
         networkRequest = new ActivitiesNetworkAdapter(getActivity());
         networkRequest
@@ -54,7 +54,7 @@ public class ActivitiesFragment extends BeatsMusicFragment {
 
     private void loadViewData() {
         activitiesListView.setAdapter(new ActivitiesAdapter(this.getActivity(),
-                R.id.artists_fragment_list_view, activities.getActivities()));
+                R.id.generic_list_view, activities.getActivities()));
     }
 
     private class ActivitiesNetworkAdapter extends NetworkAdapter {
