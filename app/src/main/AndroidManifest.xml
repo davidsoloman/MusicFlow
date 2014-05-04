@@ -110,6 +110,7 @@
         </activity>
         <activity
             android:name=".GenreViewActivity"
+            android:screenOrientation="portrait"
             android:label="@string/genre_view_activity" >
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
