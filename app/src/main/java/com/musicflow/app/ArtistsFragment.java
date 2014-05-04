@@ -40,8 +40,8 @@ public class ArtistsFragment extends BeatsMusicFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         artists = new Artists();
-        View rootView = inflater.inflate(R.layout.fragment_artists, container, false);
-        artistListView = (ListView) rootView.findViewById(R.id.artists_fragment_list_view);
+        View rootView = inflater.inflate(R.layout.fragment_list_view, container, false);
+        artistListView = (ListView) rootView.findViewById(R.id.generic_list_view);
         networkRequest = new ArtistsResultNetworkAdapter(getActivity());
         networkRequest.execute(UrlFactory.artistList());
         innerFrame.addView(rootView);
@@ -49,7 +49,7 @@ public class ArtistsFragment extends BeatsMusicFragment {
     }
 
     private void loadViewData() {
-        artistListView.setAdapter(new ArtistAdapter(this.getActivity(), R.id.artists_fragment_list_view, artists.getArtists()));
+        artistListView.setAdapter(new ArtistAdapter(this.getActivity(), R.id.generic_list_view, artists.getArtists()));
     }
 
     private class ArtistsResultNetworkAdapter extends NetworkAdapter {

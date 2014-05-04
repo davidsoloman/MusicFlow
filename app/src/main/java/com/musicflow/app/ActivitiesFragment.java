@@ -54,7 +54,7 @@ public class ActivitiesFragment extends BeatsMusicFragment {
 
     private void loadViewData() {
         activitiesListView.setAdapter(new ActivitiesAdapter(this.getActivity(),
-                R.id.artists_fragment_list_view, activities.getActivities()));
+                R.id.generic_list_view, activities.getActivities()));
     }
 
     private class ActivitiesNetworkAdapter extends NetworkAdapter {
