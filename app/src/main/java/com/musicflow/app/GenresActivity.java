@@ -8,7 +8,7 @@ import com.musicflow.app.pagers.GenreSectionPagerAdapter;
 /**
  * Displays fragments related to genre.
  */
-public class GenreActivity extends BeatsMusicActivity {
+public class GenresActivity extends BeatsMusicActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

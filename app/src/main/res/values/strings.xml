@@ -58,6 +58,7 @@
     <string name="about_the_artist">About the Artist</string>
     <string name="genre_activity">Genre Activity</string>
     <string name="playlist_activity">Playlist Activity</string>
+    <string name="genre_view_activity">Genre View Activity</string>
 
     <string-array name="nav_tiles">
         <item>Artists</item>

@@ -94,7 +94,7 @@
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".GenreActivity"
+            android:name=".GenresActivity"
             android:label="@string/genre_activity"
             android:screenOrientation="portrait">
             <meta-data
@@ -104,6 +104,12 @@
         <activity
             android:name=".PlaylistActivity"
             android:label="@string/playlist_activity" >
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity
+            android:name=".GenreViewActivity"
+            android:label="@string/genre_view_activity" >
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>

@@ -294,8 +294,20 @@ public class UrlFactory {
         return BASE_URL + SEARCH_PREDICTIVE + "?q=" + searchText + "&client_id=" + clientID();
     }
 
+    public static String genre(String id) {
+        return BASE_URL + "/api/genres/" + id;
+    }
+
+    public static String genre(String id, LookupQueryParams params) {
+        return BASE_URL + "/api/genres/" + id + '?' + params.toString();
+    }
+
     public static String genresCollection() {
         return BASE_URL + "/api/genres" + "?client_id=" + clientID();
+    }
+
+    public static String genresCollection(CollectionQueryParams params) {
+        return BASE_URL + "/api/genres" + "?client_id=" + clientID() + '&' + params.toString();
     }
 
     public enum EntityType {
