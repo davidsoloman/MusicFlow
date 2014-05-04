@@ -60,6 +60,9 @@
     <string name="playlist_activity">Playlist Activity</string>
     <string name="genre_view_activity">Genre View Activity</string>
     <string name="no_reviews">Oops! No reviews for this album exist yet!</string>
+    <string name="no_data_received">No data. Sorry</string>
+    <string name="no_user_created_playlists">You have not created any playlists</string>
+    <string name="no_user_subscribed_playlists">You have not subscribed to any playlists</string>
 
     <string-array name="nav_tiles">
         <item>Artists</item>
@@ -69,6 +72,7 @@
         <item>Tracks</item>
         <item>Genres</item>
         <item>Playlists</item>
+        <item>Profile</item>
     </string-array>
 
 </resources>

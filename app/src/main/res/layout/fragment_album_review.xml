@@ -63,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
-                    android:src="@drawable/rock_on"
+                    android:src="@drawable/no_reviews"
                     android:visibility="visible" />
 
                 <LinearLayout
