@@ -302,6 +302,46 @@ public class UrlFactory {
         return BASE_URL + "/api/genres/" + id + '?' + params.toString();
     }
 
+    public static String genreEditorPicks(String id) {
+        return BASE_URL + "/api/genres/" + id + "/editor_picks";
+    }
+
+    public static String genreEditorPicks(String id, CollectionQueryParams params) {
+        return BASE_URL + "/api/genres/" + id + "/editor_picks" + '?' + params.toString();
+    }
+
+    public static String genreFeatured(String id) {
+        return BASE_URL + "/api/genres/" + id + "/featured";
+    }
+
+    public static String genreFeatured(String id, CollectionQueryParams params) {
+        return BASE_URL + "/api/genres/" + id + "/featured" + '?' + params.toString();
+    }
+
+    public static String genreNewReleases(String id) {
+        return BASE_URL + "/api/genres/" + id + "/new_releases";
+    }
+
+    public static String genreNewReleases(String id, CollectionQueryParams params) {
+        return BASE_URL + "/api/genres/" + id + "/new_releases" + '?' + params.toString();
+    }
+
+    public static String genreBios(String id) {
+        return BASE_URL + "/api/genres/" + id + "/bios";
+    }
+
+    public static String genreBios(String id, CollectionQueryParams params) {
+        return BASE_URL + "/api/genres/" + id + "/bios" + '?' + params.toString();
+    }
+
+    public static String genrePlaylists(String id) {
+        return BASE_URL + "/api/genres/" + id + "/playlists";
+    }
+
+    public static String genrePlaylists(String id, CollectionQueryParams params) {
+        return BASE_URL + "/api/genres/" + id + "/playlists" + '?' + params.toString();
+    }
+
     public static String genresCollection() {
         return BASE_URL + "/api/genres" + "?client_id=" + clientID();
     }

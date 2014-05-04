@@ -7,10 +7,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.musicflow.app.adapters.PlaylistAdapter;
 import com.musicflow.app.data.Genre;
 import com.musicflow.app.data.Playlists;
 import com.musicflow.app.mappers.ActivityMapper;
 import com.musicflow.app.mappers.GenreMapper;
+import com.musicflow.app.mappers.PlaylistsMapper;
 import com.musicflow.app.network.NetworkAdapter;
 import com.musicflow.app.network.UrlFactory;
 import com.squareup.picasso.Picasso;
@@ -22,6 +24,7 @@ import java.util.HashMap;
  */
 public class GenreViewActivity extends Activity {
     protected GenreNetworkRequest networkRequest;
+    protected GenrePlaylistsNetworkRequest playlistNetworkRequest;
 
     protected Genre genre;
     protected String genreId;
@@ -36,6 +39,7 @@ public class GenreViewActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         genre = new Genre();
+        playlists = new Playlists();
         genreId = getIntent().getStringExtra("GenreId");
 
         setContentView(R.layout.activity_genre_view);
@@ -48,6 +52,9 @@ public class GenreViewActivity extends Activity {
         networkRequest = new GenreNetworkRequest(this);
         networkRequest.execute(UrlFactory.genre(genreId));
 
+        playlistNetworkRequest = new GenrePlaylistsNetworkRequest(this);
+        playlistNetworkRequest.execute(UrlFactory.genrePlaylists(genreId));
+
         setTitle("Genre");
     }
 
@@ -55,6 +62,10 @@ public class GenreViewActivity extends Activity {
         genreName.setText(genre.getName());
         genreUserName.setText('@'+genre.getUsername());
         Picasso.with(this).load(UrlFactory.imageUrl(genre.getId(), UrlFactory.EntityType.GENRE, UrlFactory.ImageType.COVER, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(coverImage);
+    }
+
+    private void loadPlaylistsData() {
+        playlistListView.setAdapter(new PlaylistAdapter(this, R.id.genre_playlist_list_view, playlists.getPlaylists()));
     }
 
     private class GenreNetworkRequest extends NetworkAdapter {
@@ -71,6 +82,23 @@ public class GenreViewActivity extends Activity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             loadGenreViewData();
+        }
+    }
+
+    private class GenrePlaylistsNetworkRequest extends NetworkAdapter {
+        @Override
+        public Boolean authRequired() {
+            return true;
+        }
+
+        public GenrePlaylistsNetworkRequest(Context context) {
+            super(context, new PlaylistsMapper(), RequestType.GET, new HashMap<String, String>(), playlists);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            loadPlaylistsData();
         }
     }
 }
