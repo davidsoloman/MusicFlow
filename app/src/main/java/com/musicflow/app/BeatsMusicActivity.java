@@ -154,4 +154,9 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
 }
