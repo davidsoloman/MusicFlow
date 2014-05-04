@@ -42,4 +42,5 @@ public abstract class BeatsMusicFragment extends Fragment {
 
         return fl;
     }
+
 }
