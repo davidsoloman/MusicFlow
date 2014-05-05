@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.freethinking.beats.sdk.login.LoginActivity;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
 import com.musicflow.app.pagers.SectionsPagerAdapter;
 
 /**
@@ -115,7 +116,7 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
                 this.startActivity(i);
                 break;
             case 7:
-                if (loggedIn()) {
+                if (NetworkAdapter.loggedIn(this)) {
                     i = new Intent(this, ProfileActivity.class);
                 } else {
                     i = new Intent(this, LoginActivity.class);
@@ -132,12 +133,6 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
         public void onItemClick(AdapterView parent, View view, int position, long id) {
             selectItem(position);
         }
-    }
-
-    private Boolean loggedIn() {
-        String preferencesKey = getString(R.string.user_preferences_key);
-        String accessToken = getSharedPreferences(preferencesKey, MODE_PRIVATE).getString("access_token", null);
-        return accessToken != null;
     }
 
     @Override
