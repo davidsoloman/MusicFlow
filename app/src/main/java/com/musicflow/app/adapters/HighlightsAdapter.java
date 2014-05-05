@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.musicflow.app.R;
-import com.musicflow.app.data.Highlight;
+import com.freethinking.beats.sdk.data.Highlight;
 
 /**
  * Displays a list of highlights, which is of type Recommendation content, which can be an album,

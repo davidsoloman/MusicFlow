@@ -9,13 +9,13 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import com.musicflow.app.R;
-import com.musicflow.app.data.Authorization;
-import com.musicflow.app.data.AuthorizationRequest;
-import com.musicflow.app.data.Me;
-import com.musicflow.app.mappers.AuthorizationMapper;
-import com.musicflow.app.mappers.MeMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Authorization;
+import com.freethinking.beats.sdk.data.AuthorizationRequest;
+import com.freethinking.beats.sdk.data.Me;
+import com.freethinking.beats.sdk.mappers.AuthorizationMapper;
+import com.freethinking.beats.sdk.mappers.MeMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.UrlFactory;
 
 import java.util.HashMap;
 

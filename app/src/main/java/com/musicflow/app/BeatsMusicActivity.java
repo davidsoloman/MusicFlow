@@ -14,7 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.musicflow.app.login.LoginActivity;
+import com.freethinking.beats.sdk.login.LoginActivity;
 import com.musicflow.app.pagers.SectionsPagerAdapter;
 
 /**

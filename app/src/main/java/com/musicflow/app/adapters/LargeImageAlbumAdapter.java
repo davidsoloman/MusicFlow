@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.musicflow.app.AlbumDetailActivity;
 import com.musicflow.app.R;
-import com.musicflow.app.data.Album;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Album;
+import com.freethinking.beats.sdk.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

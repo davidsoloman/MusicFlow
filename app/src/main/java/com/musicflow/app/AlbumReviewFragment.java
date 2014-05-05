@@ -9,10 +9,10 @@ import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.musicflow.app.data.Review;
-import com.musicflow.app.mappers.ReviewMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Review;
+import com.freethinking.beats.sdk.mappers.ReviewMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.UrlFactory;
 
 import java.util.HashMap;
 

@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.musicflow.app.adapters.ArtistAdapter;
-import com.musicflow.app.data.Artists;
-import com.musicflow.app.mappers.ArtistsMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Artists;
+import com.freethinking.beats.sdk.mappers.ArtistsMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.UrlFactory;
 
 import java.util.HashMap;
 

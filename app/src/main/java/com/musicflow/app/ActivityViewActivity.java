@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import com.musicflow.app.adapters.PlaylistAdapter;
-import com.musicflow.app.data.Playlists;
-import com.musicflow.app.mappers.ActivityMapper;
-import com.musicflow.app.mappers.PlaylistsMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Playlists;
+import com.freethinking.beats.sdk.mappers.ActivityMapper;
+import com.freethinking.beats.sdk.mappers.PlaylistsMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.UrlFactory;
 
 import java.util.HashMap;
 
@@ -21,7 +21,7 @@ public class ActivityViewActivity extends Activity {
     protected ActivityNetworkRequest activityNetworkRequest;
     protected PlaylistNetworkRequest playlistNetworkRequest;
 
-    protected com.musicflow.app.data.Activity activity;
+    protected com.freethinking.beats.sdk.data.Activity activity;
     protected String activityId;
     protected Playlists playlists;
 
@@ -31,7 +31,7 @@ public class ActivityViewActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity_view);
-        activity = new com.musicflow.app.data.Activity();
+        activity = new com.freethinking.beats.sdk.data.Activity();
         playlists = new Playlists();
         activityId = getIntent().getStringExtra("ActivityId");
 

@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.musicflow.app.R;
-import com.musicflow.app.data.Playlist;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Playlist;
+import com.freethinking.beats.sdk.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

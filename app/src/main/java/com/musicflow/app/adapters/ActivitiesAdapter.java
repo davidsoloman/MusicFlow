@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.musicflow.app.ActivityViewActivity;
 import com.musicflow.app.R;
-import com.musicflow.app.data.Activity;
+import com.freethinking.beats.sdk.data.Activity;
 
 import java.util.List;
 

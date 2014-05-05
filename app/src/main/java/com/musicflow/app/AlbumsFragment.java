@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.musicflow.app.adapters.LargeImageAlbumAdapter;
-import com.musicflow.app.data.Albums;
-import com.musicflow.app.mappers.AlbumsMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Albums;
+import com.freethinking.beats.sdk.mappers.AlbumsMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.UrlFactory;
 
 import java.util.HashMap;
 

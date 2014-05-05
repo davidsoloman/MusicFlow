@@ -9,12 +9,12 @@ import android.widget.ListView;
 
 import com.musicflow.app.adapters.HighlightsAdapter;
 import com.musicflow.app.adapters.LargeImageAlbumAdapter;
-import com.musicflow.app.data.Albums;
-import com.musicflow.app.data.Highlights;
-import com.musicflow.app.mappers.AlbumsMapper;
-import com.musicflow.app.mappers.HighlightsMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Albums;
+import com.freethinking.beats.sdk.data.Highlights;
+import com.freethinking.beats.sdk.mappers.AlbumsMapper;
+import com.freethinking.beats.sdk.mappers.HighlightsMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.UrlFactory;
 
 import java.util.HashMap;
 

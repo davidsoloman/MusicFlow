@@ -8,8 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.musicflow.app.data.SearchResult;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.SearchResult;
+import com.freethinking.beats.sdk.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

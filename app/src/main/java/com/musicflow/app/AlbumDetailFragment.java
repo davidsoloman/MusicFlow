@@ -10,10 +10,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.musicflow.app.adapters.TracksAdapter;
-import com.musicflow.app.data.Tracks;
-import com.musicflow.app.mappers.TracksMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Tracks;
+import com.freethinking.beats.sdk.mappers.TracksMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;

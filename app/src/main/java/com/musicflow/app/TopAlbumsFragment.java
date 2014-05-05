@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.musicflow.app.adapters.LargeImageAlbumAdapter;
-import com.musicflow.app.data.Albums;
-import com.musicflow.app.mappers.AlbumsMapper;
-import com.musicflow.app.network.NetworkAdapter;
+import com.freethinking.beats.sdk.data.Albums;
+import com.freethinking.beats.sdk.mappers.AlbumsMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
 
 import java.util.HashMap;
 

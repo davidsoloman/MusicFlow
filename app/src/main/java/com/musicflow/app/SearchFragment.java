@@ -12,9 +12,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.musicflow.app.data.SearchResults;
-import com.musicflow.app.mappers.SearchResultsMapper;
-import com.musicflow.app.network.NetworkAdapter;
+import com.freethinking.beats.sdk.data.SearchResults;
+import com.freethinking.beats.sdk.mappers.SearchResultsMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
 
 import java.util.HashMap;
 

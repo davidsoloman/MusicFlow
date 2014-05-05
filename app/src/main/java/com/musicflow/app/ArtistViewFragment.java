@@ -9,12 +9,12 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.musicflow.app.data.Artist;
-import com.musicflow.app.data.BioWrapper;
-import com.musicflow.app.mappers.ArtistMapper;
-import com.musicflow.app.mappers.BioMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Artist;
+import com.freethinking.beats.sdk.data.BioWrapper;
+import com.freethinking.beats.sdk.mappers.ArtistMapper;
+import com.freethinking.beats.sdk.mappers.BioMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;

@@ -8,13 +8,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.musicflow.app.adapters.PlaylistAdapter;
-import com.musicflow.app.data.Genre;
-import com.musicflow.app.data.Playlists;
-import com.musicflow.app.mappers.ActivityMapper;
-import com.musicflow.app.mappers.GenreMapper;
-import com.musicflow.app.mappers.PlaylistsMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Genre;
+import com.freethinking.beats.sdk.data.Playlists;
+import com.freethinking.beats.sdk.mappers.ActivityMapper;
+import com.freethinking.beats.sdk.mappers.GenreMapper;
+import com.freethinking.beats.sdk.mappers.PlaylistsMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
