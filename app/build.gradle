@@ -1,5 +1,13 @@
 apply plugin: 'android'
 
+repositories {
+    maven {
+        url "file:///Code/freethinking/android"
+        artifactUrls mavenLocal()
+    }
+    mavenCentral()
+}
+
 android {
     compileSdkVersion 19
     buildToolsVersion "19.0.2"
@@ -38,4 +46,5 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.2.0'
     compile 'com.squareup.okhttp:okhttp:1.5.3'
     compile 'com.github.chrisbanes.actionbarpulltorefresh:extra-abc:+'
+    compile 'com.freethinking.beats:beats-sdk:0.1.0@aar'
 }
