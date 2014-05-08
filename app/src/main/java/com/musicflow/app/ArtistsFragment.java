@@ -44,7 +44,7 @@ public class ArtistsFragment extends BeatsMusicFragment {
         View rootView = inflater.inflate(R.layout.fragment_list_view, container, false);
         artistListView = (ListView) rootView.findViewById(R.id.generic_list_view);
         networkRequest = new ArtistsResultNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.artistList());
+        networkRequest.execute(UrlFactory.artistList(getActivity()));
         innerFrame.addView(rootView);
         return innerFrame;
     }

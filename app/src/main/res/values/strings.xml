@@ -62,6 +62,8 @@
     <string name="no_data_received">No data. Sorry</string>
     <string name="no_user_created_playlists">You have not created any playlists</string>
     <string name="no_user_subscribed_playlists">You have not subscribed to any playlists</string>
+    <string name="beats_client_id">frksnm8edw2t8ddebhkqkjwk</string>
+    <string name="beats_client_secret">2vZyUjhnmgqpVRmkNYKuw285</string>
 
     <string-array name="nav_tiles">
         <item>Artists</item>

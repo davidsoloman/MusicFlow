@@ -50,7 +50,7 @@ public class CompanionAlbumsFragment extends BeatsMusicFragment {
         companionAlbumsListView = (ListView) rootView.findViewById(R.id.generic_list_view);
 
         networkRequest = new CompanionAlbumsNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.albumCompanionAlbums(albumId));
+        networkRequest.execute(UrlFactory.albumCompanionAlbums(getActivity(), albumId));
 
         innerFrame.addView(rootView);
         return innerFrame;

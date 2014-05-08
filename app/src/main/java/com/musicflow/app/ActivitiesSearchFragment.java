@@ -21,6 +21,6 @@ public class ActivitiesSearchFragment extends BaseSearchFragment {
     }
 
     public String getNetworkUrl() {
-        return UrlFactory.searchPredictive(searchText.getText().toString());
+        return UrlFactory.searchPredictive(getActivity(), searchText.getText().toString());
     }
 }

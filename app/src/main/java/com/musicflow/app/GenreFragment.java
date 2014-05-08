@@ -47,7 +47,7 @@ public class GenreFragment extends BeatsMusicFragment {
         genreListView = (ListView) rootView.findViewById(R.id.generic_list_view);
 
         networkRequest = new GenreResultsNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.genresCollection());
+        networkRequest.execute(UrlFactory.genresCollection(getActivity()));
 
         innerFrame.addView(rootView);
         return innerFrame;

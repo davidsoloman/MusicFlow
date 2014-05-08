@@ -62,7 +62,7 @@ public class GenreViewActivity extends Activity {
     private void loadGenreViewData() {
         genreName.setText(genre.getName());
         genreUserName.setText('@'+genre.getUsername());
-        Picasso.with(this).load(UrlFactory.imageUrl(genre.getId(), UrlFactory.EntityType.GENRE, UrlFactory.ImageType.COVER, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(coverImage);
+        Picasso.with(this).load(UrlFactory.imageUrl(this, genre.getId(), UrlFactory.EntityType.GENRE, UrlFactory.ImageType.COVER, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(coverImage);
     }
 
     private void loadPlaylistsData() {

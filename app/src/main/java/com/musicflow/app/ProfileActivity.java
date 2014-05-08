@@ -52,7 +52,7 @@ public class ProfileActivity extends ActionBarActivity {
     private void loadView() {
         username.setText('@'+user.getUsername());
         fullName.setText(user.getFullName());
-        Picasso.with(this).load(UrlFactory.imageUrl(userId, UrlFactory.EntityType.USER, UrlFactory.ImageType.COVER, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(coverImage);
+        Picasso.with(this).load(UrlFactory.imageUrl(this, userId, UrlFactory.EntityType.USER, UrlFactory.ImageType.COVER, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(coverImage);
     }
 
     protected class UserProfileNetworkAdapter extends NetworkAdapter {

@@ -47,7 +47,7 @@ public class ArtistAdapter extends ArrayAdapter<Artist> {
         });
 
         ImageView artistProfileImage = (ImageView) rowView.findViewById(R.id.artist_profile_image);
-        Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).fit().centerCrop().into(artistProfileImage);
+        Picasso.with(context).load(UrlFactory.imageUrl(context, current.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).fit().centerCrop().into(artistProfileImage);
         TextView artistName = (TextView) rowView.findViewById(R.id.artist_name);
         artistName.setText(current.getName());
 

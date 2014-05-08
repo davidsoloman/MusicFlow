@@ -43,7 +43,7 @@ public class TracksFragment extends BeatsMusicFragment {
         View rootView = inflater.inflate(R.layout.fragment_list_view, container, false);
         tracksListView = (ListView) rootView.findViewById(R.id.generic_list_view);
         networkRequest = new TrackListNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.trackList());
+        networkRequest.execute(UrlFactory.trackList(getActivity()));
 
         innerFrame.addView(rootView);
         return innerFrame;

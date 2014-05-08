@@ -12,6 +12,10 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
+
+        <meta-data android:name="com.freethinking.beats.sdk.id" android:value="@string/beats_client_id" />
+        <meta-data android:name="com.freethinking.beats.sdk.secret" android:value="@string/beats_client_secret" />
+
         <activity
             android:name="com.musicflow.app.MainActivity"
             android:label="@string/app_name"

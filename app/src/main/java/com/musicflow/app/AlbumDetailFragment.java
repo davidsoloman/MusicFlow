@@ -57,7 +57,7 @@ public class AlbumDetailFragment extends BeatsMusicFragment {
         trackList = (ListView) rootView.findViewById(R.id.track_list_view);
 
         albumCoverArt = (ImageView) rootView.findViewById(R.id.album_cover_art);
-        Picasso.with(getActivity()).load(UrlFactory.imageUrl(albumId, UrlFactory.EntityType.ALBUM, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(albumCoverArt);
+        Picasso.with(getActivity()).load(UrlFactory.imageUrl(getActivity(), albumId, UrlFactory.EntityType.ALBUM, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(albumCoverArt);
 
         artistName = (TextView) rootView.findViewById(R.id.artist_name);
         artistName.setText(artistNameText + getResources().getString(R.string.spacer));
@@ -66,7 +66,7 @@ public class AlbumDetailFragment extends BeatsMusicFragment {
         albumTitle.setText(albumTitleText);
 
         networkRequest = new TrackListNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.albumTracks(albumId));
+        networkRequest.execute(UrlFactory.albumTracks(getActivity(), albumId));
 
         innerFrame.addView(rootView);
         return innerFrame;

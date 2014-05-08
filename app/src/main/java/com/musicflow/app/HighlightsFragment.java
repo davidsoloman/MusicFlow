@@ -48,7 +48,7 @@ public class HighlightsFragment extends BeatsMusicFragment{
         View rootView = inflater.inflate(R.layout.fragment_list_view, container, false);
         highlightsListView = (ListView) rootView.findViewById(R.id.generic_list_view);
         networkRequest = new HighlightsNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.highlightsFeatured());
+        networkRequest.execute(UrlFactory.highlightsFeatured(getActivity()));
 
         innerFrame.addView(rootView);
         return innerFrame;

@@ -52,7 +52,7 @@ public class LargeImageAlbumAdapter extends ArrayAdapter<Album> {
         });
 
         ImageView largeImage = (ImageView) rowView.findViewById(R.id.album_cover_art);
-        Picasso.with(context).load(UrlFactory.imageUrl(getItem(position).getId(), UrlFactory.EntityType.ALBUM, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.MEDIUM)).placeholder(R.drawable.placeholder).fit().centerCrop().into(largeImage);
+        Picasso.with(context).load(UrlFactory.imageUrl(context, getItem(position).getId(), UrlFactory.EntityType.ALBUM, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.MEDIUM)).placeholder(R.drawable.placeholder).fit().centerCrop().into(largeImage);
 
         TextView albumName = (TextView) rowView.findViewById(R.id.album_name);
         albumName.setText(current.getTitle());

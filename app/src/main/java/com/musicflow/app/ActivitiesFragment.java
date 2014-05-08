@@ -47,7 +47,7 @@ public class ActivitiesFragment extends BeatsMusicFragment {
 
         networkRequest = new ActivitiesNetworkAdapter(getActivity());
         networkRequest
-                .execute(UrlFactory.activitiesList());
+                .execute(UrlFactory.activitiesList(getActivity()));
 
         innerFrame.addView(rootView);
         return innerFrame;

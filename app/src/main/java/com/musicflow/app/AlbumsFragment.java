@@ -46,7 +46,7 @@ public class AlbumsFragment extends BeatsMusicFragment {
         View rootView = inflater.inflate(R.layout.fragment_list_view, container, false);
         albumsListView = (ListView) rootView.findViewById(R.id.generic_list_view);
         networkRequest = new AlbumListNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.albumList());
+        networkRequest.execute(UrlFactory.albumList(getActivity()));
 
         innerFrame.addView(rootView);
         return innerFrame;

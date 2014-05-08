@@ -54,7 +54,7 @@ public class GenreAdapter extends ArrayAdapter<Genre> {
         genreUserName.setText('@'+current.getUsername());
 
         ImageView largeImage = (ImageView) rowView.findViewById(R.id.genre_default);
-        Picasso.with(context).load(UrlFactory.imageUrl(getItem(position).getId(), UrlFactory.EntityType.GENRE, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.MEDIUM)).placeholder(R.drawable.placeholder).fit().centerCrop().into(largeImage);
+        Picasso.with(context).load(UrlFactory.imageUrl(context, getItem(position).getId(), UrlFactory.EntityType.GENRE, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.MEDIUM)).placeholder(R.drawable.placeholder).fit().centerCrop().into(largeImage);
 
         return rowView;
     }

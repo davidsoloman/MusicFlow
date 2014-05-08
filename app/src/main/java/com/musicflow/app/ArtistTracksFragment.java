@@ -48,7 +48,7 @@ public class ArtistTracksFragment extends BeatsMusicFragment {
         String artistId = getActivity().getIntent().getStringExtra("ArtistId");
 
         networkRequest = new ArtistTrackNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.artistTracks(artistId));
+        networkRequest.execute(UrlFactory.artistTracks(getActivity(), artistId));
 
         innerFrame.addView(rootView);
         return innerFrame;

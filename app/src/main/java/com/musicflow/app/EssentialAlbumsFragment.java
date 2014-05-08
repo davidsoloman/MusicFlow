@@ -48,7 +48,7 @@ public class EssentialAlbumsFragment extends BeatsMusicFragment {
         essentialAlbumsListView = (ListView) rootView.findViewById(R.id.generic_list_view);
 
         networkRequest = new EssentialAlbumsNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.artistEssentialAlbums(artistId));
+        networkRequest.execute(UrlFactory.artistEssentialAlbums(getActivity(), artistId));
 
         innerFrame.addView(rootView);
         return innerFrame;

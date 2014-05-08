@@ -43,7 +43,7 @@ public class PlaylistAdapter extends ArrayAdapter<Playlist> {
         });
 
         ImageView playlistImage = (ImageView) rowView.findViewById(R.id.playlist_cover_art);
-        Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.PLAYLIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).fit().centerCrop().into(playlistImage);
+        Picasso.with(context).load(UrlFactory.imageUrl(context, current.getId(), UrlFactory.EntityType.PLAYLIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).fit().centerCrop().into(playlistImage);
 
         TextView playlistTitle = (TextView) rowView.findViewById(R.id.playlist_title);
         playlistTitle.setText(current.getName());

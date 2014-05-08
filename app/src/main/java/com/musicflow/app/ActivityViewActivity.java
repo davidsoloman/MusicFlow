@@ -39,10 +39,10 @@ public class ActivityViewActivity extends Activity {
         playlistListView = (ListView) findViewById(R.id.activity_activity_list_view);
 
         activityNetworkRequest = new ActivityNetworkRequest(this);
-        activityNetworkRequest.execute(UrlFactory.activity(activityId));
+        activityNetworkRequest.execute(UrlFactory.activity(this, activityId));
 
         playlistNetworkRequest = new PlaylistNetworkRequest(this);
-        playlistNetworkRequest.execute(UrlFactory.activityEditorialPlaylists(activityId));
+        playlistNetworkRequest.execute(UrlFactory.activityEditorialPlaylists(this, activityId));
 
         setTitle("Activity");
     }

@@ -64,11 +64,11 @@ public class ArtistViewFragment extends BeatsMusicFragment {
 
         artist = new Artist();
         networkRequest = new ArtistNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.artist(artistId));
+        networkRequest.execute(UrlFactory.artist(getActivity(), artistId));
 
         bios = new BioWrapper();
         bioNetworkRequest = new BioNetworkAdapter(getActivity());
-        bioNetworkRequest.execute(UrlFactory.artistBio(artistId));
+        bioNetworkRequest.execute(UrlFactory.artistBio(getActivity(), artistId));
 
         innerFrame.addView(rootView);
         return innerFrame;
@@ -88,7 +88,7 @@ public class ArtistViewFragment extends BeatsMusicFragment {
             popularity.setText(artistPopularity + getString(R.string.follower));
         }
 
-        Picasso.with(getActivity()).load(UrlFactory.imageUrl(artist.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.MEDIUM)).placeholder(R.drawable.placeholder).fit().centerCrop().into(artistHeroImage);
+        Picasso.with(getActivity()).load(UrlFactory.imageUrl(getActivity(), artist.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.MEDIUM)).placeholder(R.drawable.placeholder).fit().centerCrop().into(artistHeroImage);
     }
 
     private void loadBioData() {

@@ -57,7 +57,7 @@ public class AlbumReviewFragment extends BeatsMusicFragment {
         noResultsFrame = (FrameLayout) rootView.findViewById(R.id.no_reviews_frame);
 
         networkRequest = new ReviewNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.albumReview(albumId));
+        networkRequest.execute(UrlFactory.albumReview(getActivity(), albumId));
 
         innerFrame.addView(rootView);
         return innerFrame;
