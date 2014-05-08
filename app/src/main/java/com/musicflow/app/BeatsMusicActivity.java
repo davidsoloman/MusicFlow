@@ -22,6 +22,8 @@ import com.musicflow.app.pagers.SectionsPagerAdapter;
  * Base activity for all other activities to inherit from.
  */
 public abstract class BeatsMusicActivity extends ActionBarActivity {
+    protected final int LOGIN = 1;
+
     protected String[] navTiles;
     protected DrawerLayout drawerLayout;
     protected CharSequence actionBarTitle;
@@ -118,10 +120,11 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
             case 7:
                 if (NetworkAdapter.loggedIn(this)) {
                     i = new Intent(this, ProfileActivity.class);
+                    this.startActivity(i);
                 } else {
                     i = new Intent(this, LoginActivity.class);
+                    this.startActivityForResult(i, LOGIN);
                 }
-                this.startActivity(i);
                 break;
         }
 
@@ -138,6 +141,28 @@ public abstract class BeatsMusicActivity extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == LOGIN) {
+
+            if (resultCode == RESULT_OK) {
+                String preferencesKey = getString(R.string.user_preferences_key);
+                getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_code", data.getStringExtra("access_code")).commit();
+                getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("user_state", data.getStringExtra("user_state")).commit();
+                getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_code_scope", data.getStringExtra("access_code_scope")).commit();
+                getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("access_token", data.getStringExtra("access_token")).commit();
+                getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("refresh_token", data.getStringExtra("refresh_token")).commit();
+                getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("refresh_token", data.getStringExtra("refresh_token")).commit();
+                getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putLong("access_expires_at", data.getLongExtra("access_expires_at", System.currentTimeMillis())).commit();
+                getSharedPreferences(preferencesKey, MODE_PRIVATE).edit().putString("user_id", data.getStringExtra("user_id")).commit();
+            }
+            if (resultCode == RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
     }
 
 }
