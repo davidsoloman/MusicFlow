@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.freethinking.beats.sdk.data.User;
 import com.freethinking.beats.sdk.mappers.UserMapper;
 import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.freethinking.beats.sdk.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
@@ -56,7 +57,7 @@ public class ProfileActivity extends ActionBarActivity {
 
     protected class UserProfileNetworkAdapter extends NetworkAdapter {
         public UserProfileNetworkAdapter(Context context) {
-            super(context, new UserMapper(), RequestType.GET, new HashMap<String, String>(), user);
+            super(context, new UserMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), user);
         }
 
         @Override

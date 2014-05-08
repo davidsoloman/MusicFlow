@@ -14,6 +14,7 @@ import com.freethinking.beats.sdk.data.BioWrapper;
 import com.freethinking.beats.sdk.mappers.ArtistMapper;
 import com.freethinking.beats.sdk.mappers.BioMapper;
 import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.freethinking.beats.sdk.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
@@ -97,7 +98,7 @@ public class ArtistViewFragment extends BeatsMusicFragment {
 
     private class ArtistNetworkAdapter extends NetworkAdapter {
         public ArtistNetworkAdapter(Context context) {
-            super(context, new ArtistMapper(), RequestType.GET, new HashMap<String, String>(), artist);
+            super(context, new ArtistMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), artist);
         }
 
         @Override
@@ -109,7 +110,7 @@ public class ArtistViewFragment extends BeatsMusicFragment {
 
     private class BioNetworkAdapter extends NetworkAdapter {
         public BioNetworkAdapter(Context context) {
-            super(context, new BioMapper(), RequestType.GET, new HashMap<String, String>(), bios);
+            super(context, new BioMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), bios);
         }
 
         @Override

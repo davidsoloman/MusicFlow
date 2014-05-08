@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.musicflow.app.adapters.GenreAdapter;
 import com.freethinking.beats.sdk.data.Genres;
 import com.freethinking.beats.sdk.mappers.GenresMapper;
@@ -59,7 +60,7 @@ public class GenreFragment extends BeatsMusicFragment {
 
     private class GenreResultsNetworkAdapter extends NetworkAdapter {
         public GenreResultsNetworkAdapter(Context context) {
-            super(context, new GenresMapper(), RequestType.GET, new HashMap<String, String>(),
+            super(context, new GenresMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(),
                     genres);
         }
 

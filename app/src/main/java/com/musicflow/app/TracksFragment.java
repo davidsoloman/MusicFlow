@@ -10,6 +10,7 @@ import android.widget.ListView;
 import com.freethinking.beats.sdk.data.Tracks;
 import com.freethinking.beats.sdk.mappers.TracksMapper;
 import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.freethinking.beats.sdk.network.UrlFactory;
 import com.musicflow.app.adapters.TracksAdapter;
 
@@ -56,7 +57,7 @@ public class TracksFragment extends BeatsMusicFragment {
     private class TrackListNetworkAdapter extends NetworkAdapter {
 
         public TrackListNetworkAdapter(Context context) {
-            super(context, new TracksMapper(), RequestType.GET, new HashMap<String, String>(), tracks);
+            super(context, new TracksMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), tracks);
         }
 
         @Override

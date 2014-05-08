@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.musicflow.app.adapters.PlaylistAdapter;
 import com.freethinking.beats.sdk.data.Genre;
 import com.freethinking.beats.sdk.data.Playlists;
@@ -75,7 +76,7 @@ public class GenreViewActivity extends Activity {
         }
 
         public GenreNetworkRequest(Context context) {
-            super(context, new GenreMapper(), RequestType.GET, new HashMap<String, String>(), genre);
+            super(context, new GenreMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), genre);
         }
 
         @Override
@@ -92,7 +93,7 @@ public class GenreViewActivity extends Activity {
         }
 
         public GenrePlaylistsNetworkRequest(Context context) {
-            super(context, new PlaylistsMapper(), RequestType.GET, new HashMap<String, String>(), playlists);
+            super(context, new PlaylistsMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), playlists);
         }
 
         @Override

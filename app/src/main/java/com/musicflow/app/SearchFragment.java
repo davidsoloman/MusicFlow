@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.freethinking.beats.sdk.data.SearchResults;
 import com.freethinking.beats.sdk.mappers.SearchResultsMapper;
 import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.NetworkParts;
 
 import java.util.HashMap;
 
@@ -78,7 +79,7 @@ public class SearchFragment extends BeatsMusicFragment {
 
     private class SearchResultNetworkAdapter extends NetworkAdapter {
         public SearchResultNetworkAdapter(Context context) {
-            super(context, new SearchResultsMapper(), RequestType.GET, new HashMap<String, String>(), searchResults);
+            super(context, new SearchResultsMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), searchResults);
         }
 
         @Override

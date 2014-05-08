@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.musicflow.app.adapters.LargeImageAlbumAdapter;
 import com.freethinking.beats.sdk.data.Activities;
 import com.freethinking.beats.sdk.data.Albums;
@@ -62,7 +63,7 @@ public class CompanionAlbumsFragment extends BeatsMusicFragment {
     private class CompanionAlbumsNetworkAdapter extends NetworkAdapter {
 
         public CompanionAlbumsNetworkAdapter(Context context) {
-            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
+            super(context, new AlbumsMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), albums);
         }
 
         @Override

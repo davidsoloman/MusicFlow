@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.musicflow.app.adapters.PlaylistAdapter;
 import com.freethinking.beats.sdk.data.Playlists;
 import com.freethinking.beats.sdk.mappers.ActivityMapper;
@@ -56,7 +57,7 @@ public class ActivityViewActivity extends Activity {
 
     private class ActivityNetworkRequest extends NetworkAdapter {
         public ActivityNetworkRequest(Context context) {
-            super(context, new ActivityMapper(), RequestType.GET, new HashMap<String, String>(), activity);
+            super(context, new ActivityMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), activity);
         }
 
         @Override
@@ -68,7 +69,7 @@ public class ActivityViewActivity extends Activity {
 
     private class PlaylistNetworkRequest extends NetworkAdapter {
         public PlaylistNetworkRequest(Context context) {
-            super(context, new PlaylistsMapper(), RequestType.GET, new HashMap<String, String>(), playlists);
+            super(context, new PlaylistsMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), playlists);
         }
 
         @Override

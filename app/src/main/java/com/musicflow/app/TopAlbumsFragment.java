@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.musicflow.app.adapters.LargeImageAlbumAdapter;
 import com.freethinking.beats.sdk.data.Albums;
 import com.freethinking.beats.sdk.mappers.AlbumsMapper;
@@ -84,7 +85,7 @@ public class TopAlbumsFragment extends BeatsMusicFragment implements OnRefreshLi
     private class AlbumListNetworkAdapter extends NetworkAdapter {
 
         public AlbumListNetworkAdapter(Context context) {
-            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
+            super(context, new AlbumsMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), albums);
         }
 
         @Override

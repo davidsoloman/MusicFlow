@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.musicflow.app.BeatsMusicFragment;
 import com.musicflow.app.R;
 import com.musicflow.app.SearchResultAdapter;
@@ -78,7 +79,7 @@ public abstract class BaseSearchFragment extends BeatsMusicFragment {
 
     private class SearchResultNetworkAdapter extends NetworkAdapter {
         public SearchResultNetworkAdapter(Context context) {
-            super(context, new SearchResultsMapper(), RequestType.GET, new HashMap<String, String>(), searchResults);
+            super(context, new SearchResultsMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), searchResults);
         }
 
         @Override

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.freethinking.beats.sdk.data.Review;
 import com.freethinking.beats.sdk.mappers.ReviewMapper;
 import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.freethinking.beats.sdk.network.UrlFactory;
 
 import java.util.HashMap;
@@ -79,7 +80,7 @@ public class AlbumReviewFragment extends BeatsMusicFragment {
     private class ReviewNetworkAdapter extends NetworkAdapter {
 
         public ReviewNetworkAdapter(Context context) {
-            super(context, new ReviewMapper(), RequestType.GET, new HashMap<String, String>(), review);
+            super(context, new ReviewMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), review);
         }
 
         @Override

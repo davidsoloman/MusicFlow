@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.musicflow.app.adapters.ArtistAdapter;
 import com.freethinking.beats.sdk.data.Artists;
 import com.freethinking.beats.sdk.mappers.ArtistsMapper;
@@ -54,7 +55,7 @@ public class ArtistsFragment extends BeatsMusicFragment {
 
     private class ArtistsResultNetworkAdapter extends NetworkAdapter {
         public ArtistsResultNetworkAdapter(Context context) {
-            super(context, new ArtistsMapper(), RequestType.GET, new HashMap<String, String>(), artists);
+            super(context, new ArtistsMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), artists);
         }
 
         @Override
