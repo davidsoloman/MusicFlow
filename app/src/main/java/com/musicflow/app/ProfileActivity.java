@@ -6,10 +6,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.musicflow.app.data.User;
-import com.musicflow.app.mappers.UserMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.User;
+import com.freethinking.beats.sdk.mappers.UserMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.NetworkParts;
+import com.freethinking.beats.sdk.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -51,12 +52,12 @@ public class ProfileActivity extends ActionBarActivity {
     private void loadView() {
         username.setText('@'+user.getUsername());
         fullName.setText(user.getFullName());
-        Picasso.with(this).load(UrlFactory.imageUrl(userId, UrlFactory.EntityType.USER, UrlFactory.ImageType.COVER, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(coverImage);
+        Picasso.with(this).load(UrlFactory.imageUrl(this, userId, UrlFactory.EntityType.USER, UrlFactory.ImageType.COVER, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(coverImage);
     }
 
     protected class UserProfileNetworkAdapter extends NetworkAdapter {
         public UserProfileNetworkAdapter(Context context) {
-            super(context, new UserMapper(), RequestType.GET, new HashMap<String, String>(), user);
+            super(context, new UserMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), user);
         }
 
         @Override

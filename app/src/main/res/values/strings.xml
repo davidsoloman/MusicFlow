@@ -3,7 +3,6 @@
 
     <string name="app_name">MusicFlow</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile">Profile</string>
     <string name="action_home">Home</string>
     <string name="search_artists">SEARCH_ARTISTS</string>
@@ -63,6 +62,8 @@
     <string name="no_data_received">No data. Sorry</string>
     <string name="no_user_created_playlists">You have not created any playlists</string>
     <string name="no_user_subscribed_playlists">You have not subscribed to any playlists</string>
+    <string name="beats_client_id">frksnm8edw2t8ddebhkqkjwk</string>
+    <string name="beats_client_secret">2vZyUjhnmgqpVRmkNYKuw285</string>
 
     <string-array name="nav_tiles">
         <item>Artists</item>

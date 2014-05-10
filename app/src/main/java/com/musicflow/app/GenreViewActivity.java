@@ -7,14 +7,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.musicflow.app.adapters.PlaylistAdapter;
-import com.musicflow.app.data.Genre;
-import com.musicflow.app.data.Playlists;
-import com.musicflow.app.mappers.ActivityMapper;
-import com.musicflow.app.mappers.GenreMapper;
-import com.musicflow.app.mappers.PlaylistsMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Genre;
+import com.freethinking.beats.sdk.data.Playlists;
+import com.freethinking.beats.sdk.mappers.ActivityMapper;
+import com.freethinking.beats.sdk.mappers.GenreMapper;
+import com.freethinking.beats.sdk.mappers.PlaylistsMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -61,7 +62,7 @@ public class GenreViewActivity extends Activity {
     private void loadGenreViewData() {
         genreName.setText(genre.getName());
         genreUserName.setText('@'+genre.getUsername());
-        Picasso.with(this).load(UrlFactory.imageUrl(genre.getId(), UrlFactory.EntityType.GENRE, UrlFactory.ImageType.COVER, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(coverImage);
+        Picasso.with(this).load(UrlFactory.imageUrl(this, genre.getId(), UrlFactory.EntityType.GENRE, UrlFactory.ImageType.COVER, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(coverImage);
     }
 
     private void loadPlaylistsData() {
@@ -75,7 +76,7 @@ public class GenreViewActivity extends Activity {
         }
 
         public GenreNetworkRequest(Context context) {
-            super(context, new GenreMapper(), RequestType.GET, new HashMap<String, String>(), genre);
+            super(context, new GenreMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), genre);
         }
 
         @Override
@@ -92,7 +93,7 @@ public class GenreViewActivity extends Activity {
         }
 
         public GenrePlaylistsNetworkRequest(Context context) {
-            super(context, new PlaylistsMapper(), RequestType.GET, new HashMap<String, String>(), playlists);
+            super(context, new PlaylistsMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), playlists);
         }
 
         @Override

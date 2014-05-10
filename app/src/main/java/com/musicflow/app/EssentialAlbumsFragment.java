@@ -7,11 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.musicflow.app.adapters.LargeImageAlbumAdapter;
-import com.musicflow.app.data.Albums;
-import com.musicflow.app.mappers.AlbumsMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Albums;
+import com.freethinking.beats.sdk.mappers.AlbumsMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.UrlFactory;
 
 import java.util.HashMap;
 
@@ -47,7 +48,7 @@ public class EssentialAlbumsFragment extends BeatsMusicFragment {
         essentialAlbumsListView = (ListView) rootView.findViewById(R.id.generic_list_view);
 
         networkRequest = new EssentialAlbumsNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.artistEssentialAlbums(artistId));
+        networkRequest.execute(UrlFactory.artistEssentialAlbums(getActivity(), artistId));
 
         innerFrame.addView(rootView);
         return innerFrame;
@@ -60,7 +61,7 @@ public class EssentialAlbumsFragment extends BeatsMusicFragment {
     private class EssentialAlbumsNetworkAdapter extends NetworkAdapter {
 
         public EssentialAlbumsNetworkAdapter(Context context) {
-            super(context, new AlbumsMapper(), RequestType.GET, new HashMap<String, String>(), albums);
+            super(context, new AlbumsMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), albums);
         }
 
         @Override

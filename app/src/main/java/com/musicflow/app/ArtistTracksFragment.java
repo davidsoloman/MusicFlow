@@ -7,11 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.musicflow.app.adapters.TracksAdapter;
-import com.musicflow.app.data.Tracks;
-import com.musicflow.app.mappers.TracksMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Tracks;
+import com.freethinking.beats.sdk.mappers.TracksMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.UrlFactory;
 
 import java.util.HashMap;
 
@@ -47,7 +48,7 @@ public class ArtistTracksFragment extends BeatsMusicFragment {
         String artistId = getActivity().getIntent().getStringExtra("ArtistId");
 
         networkRequest = new ArtistTrackNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.artistTracks(artistId));
+        networkRequest.execute(UrlFactory.artistTracks(getActivity(), artistId));
 
         innerFrame.addView(rootView);
         return innerFrame;
@@ -59,7 +60,7 @@ public class ArtistTracksFragment extends BeatsMusicFragment {
 
     private class ArtistTrackNetworkAdapter extends NetworkAdapter {
         public ArtistTrackNetworkAdapter(Context context) {
-            super(context, new TracksMapper(), RequestType.GET, new HashMap<String, String>(), tracks);
+            super(context, new TracksMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), tracks);
         }
 
         @Override

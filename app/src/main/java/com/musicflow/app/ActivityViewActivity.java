@@ -5,12 +5,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.musicflow.app.adapters.PlaylistAdapter;
-import com.musicflow.app.data.Playlists;
-import com.musicflow.app.mappers.ActivityMapper;
-import com.musicflow.app.mappers.PlaylistsMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Playlists;
+import com.freethinking.beats.sdk.mappers.ActivityMapper;
+import com.freethinking.beats.sdk.mappers.PlaylistsMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.UrlFactory;
 
 import java.util.HashMap;
 
@@ -21,7 +22,7 @@ public class ActivityViewActivity extends Activity {
     protected ActivityNetworkRequest activityNetworkRequest;
     protected PlaylistNetworkRequest playlistNetworkRequest;
 
-    protected com.musicflow.app.data.Activity activity;
+    protected com.freethinking.beats.sdk.data.Activity activity;
     protected String activityId;
     protected Playlists playlists;
 
@@ -31,17 +32,17 @@ public class ActivityViewActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity_view);
-        activity = new com.musicflow.app.data.Activity();
+        activity = new com.freethinking.beats.sdk.data.Activity();
         playlists = new Playlists();
         activityId = getIntent().getStringExtra("ActivityId");
 
         playlistListView = (ListView) findViewById(R.id.activity_activity_list_view);
 
         activityNetworkRequest = new ActivityNetworkRequest(this);
-        activityNetworkRequest.execute(UrlFactory.activity(activityId));
+        activityNetworkRequest.execute(UrlFactory.activity(this, activityId));
 
         playlistNetworkRequest = new PlaylistNetworkRequest(this);
-        playlistNetworkRequest.execute(UrlFactory.activityEditorialPlaylists(activityId));
+        playlistNetworkRequest.execute(UrlFactory.activityEditorialPlaylists(this, activityId));
 
         setTitle("Activity");
     }
@@ -56,7 +57,7 @@ public class ActivityViewActivity extends Activity {
 
     private class ActivityNetworkRequest extends NetworkAdapter {
         public ActivityNetworkRequest(Context context) {
-            super(context, new ActivityMapper(), RequestType.GET, new HashMap<String, String>(), activity);
+            super(context, new ActivityMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), activity);
         }
 
         @Override
@@ -68,7 +69,7 @@ public class ActivityViewActivity extends Activity {
 
     private class PlaylistNetworkRequest extends NetworkAdapter {
         public PlaylistNetworkRequest(Context context) {
-            super(context, new PlaylistsMapper(), RequestType.GET, new HashMap<String, String>(), playlists);
+            super(context, new PlaylistsMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), playlists);
         }
 
         @Override

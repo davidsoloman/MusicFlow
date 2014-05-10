@@ -12,8 +12,8 @@ import android.widget.TextView;
 import com.musicflow.app.GenreViewActivity;
 import com.musicflow.app.GenresActivity;
 import com.musicflow.app.R;
-import com.musicflow.app.data.Genre;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Genre;
+import com.freethinking.beats.sdk.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -54,7 +54,7 @@ public class GenreAdapter extends ArrayAdapter<Genre> {
         genreUserName.setText('@'+current.getUsername());
 
         ImageView largeImage = (ImageView) rowView.findViewById(R.id.genre_default);
-        Picasso.with(context).load(UrlFactory.imageUrl(getItem(position).getId(), UrlFactory.EntityType.GENRE, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.MEDIUM)).placeholder(R.drawable.placeholder).fit().centerCrop().into(largeImage);
+        Picasso.with(context).load(UrlFactory.imageUrl(context, getItem(position).getId(), UrlFactory.EntityType.GENRE, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.MEDIUM)).placeholder(R.drawable.placeholder).fit().centerCrop().into(largeImage);
 
         return rowView;
     }

@@ -9,12 +9,13 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.musicflow.app.data.Artist;
-import com.musicflow.app.data.BioWrapper;
-import com.musicflow.app.mappers.ArtistMapper;
-import com.musicflow.app.mappers.BioMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Artist;
+import com.freethinking.beats.sdk.data.BioWrapper;
+import com.freethinking.beats.sdk.mappers.ArtistMapper;
+import com.freethinking.beats.sdk.mappers.BioMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.NetworkParts;
+import com.freethinking.beats.sdk.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -63,11 +64,11 @@ public class ArtistViewFragment extends BeatsMusicFragment {
 
         artist = new Artist();
         networkRequest = new ArtistNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.artist(artistId));
+        networkRequest.execute(UrlFactory.artist(getActivity(), artistId));
 
         bios = new BioWrapper();
         bioNetworkRequest = new BioNetworkAdapter(getActivity());
-        bioNetworkRequest.execute(UrlFactory.artistBio(artistId));
+        bioNetworkRequest.execute(UrlFactory.artistBio(getActivity(), artistId));
 
         innerFrame.addView(rootView);
         return innerFrame;
@@ -87,7 +88,7 @@ public class ArtistViewFragment extends BeatsMusicFragment {
             popularity.setText(artistPopularity + getString(R.string.follower));
         }
 
-        Picasso.with(getActivity()).load(UrlFactory.imageUrl(artist.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.MEDIUM)).placeholder(R.drawable.placeholder).fit().centerCrop().into(artistHeroImage);
+        Picasso.with(getActivity()).load(UrlFactory.imageUrl(getActivity(), artist.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.MEDIUM)).placeholder(R.drawable.placeholder).fit().centerCrop().into(artistHeroImage);
     }
 
     private void loadBioData() {
@@ -97,7 +98,7 @@ public class ArtistViewFragment extends BeatsMusicFragment {
 
     private class ArtistNetworkAdapter extends NetworkAdapter {
         public ArtistNetworkAdapter(Context context) {
-            super(context, new ArtistMapper(), RequestType.GET, new HashMap<String, String>(), artist);
+            super(context, new ArtistMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), artist);
         }
 
         @Override
@@ -109,7 +110,7 @@ public class ArtistViewFragment extends BeatsMusicFragment {
 
     private class BioNetworkAdapter extends NetworkAdapter {
         public BioNetworkAdapter(Context context) {
-            super(context, new BioMapper(), RequestType.GET, new HashMap<String, String>(), bios);
+            super(context, new BioMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), bios);
         }
 
         @Override

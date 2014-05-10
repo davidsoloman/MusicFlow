@@ -8,9 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.freethinking.beats.sdk.data.Track;
+import com.freethinking.beats.sdk.network.UrlFactory;
 import com.musicflow.app.R;
-import com.musicflow.app.data.Track;
-import com.musicflow.app.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -43,7 +43,7 @@ public class TracksAdapter extends ArrayAdapter<Track> {
         });
 
         ImageView trackCoverArt = (ImageView) rowView.findViewById(R.id.track_cover_art);
-        Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.TRACK, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).fit().centerCrop().into(trackCoverArt);
+        Picasso.with(context).load(UrlFactory.imageUrl(context, current.getId(), UrlFactory.EntityType.TRACK, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).fit().centerCrop().into(trackCoverArt);
         TextView trackName = (TextView) rowView.findViewById(R.id.track_title);
         trackName.setText(current.getTitle());
 

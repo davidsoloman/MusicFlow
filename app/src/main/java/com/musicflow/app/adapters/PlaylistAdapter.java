@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.musicflow.app.R;
-import com.musicflow.app.data.Playlist;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Playlist;
+import com.freethinking.beats.sdk.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -43,7 +43,7 @@ public class PlaylistAdapter extends ArrayAdapter<Playlist> {
         });
 
         ImageView playlistImage = (ImageView) rowView.findViewById(R.id.playlist_cover_art);
-        Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.PLAYLIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).fit().centerCrop().into(playlistImage);
+        Picasso.with(context).load(UrlFactory.imageUrl(context, current.getId(), UrlFactory.EntityType.PLAYLIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).fit().centerCrop().into(playlistImage);
 
         TextView playlistTitle = (TextView) rowView.findViewById(R.id.playlist_title);
         playlistTitle.setText(current.getName());

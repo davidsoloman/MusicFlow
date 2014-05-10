@@ -2,7 +2,7 @@ package com.musicflow.app;
 
 import android.os.Bundle;
 
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.network.UrlFactory;
 import com.musicflow.app.utility.BaseSearchFragment;
 
 public class AlbumsSearchFragment extends BaseSearchFragment {
@@ -21,6 +21,6 @@ public class AlbumsSearchFragment extends BaseSearchFragment {
     }
 
     public String getNetworkUrl() {
-        return UrlFactory.searchPredictive(searchText.getText().toString());
+        return UrlFactory.searchPredictive(getActivity(), searchText.getText().toString());
     }
 }

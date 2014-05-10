@@ -7,11 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.musicflow.app.adapters.GenreAdapter;
-import com.musicflow.app.data.Genres;
-import com.musicflow.app.mappers.GenresMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Genres;
+import com.freethinking.beats.sdk.mappers.GenresMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.UrlFactory;
 
 import java.util.HashMap;
 
@@ -46,7 +47,7 @@ public class GenreFragment extends BeatsMusicFragment {
         genreListView = (ListView) rootView.findViewById(R.id.generic_list_view);
 
         networkRequest = new GenreResultsNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.genresCollection());
+        networkRequest.execute(UrlFactory.genresCollection(getActivity()));
 
         innerFrame.addView(rootView);
         return innerFrame;
@@ -59,7 +60,7 @@ public class GenreFragment extends BeatsMusicFragment {
 
     private class GenreResultsNetworkAdapter extends NetworkAdapter {
         public GenreResultsNetworkAdapter(Context context) {
-            super(context, new GenresMapper(), RequestType.GET, new HashMap<String, String>(),
+            super(context, new GenresMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(),
                     genres);
         }
 

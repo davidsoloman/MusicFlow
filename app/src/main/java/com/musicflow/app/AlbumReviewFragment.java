@@ -9,10 +9,11 @@ import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.musicflow.app.data.Review;
-import com.musicflow.app.mappers.ReviewMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Review;
+import com.freethinking.beats.sdk.mappers.ReviewMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.NetworkParts;
+import com.freethinking.beats.sdk.network.UrlFactory;
 
 import java.util.HashMap;
 
@@ -56,7 +57,7 @@ public class AlbumReviewFragment extends BeatsMusicFragment {
         noResultsFrame = (FrameLayout) rootView.findViewById(R.id.no_reviews_frame);
 
         networkRequest = new ReviewNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.albumReview(albumId));
+        networkRequest.execute(UrlFactory.albumReview(getActivity(), albumId));
 
         innerFrame.addView(rootView);
         return innerFrame;
@@ -79,7 +80,7 @@ public class AlbumReviewFragment extends BeatsMusicFragment {
     private class ReviewNetworkAdapter extends NetworkAdapter {
 
         public ReviewNetworkAdapter(Context context) {
-            super(context, new ReviewMapper(), RequestType.GET, new HashMap<String, String>(), review);
+            super(context, new ReviewMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), review);
         }
 
         @Override

@@ -7,11 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.musicflow.app.adapters.ArtistAdapter;
-import com.musicflow.app.data.Artists;
-import com.musicflow.app.mappers.ArtistsMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Artists;
+import com.freethinking.beats.sdk.mappers.ArtistsMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.UrlFactory;
 
 import java.util.HashMap;
 
@@ -43,7 +44,7 @@ public class ArtistsFragment extends BeatsMusicFragment {
         View rootView = inflater.inflate(R.layout.fragment_list_view, container, false);
         artistListView = (ListView) rootView.findViewById(R.id.generic_list_view);
         networkRequest = new ArtistsResultNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.artistList());
+        networkRequest.execute(UrlFactory.artistList(getActivity()));
         innerFrame.addView(rootView);
         return innerFrame;
     }
@@ -54,7 +55,7 @@ public class ArtistsFragment extends BeatsMusicFragment {
 
     private class ArtistsResultNetworkAdapter extends NetworkAdapter {
         public ArtistsResultNetworkAdapter(Context context) {
-            super(context, new ArtistsMapper(), RequestType.GET, new HashMap<String, String>(), artists);
+            super(context, new ArtistsMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), artists);
         }
 
         @Override

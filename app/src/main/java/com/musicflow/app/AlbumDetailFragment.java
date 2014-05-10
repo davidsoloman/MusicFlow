@@ -9,11 +9,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.freethinking.beats.sdk.network.NetworkParts;
 import com.musicflow.app.adapters.TracksAdapter;
-import com.musicflow.app.data.Tracks;
-import com.musicflow.app.mappers.TracksMapper;
-import com.musicflow.app.network.NetworkAdapter;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.Tracks;
+import com.freethinking.beats.sdk.mappers.TracksMapper;
+import com.freethinking.beats.sdk.network.NetworkAdapter;
+import com.freethinking.beats.sdk.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -56,7 +57,7 @@ public class AlbumDetailFragment extends BeatsMusicFragment {
         trackList = (ListView) rootView.findViewById(R.id.track_list_view);
 
         albumCoverArt = (ImageView) rootView.findViewById(R.id.album_cover_art);
-        Picasso.with(getActivity()).load(UrlFactory.imageUrl(albumId, UrlFactory.EntityType.ALBUM, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(albumCoverArt);
+        Picasso.with(getActivity()).load(UrlFactory.imageUrl(getActivity(), albumId, UrlFactory.EntityType.ALBUM, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.LARGE)).placeholder(R.drawable.placeholder).fit().centerCrop().into(albumCoverArt);
 
         artistName = (TextView) rootView.findViewById(R.id.artist_name);
         artistName.setText(artistNameText + getResources().getString(R.string.spacer));
@@ -65,7 +66,7 @@ public class AlbumDetailFragment extends BeatsMusicFragment {
         albumTitle.setText(albumTitleText);
 
         networkRequest = new TrackListNetworkAdapter(getActivity());
-        networkRequest.execute(UrlFactory.albumTracks(albumId));
+        networkRequest.execute(UrlFactory.albumTracks(getActivity(), albumId));
 
         innerFrame.addView(rootView);
         return innerFrame;
@@ -79,7 +80,7 @@ public class AlbumDetailFragment extends BeatsMusicFragment {
     private class TrackListNetworkAdapter extends NetworkAdapter {
 
         public TrackListNetworkAdapter(Context context) {
-            super(context, new TracksMapper(), RequestType.GET, new HashMap<String, String>(), tracks);
+            super(context, new TracksMapper(), NetworkParts.RequestType.GET, new HashMap<String, String>(), tracks);
         }
 
         @Override

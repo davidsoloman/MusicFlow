@@ -8,8 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.musicflow.app.data.SearchResult;
-import com.musicflow.app.network.UrlFactory;
+import com.freethinking.beats.sdk.data.SearchResult;
+import com.freethinking.beats.sdk.network.UrlFactory;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -36,7 +36,7 @@ public class SearchResultAdapter extends ArrayAdapter<SearchResult> {
             rowView = inflater.inflate(R.layout.artist_list_item, parent, false);
 
             ImageView artistProfileImage = (ImageView) rowView.findViewById(R.id.artist_profile_image);
-            Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).into(artistProfileImage);
+            Picasso.with(context).load(UrlFactory.imageUrl(context, current.getId(), UrlFactory.EntityType.ARTIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).into(artistProfileImage);
 
             TextView artistName = (TextView) rowView.findViewById(R.id.artist_name);
             artistName.setText(current.getDisplay());
@@ -51,7 +51,7 @@ public class SearchResultAdapter extends ArrayAdapter<SearchResult> {
             rowView = inflater.inflate(R.layout.album_list_item, parent, false);
 
             ImageView albumCoverArt = (ImageView) rowView.findViewById(R.id.album_cover_art);
-            Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.ALBUM, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).into(albumCoverArt);
+            Picasso.with(context).load(UrlFactory.imageUrl(context, current.getId(), UrlFactory.EntityType.ALBUM, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).into(albumCoverArt);
 
             TextView albumTitle = (TextView) rowView.findViewById(R.id.album_title);
             albumTitle.setText(current.getDisplay());
@@ -69,7 +69,7 @@ public class SearchResultAdapter extends ArrayAdapter<SearchResult> {
             rowView = inflater.inflate(R.layout.playlist_list_item, parent, false);
 
             ImageView playlistCoverArt = (ImageView) rowView.findViewById(R.id.playlist_cover_art);
-            Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.PLAYLIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).into(playlistCoverArt);
+            Picasso.with(context).load(UrlFactory.imageUrl(context, current.getId(), UrlFactory.EntityType.PLAYLIST, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).into(playlistCoverArt);
 
             TextView playlistTitle = (TextView) rowView.findViewById(R.id.playlist_title);
             playlistTitle.setText(current.getDisplay());
@@ -87,7 +87,7 @@ public class SearchResultAdapter extends ArrayAdapter<SearchResult> {
             rowView = inflater.inflate(R.layout.user_list_item, parent, false);
 
             ImageView userProfileImage = (ImageView) rowView.findViewById(R.id.user_profile_image);
-            Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.USER, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).into(userProfileImage);
+            Picasso.with(context).load(UrlFactory.imageUrl(context, current.getId(), UrlFactory.EntityType.USER, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.SMALL)).placeholder(R.drawable.placeholder).into(userProfileImage);
 
             TextView userFullName = (TextView) rowView.findViewById(R.id.user_full_name);
             userFullName.setText(current.getDisplay());
@@ -105,7 +105,7 @@ public class SearchResultAdapter extends ArrayAdapter<SearchResult> {
             rowView = inflater.inflate(R.layout.track_list_item, parent, false);
 
             ImageView songCoverArt = (ImageView) rowView.findViewById(R.id.track_cover_art);
-            Picasso.with(context).load(UrlFactory.imageUrl(current.getId(), UrlFactory.EntityType.TRACK, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.THUMB)).placeholder(R.drawable.placeholder).into(songCoverArt);
+            Picasso.with(context).load(UrlFactory.imageUrl(context, current.getId(), UrlFactory.EntityType.TRACK, UrlFactory.ImageType.DEFAULT, UrlFactory.ImageSize.THUMB)).placeholder(R.drawable.placeholder).into(songCoverArt);
 
             TextView songTitle = (TextView) rowView.findViewById(R.id.track_title);
             songTitle.setText(current.getDisplay());
