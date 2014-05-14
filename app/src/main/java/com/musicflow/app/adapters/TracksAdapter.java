@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.freethinking.beats.sdk.data.Track;
 import com.freethinking.beats.sdk.network.UrlFactory;
+import com.freethinking.beats.sdk.player.Player;
 import com.musicflow.app.R;
 import com.squareup.picasso.Picasso;
 
@@ -38,7 +39,9 @@ public class TracksAdapter extends ArrayAdapter<Track> {
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Implement reason to click a track
+                String trackId = getItem(position).getId();
+                Player player = new Player(context, trackId);
+                player.prepareAsync();
             }
         });
 
